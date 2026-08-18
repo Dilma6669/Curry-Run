@@ -2537,7 +2537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
+  secondRamp: {fileID: 495220906}
   firstRamp: {fileID: 436353859}
   floor: {fileID: 620496025}
   player: {fileID: 956717716}
@@ -9510,11 +9510,11 @@ PrefabInstance:
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: startNode
       value: 
-      objectReference: {fileID: 518008295}
+      objectReference: {fileID: 1394181354}
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: targetNode
       value: 
-      objectReference: {fileID: 1394181354}
+      objectReference: {fileID: 518008295}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.76
@@ -10450,6 +10450,7 @@ MonoBehaviour:
   - connectedNode: {fileID: 1394181354}
     collidersToIgnore:
     - {fileID: 1865214587}
+    - {fileID: 205317294}
 --- !u!212 &301932799
 SpriteRenderer:
   serializedVersion: 2
@@ -18378,7 +18379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
   secondRamp: {fileID: 555746483}
   firstRamp: {fileID: 495220906}
-  floor: {fileID: 1229704354}
+  floor: {fileID: 620496025}
   player: {fileID: 956717716}
   npc: {fileID: 0}
   ignoreUp: 0
@@ -22776,9 +22777,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 405432038}
-  firstRamp: {fileID: 744642792}
-  floor: {fileID: 1229704354}
+  secondRamp: {fileID: 0}
+  firstRamp: {fileID: 0}
+  floor: {fileID: 1298301555}
   player: {fileID: 956717716}
   npc: {fileID: 0}
   ignoreUp: 0
@@ -31533,7 +31534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
+  secondRamp: {fileID: 1794648869}
   firstRamp: {fileID: 555746483}
   floor: {fileID: 26140619}
   player: {fileID: 956717716}
@@ -35565,7 +35566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
+  secondRamp: {fileID: 205317294}
   firstRamp: {fileID: 1649985632}
   floor: {fileID: 1865214587}
   player: {fileID: 956717716}
@@ -46010,7 +46011,7 @@ Transform:
   m_GameObject: {fileID: 1353799291}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.15, y: -3.93, z: 0}
+  m_LocalPosition: {x: -8.15, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46814,6 +46815,7 @@ MonoBehaviour:
   - connectedNode: {fileID: 301932798}
     collidersToIgnore:
     - {fileID: 1865214587}
+    - {fileID: 205317294}
 --- !u!212 &1394181355
 SpriteRenderer:
   serializedVersion: 2
@@ -62973,7 +62975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
   secondRamp: {fileID: 1076627472}
   firstRamp: {fileID: 1794648869}
-  floor: {fileID: 1229704354}
+  floor: {fileID: 26140619}
   player: {fileID: 956717716}
   npc: {fileID: 0}
   ignoreUp: 0
@@ -67064,7 +67066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
   secondRamp: {fileID: 436353859}
   firstRamp: {fileID: 205317294}
-  floor: {fileID: 1229704354}
+  floor: {fileID: 1865214587}
   player: {fileID: 956717716}
   npc: {fileID: 0}
   ignoreUp: 0
@@ -75564,11 +75566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.34
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 47.2
+      value: 17.1
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.z
