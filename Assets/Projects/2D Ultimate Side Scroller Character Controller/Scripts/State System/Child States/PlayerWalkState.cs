@@ -61,23 +61,7 @@ namespace UltimateCC
             }
             else if (!playerData.Physics.IsGrounded || (playerData.Physics.IsOnNotWalkableSlope && !playerData.Physics.Slope.StayStill && !playerData.Physics.IsMultipleContactWithNonWalkableSlope))
             {
-                Debug.Log($"fuck playerData.Physics.IsGrounded {playerData.Physics.IsGrounded}");
-                Debug.Log($"fuck playerData.Physics.IsOnNotWalkableSlope {playerData.Physics.IsOnNotWalkableSlope}");
-                Debug.Log($"fuck playerData.Physics.Slope.StayStill {playerData.Physics.Slope.StayStill}");
-                Debug.Log($"fuck playerData.Physics.IsMultipleContactWithNonWalkableSlope {playerData.Physics.IsMultipleContactWithNonWalkableSlope}");
-                if (player.isNPC)
-                {
-                    NPCController npcController = player.GetComponent<NPCController>();
-                    if (npcController != null)// && !npcController.npcClimbRamp)
-                    {
-                        Debug.Log($"fuck land state");
-                        stateMachine.ChangeState(player.LandState);
-                    }
-                }
-                else
-                {
-                    stateMachine.ChangeState(player.LandState);
-                }
+                stateMachine.ChangeState(player.LandState);
             }
             else if (inputManager.Input_Dash && playerData.Dash.DashCooldownTimer <= 0f)
             {

@@ -22,9 +22,9 @@ TagManager:
   - Wall
   - Ramp
   - Triggers
-  - 
-  - 
-  - 
+  - PlayerIgnore
+  - NPCIgnore
+  - NPC
   - 
   - 
   - 

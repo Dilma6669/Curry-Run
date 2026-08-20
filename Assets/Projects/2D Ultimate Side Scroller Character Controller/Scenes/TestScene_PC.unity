@@ -507,11 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1637051676}
   firstRamp: {fileID: 683545453}
+  secondRamp: {fileID: 1637051676}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &14228541
@@ -747,6 +746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26140621}
   - component: {fileID: 26140620}
+  - component: {fileID: 26140622}
   - component: {fileID: 26140619}
   m_Layer: 10
   m_Name: MidPlatform (2)
@@ -869,12 +869,26 @@ Transform:
   m_GameObject: {fileID: 26140618}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 11, y: 1, z: 1}
+  m_LocalPosition: {x: -1.0714287, y: 0, z: -1}
+  m_LocalScale: {x: 3.1428573, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 637172666}
+  m_Father: {fileID: 845148031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26140622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26140618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &26306934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,11 +1440,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1649985632}
-  firstRamp: {fileID: 1787104781}
-  floor: {fileID: 1229704354}
+  firstRamp: {fileID: 1787104783}
+  secondRamp: {fileID: 1649985635}
+  floor: {fileID: 1229704357}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &55607714
@@ -2202,11 +2215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 0}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 0}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &85295162
@@ -2537,11 +2549,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 495220906}
-  firstRamp: {fileID: 436353859}
-  floor: {fileID: 620496025}
+  firstRamp: {fileID: 436353862}
+  secondRamp: {fileID: 495220909}
+  floor: {fileID: 620496028}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &95780993
@@ -4322,11 +4333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1086438021}
   firstRamp: {fileID: 114557346}
+  secondRamp: {fileID: 1086438021}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &141871158
@@ -5742,11 +5752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1453942163}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &189163562
@@ -6451,6 +6460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 205317296}
   - component: {fileID: 205317295}
+  - component: {fileID: 205317297}
   - component: {fileID: 205317294}
   m_Layer: 14
   m_Name: BottomRamp
@@ -6579,6 +6589,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 388010678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+--- !u!114 &205317297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205317293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &205894247
 GameObject:
   m_ObjectHideFlags: 0
@@ -6727,6 +6751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207355329}
   - component: {fileID: 207355331}
+  - component: {fileID: 207355332}
   - component: {fileID: 207355330}
   m_Layer: 14
   m_Name: BottomRamp
@@ -6855,6 +6880,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &207355332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207355328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &209339331
 GameObject:
   m_ObjectHideFlags: 0
@@ -9475,6 +9514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 294420820781132600, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 2405132031898184552, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -9484,8 +9527,12 @@ PrefabInstance:
       value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 2502891939795763716, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502891939795763716, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3992859997318933859, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_Mass
@@ -9744,11 +9791,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1453942163}
   firstRamp: {fileID: 1448256707}
+  secondRamp: {fileID: 1453942163}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &296001510
@@ -9934,11 +9980,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
+  firstRamp: {fileID: 495220909}
   secondRamp: {fileID: 0}
-  firstRamp: {fileID: 495220906}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 1
   ignoreDown: 0
 --- !u!61 &296101135
@@ -10775,11 +10820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
+  firstRamp: {fileID: 1794648872}
   secondRamp: {fileID: 0}
-  firstRamp: {fileID: 1794648869}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 1
   ignoreDown: 0
 --- !u!61 &327407620
@@ -11071,11 +11115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1518011388}
   firstRamp: {fileID: 2120255190}
+  secondRamp: {fileID: 1518011388}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &341745063
@@ -11229,11 +11272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1683864949}
   firstRamp: {fileID: 1729865040}
+  secondRamp: {fileID: 1683864949}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &342149008
@@ -11868,11 +11910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1086438021}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &355186552
@@ -14295,11 +14336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
+  firstRamp: {fileID: 1076627475}
   secondRamp: {fileID: 0}
-  firstRamp: {fileID: 1076627472}
-  floor: {fileID: 1298301555}
+  floor: {fileID: 1298301558}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &425206955
@@ -14863,6 +14903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436353861}
   - component: {fileID: 436353860}
+  - component: {fileID: 436353862}
   - component: {fileID: 436353859}
   m_Layer: 14
   m_Name: TopRamp
@@ -14991,6 +15032,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 388010678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &436353862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436353858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &436659392
 GameObject:
   m_ObjectHideFlags: 0
@@ -16966,6 +17021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 495220908}
   - component: {fileID: 495220907}
+  - component: {fileID: 495220909}
   - component: {fileID: 495220906}
   m_Layer: 14
   m_Name: BottomRamp
@@ -17094,6 +17150,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1613946696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+--- !u!114 &495220909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495220905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!4 &497395057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5145481001792299337, guid: 11351362c6a7c5040bcd99d6d1ae31cf, type: 3}
@@ -17283,11 +17353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1686644409}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &500631672
@@ -18377,11 +18446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 555746483}
-  firstRamp: {fileID: 495220906}
-  floor: {fileID: 620496025}
+  firstRamp: {fileID: 495220909}
+  secondRamp: {fileID: 555746486}
+  floor: {fileID: 620496028}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &526344466
@@ -18602,11 +18670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 474550673}
   firstRamp: {fileID: 1992054238}
+  secondRamp: {fileID: 474550673}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &532605173
@@ -19309,6 +19376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 555746485}
   - component: {fileID: 555746484}
+  - component: {fileID: 555746486}
   - component: {fileID: 555746483}
   m_Layer: 14
   m_Name: TopRamp
@@ -19437,6 +19505,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1613946696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &555746486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555746482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &555988422
 GameObject:
   m_ObjectHideFlags: 0
@@ -19483,11 +19565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 205894248}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &555988425
@@ -19814,11 +19895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 484647961}
   firstRamp: {fileID: 1232007145}
+  secondRamp: {fileID: 484647961}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &561961973
@@ -20212,11 +20292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 2100908399}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &578902396
@@ -21155,6 +21234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620496027}
   - component: {fileID: 620496026}
+  - component: {fileID: 620496028}
   - component: {fileID: 620496025}
   m_Layer: 10
   m_Name: MidPlatform (2)
@@ -21283,6 +21363,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1895953505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620496028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620496024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &622392020
 GameObject:
   m_ObjectHideFlags: 0
@@ -21900,7 +21994,6 @@ Transform:
   - {fileID: 2049672282}
   - {fileID: 586340773}
   - {fileID: 845148031}
-  - {fileID: 26140621}
   m_Father: {fileID: 1301126317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &638003481
@@ -22777,11 +22870,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 0}
-  floor: {fileID: 1298301555}
+  secondRamp: {fileID: 0}
+  floor: {fileID: 1298301558}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &649175146
@@ -25406,11 +25498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1838813015}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &727139443
@@ -28582,7 +28673,8 @@ Transform:
   m_LocalPosition: {x: 3.75, y: 5, z: 1}
   m_LocalScale: {x: 3.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 26140621}
   m_Father: {fileID: 637172666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &845148032
@@ -29080,11 +29172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1637051676}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &866345933
@@ -29271,11 +29362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
+  firstRamp: {fileID: 1787104783}
   secondRamp: {fileID: 0}
-  firstRamp: {fileID: 1787104781}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 1
   ignoreDown: 0
 --- !u!61 &869368594
@@ -30393,11 +30483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 0}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &891540121
@@ -30551,11 +30640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 474550673}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &895195544
@@ -31534,11 +31622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1794648869}
-  firstRamp: {fileID: 555746483}
-  floor: {fileID: 26140619}
+  firstRamp: {fileID: 555746486}
+  secondRamp: {fileID: 1794648872}
+  floor: {fileID: 26140622}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &909372045
@@ -35566,11 +35653,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 205317294}
-  firstRamp: {fileID: 1649985632}
-  floor: {fileID: 1865214587}
+  firstRamp: {fileID: 1649985635}
+  secondRamp: {fileID: 205317297}
+  floor: {fileID: 1865214589}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1072594977
@@ -35719,6 +35805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076627474}
   - component: {fileID: 1076627473}
+  - component: {fileID: 1076627475}
   - component: {fileID: 1076627472}
   m_Layer: 14
   m_Name: TopRamp
@@ -35847,6 +35934,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1256704680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &1076627475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076627471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1079770982
 GameObject:
   m_ObjectHideFlags: 0
@@ -36302,11 +36403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 221520770}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1090982789
@@ -37214,11 +37314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 2036223820}
   firstRamp: {fileID: 2080892989}
+  secondRamp: {fileID: 2036223820}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1129682826
@@ -37411,11 +37510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1683864949}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1148530519
@@ -38753,11 +38851,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1465406451}
-  firstRamp: {fileID: 207355330}
+  firstRamp: {fileID: 207355332}
+  secondRamp: {fileID: 1465406453}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!1 &1169514810
@@ -39114,11 +39211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 744642792}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 1
   ignoreDown: 0
 --- !u!61 &1173243692
@@ -40295,11 +40391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 205894248}
   firstRamp: {fileID: 2063815189}
+  secondRamp: {fileID: 205894248}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1203708349
@@ -41073,11 +41168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 668076749}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1221677263
@@ -41230,6 +41324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1229704356}
   - component: {fileID: 1229704355}
+  - component: {fileID: 1229704357}
   - component: {fileID: 1229704354}
   m_Layer: 10
   m_Name: MidPlatform (2)
@@ -41358,6 +41453,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 565283494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1229704357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229704353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1231975614
 GameObject:
   m_ObjectHideFlags: 0
@@ -41575,11 +41684,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 775177391}
   firstRamp: {fileID: 1754899990}
+  secondRamp: {fileID: 775177391}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1247214716
@@ -42181,11 +42289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 0}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 0}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1262690639
@@ -43373,6 +43480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298301557}
   - component: {fileID: 1298301556}
+  - component: {fileID: 1298301558}
   - component: {fileID: 1298301555}
   m_Layer: 10
   m_Name: MidPlatform (2)
@@ -43501,6 +43609,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1530796305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1298301558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298301554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1301126316
 GameObject:
   m_ObjectHideFlags: 0
@@ -46137,11 +46259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 1518011388}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1354359529
@@ -47041,11 +47162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1787104781}
-  firstRamp: {fileID: 1465406451}
-  floor: {fileID: 1229704354}
+  firstRamp: {fileID: 1465406453}
+  secondRamp: {fileID: 1787104783}
+  floor: {fileID: 1229704357}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!1 &1397682052
@@ -48469,11 +48589,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 405432038}
+  secondRamp: {fileID: 0}
   floor: {fileID: 793422635}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1440112724
@@ -48659,11 +48778,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
+  firstRamp: {fileID: 207355332}
   secondRamp: {fileID: 0}
-  firstRamp: {fileID: 207355330}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 1
   ignoreDown: 0
 --- !u!61 &1441217695
@@ -49988,6 +50106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465406450}
   - component: {fileID: 1465406452}
+  - component: {fileID: 1465406453}
   - component: {fileID: 1465406451}
   m_Layer: 14
   m_Name: TopRamp
@@ -50116,6 +50235,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1465406453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465406449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1466990735
 GameObject:
   m_ObjectHideFlags: 0
@@ -51262,11 +51395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 668076749}
   firstRamp: {fileID: 708468710}
+  secondRamp: {fileID: 668076749}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1512296380
@@ -53375,11 +53507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 471949793}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1554771030
@@ -54109,11 +54240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 484647961}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1582599314
@@ -55166,11 +55296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 209339332}
   firstRamp: {fileID: 1822324900}
+  secondRamp: {fileID: 209339332}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1613030123
@@ -56086,11 +56215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 323790297}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1648426001
@@ -56208,6 +56336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649985634}
   - component: {fileID: 1649985633}
+  - component: {fileID: 1649985635}
   - component: {fileID: 1649985632}
   m_Layer: 14
   m_Name: TopRamp
@@ -56336,6 +56465,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 901844011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+--- !u!114 &1649985635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649985631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1651317371
 GameObject:
   m_ObjectHideFlags: 0
@@ -58557,11 +58700,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 2036223820}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1697731024
@@ -61913,6 +62055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787104780}
   - component: {fileID: 1787104782}
+  - component: {fileID: 1787104783}
   - component: {fileID: 1787104781}
   m_Layer: 14
   m_Name: BottomRamp
@@ -62041,6 +62184,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1787104783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787104779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1789361614
 GameObject:
   m_ObjectHideFlags: 0
@@ -62636,6 +62793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794648871}
   - component: {fileID: 1794648870}
+  - component: {fileID: 1794648872}
   - component: {fileID: 1794648869}
   m_Layer: 14
   m_Name: BottomRamp
@@ -62764,6 +62922,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1256704680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+--- !u!114 &1794648872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794648868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1796175133
 GameObject:
   m_ObjectHideFlags: 0
@@ -62810,11 +62982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 323790297}
   firstRamp: {fileID: 179588168}
+  secondRamp: {fileID: 323790297}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1796175136
@@ -62973,11 +63144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1076627472}
-  firstRamp: {fileID: 1794648869}
-  floor: {fileID: 26140619}
+  firstRamp: {fileID: 1794648872}
+  secondRamp: {fileID: 1076627475}
+  floor: {fileID: 26140622}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1797700136
@@ -63407,11 +63577,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 2100908399}
   firstRamp: {fileID: 187791660}
+  secondRamp: {fileID: 2100908399}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1805029048
@@ -63598,11 +63767,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1686644409}
   firstRamp: {fileID: 297940919}
+  secondRamp: {fileID: 1686644409}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1806452235
@@ -65573,6 +65741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865214586}
   - component: {fileID: 1865214588}
+  - component: {fileID: 1865214589}
   - component: {fileID: 1865214587}
   m_Layer: 10
   m_Name: MidPlatform (2)
@@ -65701,6 +65870,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1865214589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865214585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &1866753892
 GameObject:
   m_ObjectHideFlags: 0
@@ -67064,11 +67247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 436353859}
-  firstRamp: {fileID: 205317294}
-  floor: {fileID: 1865214587}
+  firstRamp: {fileID: 205317297}
+  secondRamp: {fileID: 436353862}
+  floor: {fileID: 1865214589}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1911598374
@@ -68054,11 +68236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 471949793}
   firstRamp: {fileID: 265000623}
+  secondRamp: {fileID: 471949793}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1918254293
@@ -68520,11 +68701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 209339332}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1936272190
@@ -68954,11 +69134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 221520770}
   firstRamp: {fileID: 1835732491}
+  secondRamp: {fileID: 221520770}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1942101068
@@ -70336,11 +70515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 0}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 0}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &1978679366
@@ -70770,11 +70948,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
+  firstRamp: {fileID: 205317297}
   secondRamp: {fileID: 0}
-  firstRamp: {fileID: 205317294}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 1
   ignoreDown: 0
 --- !u!61 &1989745457
@@ -72893,11 +73070,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 0}
   firstRamp: {fileID: 775177391}
+  secondRamp: {fileID: 0}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &2058807713
@@ -74110,11 +74286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  secondRamp: {fileID: 1838813015}
   firstRamp: {fileID: 1765523964}
+  secondRamp: {fileID: 1838813015}
   floor: {fileID: 0}
   player: {fileID: 956717716}
-  npc: {fileID: 0}
   ignoreUp: 0
   ignoreDown: 0
 --- !u!61 &2114954348
@@ -75566,11 +75741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: -9.29
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.1
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.z

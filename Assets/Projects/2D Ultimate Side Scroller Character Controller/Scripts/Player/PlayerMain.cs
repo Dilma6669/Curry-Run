@@ -5,7 +5,6 @@ namespace UltimateCC
 {
     public class PlayerMain : MonoBehaviour
     {
-        public bool isNPC;
         private PlayerStateMachine _stateMachine; // State Machine declaration where we change current state
         [NonEditable, Space(5)] public AnimName CurrentState; // Variable to display the current state in the Unity inspector for debugging purposes.
         public MainState IdleState, WalkState, JumpState, LandState, DashState, CrouchIdleState, CrouchWalkState, WallGrabState, WallClimbState, WallJumpState, WallSlideState; // State declarations
