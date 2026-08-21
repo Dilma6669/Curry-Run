@@ -26,6 +26,9 @@ namespace UltimateCC
         
         public bool isWaitingAtNode = false;
         private Coroutine waitCoroutine = null;
+
+        // Platform tracking variables
+        private Rigidbody2D currentPlatformRb = null;
         
         [Header("Layer Settings")]
         private int defaultLayer;
@@ -76,16 +79,19 @@ namespace UltimateCC
 
         void FollowPath()
         {
-            // If we are waiting, halt movement completely while maintaining our path index
+            // Determine base vertical velocity adjustment from a platform if riding one
+            float platformVelY = (currentPlatformRb != null) ? currentPlatformRb.linearVelocity.y : rb.linearVelocity.y;
+
+            // If we are waiting, halt horizontal movement completely while keeping the vertical platform motion
             if (isWaitingAtNode)
             {
-                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(0f, platformVelY);
                 return;
             }
 
             if (currentPath == null || currentPath.Count == 0 || currentNodeIndex >= currentPath.Count)
             {
-                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(0f, platformVelY);
                 ResetIgnoredColliders();
                 ResetLayerForced();
                 return;
@@ -121,7 +127,7 @@ namespace UltimateCC
             float distanceToNode = Vector2.Distance(transform.position, targetPathNode.transform.position);
             if (distanceToNode <= reachThreshold)
             {
-                // Look ahead to the NEXT node in the path (e.g., P11 if we are currently at P3)
+                // Look ahead to the NEXT node in the path
                 int nextIndex = currentNodeIndex + 1;
                 if (nextIndex < currentPath.Count)
                 {
@@ -130,7 +136,6 @@ namespace UltimateCC
                     {
                         isWaitingAtNode = true;
 
-                        // Start coroutine to poll if the pauseMovement condition clears
                         if (waitCoroutine == null)
                         {
                             waitCoroutine = StartCoroutine(CheckPauseStateRoutine(nextTargetNode));
@@ -142,14 +147,14 @@ namespace UltimateCC
                 return;
             }
 
-            // Move only horizontally toward the target node's X position
+            // Move only horizontally toward the target node's X position, matching the platform's vertical velocity
             float moveDir = Mathf.Sign(targetPathNode.transform.position.x - transform.position.x);
             if (Mathf.Abs(targetPathNode.transform.position.x - transform.position.x) < 0.05f)
             {
                 moveDir = 0f;
             }
 
-            rb.linearVelocity = new Vector2(moveDir * moveSpeed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveDir * moveSpeed, platformVelY);
 
             // Face the direction of movement
             if (moveDir != 0)
@@ -166,7 +171,6 @@ namespace UltimateCC
 
             while (isWaitingAtNode)
             {
-                // If the elevator arrived and flipped pauseMovement to false
                 if (nodeToCheck != null && !nodeToCheck.pauseMovement)
                 {
                     isWaitingAtNode = false;
@@ -218,8 +222,14 @@ namespace UltimateCC
         {
             if (collision.gameObject.CompareTag("Player")) return;
 
-            int surfaceLayer = collision.gameObject.layer;
+            // Check if we are standing on a platform script
+            Platform plat = collision.gameObject.GetComponent<Platform>();
+            if (plat != null)
+            {
+                currentPlatformRb = collision.rigidbody;
+            }
 
+            int surfaceLayer = collision.gameObject.layer;
             if (gameObject.layer != surfaceLayer)
             {
                 gameObject.layer = surfaceLayer;
@@ -228,7 +238,11 @@ namespace UltimateCC
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            
+            Platform plat = collision.gameObject.GetComponent<Platform>();
+            if (plat != null)
+            {
+                currentPlatformRb = null;
+            }
         }
     }
 }
