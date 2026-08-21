@@ -8,12 +8,15 @@ namespace UltimateCC
 {
     public class PathNode : MonoBehaviour
     {
-        public bool pauseMovement; // If true, NPC stops here before proceeding to this node
-        
         [Header("Connections")]
-        public List<NodeConnection> connections = new List<NodeConnection>(); // Links and specific collision rules per neighbor
-        
-        // Helper to find the specific connection data for a neighbor
+        public List<NodeConnection> connections = new List<NodeConnection>(); 
+
+        [Header("Pathfinding Costs")]
+        public float customCost = 1f; // Extra weight/cost for stepping onto this node
+
+        [Header("Wait Settings")]
+        public bool pauseMovement;
+
         public NodeConnection GetConnectionTo(PathNode targetNode)
         {
             return connections.Find(c => c.connectedNode == targetNode);
@@ -21,11 +24,9 @@ namespace UltimateCC
         
         private void OnDrawGizmos()
         {
-            // Draw the node in the scene view
-            Gizmos.color = Color.green;
+            Gizmos.color = pauseMovement ? Color.yellow : Color.green;
             Gizmos.DrawSphere(transform.position, 0.3f);
 
-            // Draw lines to connected nodes using the new connection structure
             Gizmos.color = Color.white;
             foreach (var connection in connections)
             {
@@ -36,12 +37,11 @@ namespace UltimateCC
             }
 
 #if UNITY_EDITOR
-            // Display the GameObject's name slightly above the node sphere
             Vector3 textPosition = transform.position + Vector3.up;
             GUIStyle style = new GUIStyle();
             style.normal.textColor = Color.white;
             style.alignment = TextAnchor.MiddleCenter;
-            Handles.Label(textPosition, gameObject.name, style);
+            Handles.Label(textPosition, $"{gameObject.name} (Cost: {customCost})", style);
 #endif
         }
     }
@@ -50,6 +50,6 @@ namespace UltimateCC
     public class NodeConnection
     {
         public PathNode connectedNode;
-        public List<Collider2D> collidersToIgnore = new List<Collider2D>(); // Ramps, floors, or barriers to disable for this step
+        public List<Collider2D> collidersToIgnore = new List<Collider2D>(); 
     }
 }

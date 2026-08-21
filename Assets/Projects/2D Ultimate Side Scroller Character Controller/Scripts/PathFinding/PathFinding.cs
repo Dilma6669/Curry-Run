@@ -22,68 +22,82 @@ namespace UltimateCC
             return closest;
         }
 
-        // Breadth-First Search to find the actual chain of connected nodes
+        // A* Pathfinding implementation with Node-based costs
         public static List<PathNode> FindPath(PathNode startNode, PathNode targetNode)
         {
             List<PathNode> path = new List<PathNode>();
             if (startNode == null || targetNode == null) return path;
 
-            if (startNode == modelTargetMatch(startNode, targetNode))
+            if (startNode == targetNode)
             {
                 path.Add(startNode);
                 return path;
             }
 
-            Queue<PathNode> queue = new Queue<PathNode>();
+            List<PathNode> openSet = new List<PathNode>();
+            HashSet<PathNode> closedSet = new HashSet<PathNode>();
+
             Dictionary<PathNode, PathNode> cameFrom = new Dictionary<PathNode, PathNode>();
-            
-            queue.Enqueue(startNode);
-            cameFrom[startNode] = null;
+            Dictionary<PathNode, float> gScore = new Dictionary<PathNode, float>();
+            Dictionary<PathNode, float> fScore = new Dictionary<PathNode, float>();
 
-            bool reachedTarget = false;
+            openSet.Add(startNode);
+            gScore[startNode] = 0f;
+            fScore[startNode] = Vector2.Distance(startNode.transform.position, targetNode.transform.position);
 
-            while (queue.Count > 0)
+            while (openSet.Count > 0)
             {
-                PathNode current = queue.Dequeue();
+                PathNode current = openSet[0];
+                for (int i = 1; i < openSet.Count; i++)
+                {
+                    if (fScore.ContainsKey(openSet[i]) && fScore[openSet[i]] < fScore[current])
+                    {
+                        current = openSet[i];
+                    }
+                }
 
                 if (current == targetNode)
                 {
-                    reachedTarget = true;
-                    break;
+                    PathNode curr = targetNode;
+                    while (curr != null)
+                    {
+                        path.Add(curr);
+                        curr = cameFrom.ContainsKey(curr) ? cameFrom[curr] : null;
+                    }
+                    path.Reverse();
+                    return path;
                 }
 
-                // Updated to loop through the new 'connections' list
+                openSet.Remove(current);
+                closedSet.Add(current);
+
                 foreach (NodeConnection connection in current.connections)
                 {
                     PathNode neighbor = connection != null ? connection.connectedNode : null;
-                    if (neighbor != null && !cameFrom.ContainsKey(neighbor))
+                    if (neighbor == null || closedSet.Contains(neighbor)) continue;
+
+                    // Calculate distance cost + the neighbor node's custom cost
+                    float distanceCost = Vector2.Distance(current.transform.position, neighbor.transform.position);
+                    float tentativeGScore = gScore[current] + distanceCost * neighbor.customCost;
+
+                    if (!openSet.Contains(neighbor))
                     {
-                        queue.Enqueue(neighbor);
-                        cameFrom[neighbor] = current;
+                        openSet.Add(neighbor);
                     }
+                    else if (tentativeGScore >= (gScore.ContainsKey(neighbor) ? gScore[neighbor] : float.MaxValue))
+                    {
+                        continue;
+                    }
+
+                    cameFrom[neighbor] = current;
+                    gScore[neighbor] = tentativeGScore;
+                    fScore[neighbor] = gScore[neighbor] + Vector2.Distance(neighbor.transform.position, targetNode.transform.position);
                 }
             }
 
-            if (reachedTarget)
-            {
-                PathNode curr = targetNode;
-                while (curr != null)
-                {
-                    path.Add(curr);
-                    curr = cameFrom[curr];
-                }
-                path.Reverse();
-            }
-            else
-            {
-                // Fallback if no direct graph connection exists
-                path.Add(startNode);
-                path.Add(targetNode);
-            }
-
+            path.Add(startNode);
+            path.Add(targetNode);
             return path;
         }
-
-        private static PathNode modelTargetMatch(PathNode a, PathNode b) => a == b ? a : null;
     }
 }
