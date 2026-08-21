@@ -8,9 +8,11 @@ namespace UltimateCC
 {
     public class PathNode : MonoBehaviour
     {
+        public bool pauseMovement; // If true, NPC stops here before proceeding to this node
+        
         [Header("Connections")]
         public List<NodeConnection> connections = new List<NodeConnection>(); // Links and specific collision rules per neighbor
-
+        
         // Helper to find the specific connection data for a neighbor
         public NodeConnection GetConnectionTo(PathNode targetNode)
         {

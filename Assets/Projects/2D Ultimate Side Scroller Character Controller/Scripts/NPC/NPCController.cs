@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,9 @@ namespace UltimateCC
         private Rigidbody2D rb;
         private CapsuleCollider2D capsuleCollider;
         private List<Collider2D> currentlyIgnoredColliders = new List<Collider2D>();
+        
+        public bool isWaitingAtNode = false;
+        private Coroutine waitCoroutine = null;
         
         [Header("Layer Settings")]
         private int defaultLayer;
@@ -62,10 +66,23 @@ namespace UltimateCC
             currentPath = Pathfinding.FindPath(start, destination);
             currentNodeIndex = 0;
             lastProcessedNode = null;
+            isWaitingAtNode = false;
+            if (waitCoroutine != null)
+            {
+                StopCoroutine(waitCoroutine);
+                waitCoroutine = null;
+            }
         }
 
         void FollowPath()
         {
+            // If we are waiting, halt movement completely while maintaining our path index
+            if (isWaitingAtNode)
+            {
+                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                return;
+            }
+
             if (currentPath == null || currentPath.Count == 0 || currentNodeIndex >= currentPath.Count)
             {
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
@@ -101,10 +118,26 @@ namespace UltimateCC
                 lastProcessedNode = targetPathNode;
             }
 
-            // Check if we reached the node
             float distanceToNode = Vector2.Distance(transform.position, targetPathNode.transform.position);
             if (distanceToNode <= reachThreshold)
             {
+                // Look ahead to the NEXT node in the path (e.g., P11 if we are currently at P3)
+                int nextIndex = currentNodeIndex + 1;
+                if (nextIndex < currentPath.Count)
+                {
+                    PathNode nextTargetNode = currentPath[nextIndex];
+                    if (nextTargetNode != null && nextTargetNode.pauseMovement)
+                    {
+                        isWaitingAtNode = true;
+
+                        // Start coroutine to poll if the pauseMovement condition clears
+                        if (waitCoroutine == null)
+                        {
+                            waitCoroutine = StartCoroutine(CheckPauseStateRoutine(nextTargetNode));
+                        }
+                    }
+                }
+
                 currentNodeIndex++;
                 return;
             }
@@ -127,13 +160,32 @@ namespace UltimateCC
             }
         }
 
+        private IEnumerator CheckPauseStateRoutine(PathNode nodeToCheck)
+        {
+            WaitForSeconds waitInterval = new WaitForSeconds(1f);
+
+            while (isWaitingAtNode)
+            {
+                // If the elevator arrived and flipped pauseMovement to false
+                if (nodeToCheck != null && !nodeToCheck.pauseMovement)
+                {
+                    isWaitingAtNode = false;
+                    waitCoroutine = null;
+                    yield break;
+                }
+
+                yield return waitInterval;
+            }
+
+            waitCoroutine = null;
+        }
+
         void UpdateLayerBasedOnGround()
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.2f);
             
             if (hit.collider != null)
             {
-                // Ensure we don't accidentally match player layers via raycast either
                 if (!hit.collider.CompareTag("Player"))
                 {
                     int surfaceLayer = hit.collider.gameObject.layer;
@@ -164,7 +216,6 @@ namespace UltimateCC
         
         private void OnCollisionStay2D(Collision2D collision)
         {
-            // Ignore the player so colliding with them never steals their layer
             if (collision.gameObject.CompareTag("Player")) return;
 
             int surfaceLayer = collision.gameObject.layer;
