@@ -22,11 +22,15 @@ namespace UltimateCC
         private Rigidbody2D rb;
         private CapsuleCollider2D capsuleCollider;
         private List<Collider2D> currentlyIgnoredColliders = new List<Collider2D>();
+        
+        [Header("Layer Settings")]
+        private int defaultLayer;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             capsuleCollider = GetComponent<CapsuleCollider2D>();
+            defaultLayer = gameObject.layer;
 
             if (startNode != null)
             {
@@ -42,16 +46,19 @@ namespace UltimateCC
         void OnDestroy()
         {
             ResetIgnoredColliders();
+            ResetLayerForced();
         }
 
         void FixedUpdate()
         {
             FollowPath();
+            UpdateLayerBasedOnGround();
         }
 
         public void SetDestination(PathNode start, PathNode destination)
         {
             ResetIgnoredColliders();
+            ResetLayerForced();
             currentPath = Pathfinding.FindPath(start, destination);
             currentNodeIndex = 0;
             lastProcessedNode = null;
@@ -63,6 +70,7 @@ namespace UltimateCC
             {
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
                 ResetIgnoredColliders();
+                ResetLayerForced();
                 return;
             }
 
@@ -101,7 +109,7 @@ namespace UltimateCC
                 return;
             }
 
-// Move only horizontally toward the target node's X position, leaving Y velocity entirely to gravity/physics
+            // Move only horizontally toward the target node's X position
             float moveDir = Mathf.Sign(targetPathNode.transform.position.x - transform.position.x);
             if (Mathf.Abs(targetPathNode.transform.position.x - transform.position.x) < 0.05f)
             {
@@ -110,12 +118,30 @@ namespace UltimateCC
 
             rb.linearVelocity = new Vector2(moveDir * moveSpeed, rb.linearVelocity.y);
 
-// Face the direction of movement
+            // Face the direction of movement
             if (moveDir != 0)
             {
                 Vector3 scale = transform.localScale;
                 scale.x = Mathf.Abs(scale.x) * moveDir;
                 transform.localScale = scale;
+            }
+        }
+
+        void UpdateLayerBasedOnGround()
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.2f);
+            
+            if (hit.collider != null)
+            {
+                // Ensure we don't accidentally match player layers via raycast either
+                if (!hit.collider.CompareTag("Player"))
+                {
+                    int surfaceLayer = hit.collider.gameObject.layer;
+                    if (gameObject.layer != surfaceLayer)
+                    {
+                        gameObject.layer = surfaceLayer;
+                    }
+                }
             }
         }
 
@@ -129,6 +155,29 @@ namespace UltimateCC
                 }
             }
             currentlyIgnoredColliders.Clear();
+        }
+
+        void ResetLayerForced()
+        {
+            gameObject.layer = defaultLayer;
+        }
+        
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            // Ignore the player so colliding with them never steals their layer
+            if (collision.gameObject.CompareTag("Player")) return;
+
+            int surfaceLayer = collision.gameObject.layer;
+
+            if (gameObject.layer != surfaceLayer)
+            {
+                gameObject.layer = surfaceLayer;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            
         }
     }
 }

@@ -1422,8 +1422,8 @@ Transform:
   m_GameObject: {fileID: 55607711}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -3.7075005, y: -4.59, z: 10}
-  m_LocalScale: {x: 1.384848, y: 0.78, z: 1}
+  m_LocalPosition: {x: -4.2159, y: -4.59, z: 10}
+  m_LocalScale: {x: 2.401742, y: 0.78, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 658926783}
@@ -9532,7 +9532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2502891939795763716, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3992859997318933859, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_Mass
@@ -9562,6 +9562,10 @@ PrefabInstance:
       propertyPath: targetNode
       value: 
       objectReference: {fileID: 518008295}
+    - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
+      propertyPath: npcIgnoreLayerName
+      value: PlayerIgnore
+      objectReference: {fileID: 0}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.76
@@ -10488,6 +10492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 0
   connections:
   - connectedNode: {fileID: 1019791106}
     collidersToIgnore:
@@ -18046,6 +18051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 1
   connections:
   - connectedNode: {fileID: 1149716022}
     collidersToIgnore:
@@ -34730,6 +34736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 1
   connections:
   - connectedNode: {fileID: 1034888653}
     collidersToIgnore:
@@ -35054,6 +35061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 0
   connections:
   - connectedNode: {fileID: 1149716022}
     collidersToIgnore:
@@ -37651,6 +37659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 1
   connections:
   - connectedNode: {fileID: 1034888653}
     collidersToIgnore:
@@ -38728,8 +38737,8 @@ Transform:
   m_GameObject: {fileID: 1169386725}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -3.7075005, y: -4.59, z: 10}
-  m_LocalScale: {x: 1.384848, y: 0.78, z: 1}
+  m_LocalPosition: {x: -4.2769, y: -4.59, z: 10}
+  m_LocalScale: {x: 2.523747, y: 0.78, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1511308226}
@@ -38853,7 +38862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
   firstRamp: {fileID: 207355332}
   secondRamp: {fileID: 1465406453}
-  floor: {fileID: 0}
+  floor: {fileID: 2002057382}
   player: {fileID: 956717716}
   ignoreUp: 0
   ignoreDown: 0
@@ -46151,6 +46160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 1
   connections:
   - connectedNode: {fileID: 1149716022}
     collidersToIgnore: []
@@ -46932,6 +46942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  LockNPCLayer: 1
   connections:
   - connectedNode: {fileID: 301932798}
     collidersToIgnore:
@@ -71207,6 +71218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002057379}
   - component: {fileID: 2002057381}
+  - component: {fileID: 2002057382}
   - component: {fileID: 2002057380}
   m_Layer: 10
   m_Name: MidPlatform
@@ -71335,6 +71347,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2002057382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002057378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  playerIgnoreLayerName: PlayerIgnore
+  npcIgnoreLayerName: NPCIgnore
 --- !u!1 &2004751689
 GameObject:
   m_ObjectHideFlags: 0

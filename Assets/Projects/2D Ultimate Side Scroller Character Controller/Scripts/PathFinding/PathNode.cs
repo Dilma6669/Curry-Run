@@ -8,7 +8,6 @@ namespace UltimateCC
 {
     public class PathNode : MonoBehaviour
     {
-        
         [Header("Connections")]
         public List<NodeConnection> connections = new List<NodeConnection>(); // Links and specific collision rules per neighbor
 
