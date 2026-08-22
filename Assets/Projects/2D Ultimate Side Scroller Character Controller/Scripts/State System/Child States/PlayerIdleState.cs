@@ -39,7 +39,10 @@ namespace UltimateCC
             {
                 rigidbody2D.linearVelocity = Vector2.zero;
             }
-            rigidbody2D.linearVelocity += playerData.Physics.Platform.DampedVelocity;
+           if (playerData.Physics.CollidedMovingRigidbody != null)
+           {
+               rigidbody2D.linearVelocity += playerData.Physics.Platform.DampedVelocity;
+           }
             playerData.Walls.CurrentStamina = Mathf.Clamp(playerData.Walls.CurrentStamina + (Time.fixedDeltaTime * playerData.Walls.StaminaRegenPerSec), 0, playerData.Walls.MaxStamina);
         }
 

@@ -753,6 +753,9 @@ MonoBehaviour:
   hasArrived: 0
   pathNodeToResumeMovement: {fileID: 0}
   elevatorCollider: {fileID: 1274646930}
+  baseCost: 1
+  maxCost: 50
+  distanceScaleFactor: 2
 --- !u!1 &14228538
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +921,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2045355821}
     m_Modifications:
+    - target: {fileID: 1096822164796066636, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7b5ba42aecac46e4fbfbdc43a0b4116f, type: 2}
     - target: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -1491,9 +1498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 1
   connections:
-  - connectedNode: {fileID: 1394181354}
+  - connectedNode: {fileID: 0}
     collidersToIgnore:
     - {fileID: 1229704354}
     - {fileID: 1787104781}
@@ -1501,6 +1507,8 @@ MonoBehaviour:
     collidersToIgnore: []
   - connectedNode: {fileID: 579593204}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 1
 --- !u!4 &27462880
 Transform:
   m_ObjectHideFlags: 0
@@ -7031,6 +7039,9 @@ MonoBehaviour:
   hasArrived: 0
   pathNodeToResumeMovement: {fileID: 579593204}
   elevatorCollider: {fileID: 1274646930}
+  baseCost: 1
+  maxCost: 50
+  distanceScaleFactor: 2
 --- !u!1 &195191571
 GameObject:
   m_ObjectHideFlags: 0
@@ -11310,7 +11321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3992859997318933859, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_Mass
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3992859997318933859, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_Material
@@ -11331,11 +11342,11 @@ PrefabInstance:
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: startNode
       value: 
-      objectReference: {fileID: 1034888653}
+      objectReference: {fileID: 1428269133}
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: targetNode
       value: 
-      objectReference: {fileID: 1727810264}
+      objectReference: {fileID: 1836986447}
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: npcIgnoreLayerName
       value: PlayerIgnore
@@ -11354,11 +11365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.76
+      value: -10.49
       objectReference: {fileID: 0}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.18
+      value: 27.62
       objectReference: {fileID: 0}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12315,15 +12326,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1019791106}
     collidersToIgnore:
     - {fileID: 1649985632}
-  - connectedNode: {fileID: 1394181354}
+  - connectedNode: {fileID: 0}
     collidersToIgnore:
     - {fileID: 1865214587}
     - {fileID: 205317294}
+  customCost: 2
+  pauseMovement: 0
 --- !u!212 &301932799
 SpriteRenderer:
   serializedVersion: 2
@@ -20978,13 +20990,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1149716022}
     collidersToIgnore:
     - {fileID: 207355330}
   - connectedNode: {fileID: 1246914067}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &518008296
 SpriteRenderer:
   serializedVersion: 2
@@ -23710,7 +23723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 1
   connections:
   - connectedNode: {fileID: 1578992228}
     collidersToIgnore:
@@ -23722,6 +23734,8 @@ MonoBehaviour:
     collidersToIgnore: []
   - connectedNode: {fileID: 1353799293}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 1
 --- !u!212 &579593205
 SpriteRenderer:
   serializedVersion: 2
@@ -29423,6 +29437,9 @@ MonoBehaviour:
   hasArrived: 0
   pathNodeToResumeMovement: {fileID: 1353799293}
   elevatorCollider: {fileID: 1274646930}
+  baseCost: 1
+  maxCost: 50
+  distanceScaleFactor: 2
 --- !u!1 &730230663
 GameObject:
   m_ObjectHideFlags: 0
@@ -39547,7 +39564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1034888653}
     collidersToIgnore:
@@ -39558,6 +39574,8 @@ MonoBehaviour:
     - {fileID: 1649985632}
   - connectedNode: {fileID: 579593204}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1019791107
 SpriteRenderer:
   serializedVersion: 2
@@ -39874,7 +39892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1149716022}
     collidersToIgnore:
@@ -39883,6 +39900,8 @@ MonoBehaviour:
     collidersToIgnore:
     - {fileID: 1229704354}
     - {fileID: 1787104781}
+  customCost: 2
+  pauseMovement: 0
 --- !u!1 &1043180865
 GameObject:
   m_ObjectHideFlags: 0
@@ -43110,7 +43129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1034888653}
     collidersToIgnore:
@@ -43120,6 +43138,8 @@ MonoBehaviour:
     - {fileID: 207355330}
   - connectedNode: {fileID: 1353799293}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1149716023
 SpriteRenderer:
   serializedVersion: 2
@@ -44552,7 +44572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 27462879}
     collidersToIgnore:
@@ -44560,6 +44579,8 @@ MonoBehaviour:
     - {fileID: 1787104781}
   - connectedNode: {fileID: 1836986447}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!4 &1169603477
 Transform:
   m_ObjectHideFlags: 0
@@ -47489,6 +47510,9 @@ MonoBehaviour:
   hasArrived: 0
   pathNodeToResumeMovement: {fileID: 27462879}
   elevatorCollider: {fileID: 1274646930}
+  baseCost: 1
+  maxCost: 50
+  distanceScaleFactor: 2
 --- !u!1 &1229704353
 GameObject:
   m_ObjectHideFlags: 0
@@ -47981,12 +48005,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 518008295}
     collidersToIgnore: []
   - connectedNode: {fileID: 1428269133}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1246914068
 SpriteRenderer:
   serializedVersion: 2
@@ -52739,12 +52764,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1149716022}
     collidersToIgnore: []
   - connectedNode: {fileID: 579593204}
     collidersToIgnore: []
+  customCost: 10
+  pauseMovement: 1
 --- !u!212 &1353799294
 SpriteRenderer:
   serializedVersion: 2
@@ -53523,16 +53549,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
-  - connectedNode: {fileID: 301932798}
+  - connectedNode: {fileID: 0}
     collidersToIgnore:
     - {fileID: 1865214587}
     - {fileID: 205317294}
-  - connectedNode: {fileID: 27462879}
+  - connectedNode: {fileID: 0}
     collidersToIgnore:
     - {fileID: 1865214587}
     - {fileID: 205317294}
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1394181355
 SpriteRenderer:
   serializedVersion: 2
@@ -54578,10 +54605,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1246914067}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1428269134
 SpriteRenderer:
   serializedVersion: 2
@@ -61204,7 +61232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 579593204}
     collidersToIgnore:
@@ -61212,6 +61239,8 @@ MonoBehaviour:
     - {fileID: 1787104781}
   - connectedNode: {fileID: 1727810264}
     collidersToIgnore: []
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1578992229
 SpriteRenderer:
   serializedVersion: 2
@@ -66964,12 +66993,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1578992228}
     collidersToIgnore:
     - {fileID: 1229704354}
     - {fileID: 1787104781}
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1727810265
 SpriteRenderer:
   serializedVersion: 2
@@ -74014,12 +74044,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
-  pauseMovement: 0
   connections:
   - connectedNode: {fileID: 1169603476}
     collidersToIgnore:
     - {fileID: 1229704354}
     - {fileID: 1787104781}
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1836986448
 SpriteRenderer:
   serializedVersion: 2
@@ -77783,6 +77814,9 @@ MonoBehaviour:
   hasArrived: 0
   pathNodeToResumeMovement: {fileID: 0}
   elevatorCollider: {fileID: 1274646930}
+  baseCost: 1
+  maxCost: 50
+  distanceScaleFactor: 2
 --- !u!1 &1927399056
 GameObject:
   m_ObjectHideFlags: 0
@@ -81595,6 +81629,9 @@ MonoBehaviour:
   hasArrived: 0
   pathNodeToResumeMovement: {fileID: 0}
   elevatorCollider: {fileID: 1274646930}
+  baseCost: 1
+  maxCost: 50
+  distanceScaleFactor: 2
 --- !u!1 &2008820007
 GameObject:
   m_ObjectHideFlags: 0
@@ -86190,11 +86227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.29
+      value: -8.04
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.89
+      value: 29.4
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.z

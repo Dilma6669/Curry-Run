@@ -91,6 +91,10 @@ namespace UltimateCC
                 {
                     playerData.Physics.CollidedMovingRigidbody = _hit.rigidbody;
                 }
+                else
+                {
+                    playerData.Physics.CollidedMovingRigidbody = null;
+                }
             }
             else
             {
