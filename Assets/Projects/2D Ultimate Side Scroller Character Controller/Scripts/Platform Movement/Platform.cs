@@ -1,200 +1,109 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UltimateCC
 {
     public class Platform : MonoBehaviour
     {
-        public enum Axis { Horizontal, Vertical }
-        [SerializeField] private Axis movementAxis = Axis.Horizontal;
-        [SerializeField] private Vector2 rightBorderOffset;
-        [SerializeField] private Vector2 leftBorderOffset;
-        [SerializeField] private Vector2 topBorderOffset;
-        [SerializeField] private Vector2 bottomBorderOffset;
-        [SerializeField] private float pauseDuration = 1f;
-        [SerializeField] private float stopInterval = 5f; // Interval in world space units to pause on
-        private Vector2 startPoint;
-        [SerializeField, Range(-1, 1)] private int direction;
-        [SerializeField] private float speed;
-        Rigidbody2D rb;
+        [Header("Vertical Floor Settings")]
+        [SerializeField] private List<float> floorHeights = new List<float> { -5f, 5f, 15f, 25f, 35f, 45f };
+        [SerializeField] private int startFloorIndex = 0;
+        [SerializeField] private float pauseDuration = 3f;
+        [SerializeField] private float speed = 5f;
 
+        private Rigidbody2D rb;
         private float pauseTimer;
-        private float nextPauseY;
+        
+        private int currentFloorIndex = 0;
+        private int targetFloorIndex = 0;
+        private int direction = 1; // 1 = Up, -1 = Down
 
         void Start()
         {
-            startPoint = transform.position;
-            if (direction == 0)
-            {
-                direction = 1;
-            }
             rb = GetComponent<Rigidbody2D>();
 
-            if (movementAxis == Axis.Vertical && stopInterval > 0f)
+            if (floorHeights != null && floorHeights.Count > 0)
             {
-                float halfInterval = stopInterval * 0.5f;
-                nextPauseY = Mathf.Round((transform.position.y - halfInterval) / stopInterval) * stopInterval + halfInterval;
-                if (nextPauseY <= transform.position.y && direction == 1)
-                {
-                    nextPauseY += stopInterval;
-                }
-                else if (nextPauseY >= transform.position.y && direction == -1)
-                {
-                    nextPauseY -= stopInterval;
-                }
+                startFloorIndex = Mathf.Clamp(startFloorIndex, 0, floorHeights.Count - 1);
+                currentFloorIndex = startFloorIndex;
+                targetFloorIndex = startFloorIndex;
+
+                // Snap directly to the starting floor Y coordinate on launch
+                Vector2 pos = rb.position;
+                pos.y = floorHeights[startFloorIndex];
+                rb.position = pos;
+                transform.position = pos;
+
+                // Set initial target to the next floor up
+                SetNextTarget();
             }
         }
 
         void FixedUpdate()
         {
-            PlatformMovement();
+            if (floorHeights == null || floorHeights.Count == 0) return;
+
+            // 1. Handle pause timer when arriving at a floor
+            if (pauseTimer > 0f)
+            {
+                pauseTimer -= Time.fixedDeltaTime;
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
+            // 2. Move toward the current target floor
+            float targetY = floorHeights[targetFloorIndex];
+            float currentY = rb.position.y;
+
+            // Check if we have reached the target floor
+            if (Mathf.Abs(currentY - targetY) < 0.05f)
+            {
+                // Snap to exact position
+                Vector2 pos = rb.position;
+                pos.y = targetY;
+                rb.position = pos;
+                rb.linearVelocity = Vector2.zero;
+
+                // Update current floor tracker
+                currentFloorIndex = targetFloorIndex;
+
+                // Start pause timer
+                pauseTimer = pauseDuration;
+
+                // Pick the next floor to go to
+                SetNextTarget();
+                return;
+            }
+
+            // Keep moving in the current travel direction
+            float moveDir = targetY > currentY ? 1f : -1f;
+            rb.linearVelocity = new Vector2(0, moveDir * speed);
         }
 
-        private void PlatformMovement()
+        private void SetNextTarget()
         {
-            if (movementAxis == Axis.Horizontal)
+            // If we hit the top floor, reverse direction to go down
+            if (targetFloorIndex >= floorHeights.Count - 1)
             {
-                if (direction == 1)
-                {
-                    if (transform.position.x < startPoint.x)
-                    {
-                        rb.linearVelocity = new Vector2(direction * speed, 0);
-                    }
-                    else if (transform.position.x < startPoint.x + rightBorderOffset.x)
-                    {
-                        rb.linearVelocity = new Vector2(direction * speed, 0);
-                    }
-                    else if (transform.position.x >= startPoint.x + rightBorderOffset.x)
-                    {
-                        direction = -1;
-                        rb.linearVelocity = new Vector2(direction * speed, 0);
-                    }
-                }
-                else if (direction == -1)
-                {
-                    if (transform.position.x > startPoint.x + startPoint.x)
-                    {
-                        rb.linearVelocity = new Vector2(direction * speed, 0);
-                    }
-                    else if (transform.position.x > startPoint.x + leftBorderOffset.x)
-                    {
-                        rb.linearVelocity = new Vector2(direction * speed, 0);
-                    }
-                    else if (transform.position.x <= startPoint.x + leftBorderOffset.x)
-                    {
-                        direction = 1;
-                        rb.linearVelocity = new Vector2(direction * speed, 0);
-                    }
-                }
+                direction = -1;
             }
-            else
+            // If we hit the bottom floor, reverse direction to go up
+            else if (targetFloorIndex <= 0)
             {
-                if (pauseTimer > 0f)
-                {
-                    pauseTimer -= Time.fixedDeltaTime;
-                    rb.linearVelocity = Vector2.zero;
-                    return;
-                }
-
-                if (stopInterval <= 0f)
-                {
-                    HandleStandardVerticalMovement();
-                    return;
-                }
-
-                float halfInterval = stopInterval * 0.5f;
-
-                if (direction == 1)
-                {
-                    if (transform.position.y >= nextPauseY)
-                    {
-                        Vector2 pos = rb.position;
-                        pos.y = Mathf.Round(nextPauseY);
-                        rb.position = pos;
-
-                        pauseTimer = pauseDuration;
-                        nextPauseY += stopInterval;
-                        rb.linearVelocity = Vector2.zero;
-                        return;
-                    }
-
-                    if (transform.position.y < startPoint.y)
-                    {
-                        rb.linearVelocity = new Vector2(0, direction * speed);
-                    }
-                    else if (transform.position.y < startPoint.y + topBorderOffset.y)
-                    {
-                        rb.linearVelocity = new Vector2(0, direction * speed);
-                    }
-                    else if (transform.position.y >= startPoint.y + topBorderOffset.y)
-                    {
-                        direction = -1;
-                        // Snap position to the border and step inward safely so it doesn't instantly trigger a pause
-                        Vector2 pos = rb.position;
-                        pos.y = startPoint.y + topBorderOffset.y;
-                        rb.position = pos;
-                        nextPauseY = pos.y - stopInterval;
-                        
-                        rb.linearVelocity = new Vector2(0, direction * speed);
-                    }
-                }
-                else if (direction == -1)
-                {
-                    if (transform.position.y <= nextPauseY)
-                    {
-                        Vector2 pos = rb.position;
-                        pos.y = Mathf.Round(nextPauseY);
-                        rb.position = pos;
-
-                        pauseTimer = pauseDuration;
-                        nextPauseY -= stopInterval;
-                        rb.linearVelocity = Vector2.zero;
-                        return;
-                    }
-
-                    if (transform.position.y > startPoint.y + bottomBorderOffset.y)
-                    {
-                        rb.linearVelocity = new Vector2(0, direction * speed);
-                    }
-                    else if (transform.position.y <= startPoint.y + bottomBorderOffset.y)
-                    {
-                        direction = 1;
-                        // Snap position to the border and step inward safely so it doesn't instantly trigger a pause
-                        Vector2 pos = rb.position;
-                        pos.y = startPoint.y + bottomBorderOffset.y;
-                        rb.position = pos;
-                        nextPauseY = pos.y + stopInterval;
-
-                        rb.linearVelocity = new Vector2(0, direction * speed);
-                    }
-                }
+                direction = 1;
             }
+
+            targetFloorIndex += direction;
+            targetFloorIndex = Mathf.Clamp(targetFloorIndex, 0, floorHeights.Count - 1);
         }
 
-        private void HandleStandardVerticalMovement()
+        // Optional: Call this if you ever want to force it to a specific floor immediately
+        public void MoveToFloor(int floorIndex)
         {
-            if (direction == 1)
+            if (floorHeights != null && floorIndex >= 0 && floorIndex < floorHeights.Count)
             {
-                if (transform.position.y < startPoint.y || transform.position.y < startPoint.y + topBorderOffset.y)
-                {
-                    rb.linearVelocity = new Vector2(0, direction * speed);
-                }
-                else
-                {
-                    direction = -1;
-                    rb.linearVelocity = new Vector2(0, direction * speed);
-                }
-            }
-            else
-            {
-                if (transform.position.y > startPoint.y + bottomBorderOffset.y)
-                {
-                    rb.linearVelocity = new Vector2(0, direction * speed);
-                }
-                else
-                {
-                    direction = 1;
-                    rb.linearVelocity = new Vector2(0, direction * speed);
-                }
+                targetFloorIndex = floorIndex;
+                pauseTimer = 0f;
             }
         }
     }
