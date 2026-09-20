@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UltimateCC
@@ -69,6 +70,50 @@ namespace UltimateCC
         private void FixedUpdate()
         {
             _stateMachine.CurrentState.FixedUpdate(); // FixedUpdate method of current state at runtime
+        }
+        
+        // Add these fields to PlayerMain
+        private List<Collider2D> activeIgnoredColliders = new List<Collider2D>();
+
+        public void SetIgnoredColliders(List<Collider2D> newIgnoredColliders)
+        {
+            ClearIgnoredColliders();
+
+            if (newIgnoredColliders != null)
+            {
+                foreach (var col in newIgnoredColliders)
+                {
+                    if (col != null && CapsuleCollider2D != null)
+                    {
+                        Physics2D.IgnoreCollision(CapsuleCollider2D, col, true);
+                        activeIgnoredColliders.Add(col);
+                    }
+                }
+            }
+        }
+
+        public void ClearIgnoredColliders()
+        {
+            if (CapsuleCollider2D != null)
+            {
+                foreach (var col in activeIgnoredColliders)
+                {
+                    if (col != null)
+                    {
+                        Physics2D.IgnoreCollision(CapsuleCollider2D, col, false);
+                    }
+                }
+            }
+            activeIgnoredColliders.Clear();
+        }
+        
+        public enum PlayerMovementState { Straight, Up, Down }
+        public PlayerMovementState currentMovementState = PlayerMovementState.Straight;
+
+// Call this when entering a new trigger to reset to default unless desired
+        public void ResetTriggerState()
+        {
+            currentMovementState = PlayerMovementState.Straight;
         }
     }
 }

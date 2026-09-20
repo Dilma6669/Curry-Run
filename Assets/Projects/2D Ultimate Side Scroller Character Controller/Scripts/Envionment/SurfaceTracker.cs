@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UltimateCC
 {
-    public class LayerSwitcher : MonoBehaviour
+    public class SurfaceTracker : MonoBehaviour
     {
         // A list of all NPCs currently touching/standing on this platform/ramp
         public List<Collider2D> currentNPCColliders = new List<Collider2D>();
