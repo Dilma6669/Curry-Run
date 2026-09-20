@@ -33,6 +33,13 @@ namespace UltimateCC
             Vector3 spawnPosition = spawnPoint != null ? spawnPoint.position : transform.position;
             GameObject newNPC = Instantiate(npcPrefab, spawnPosition, Quaternion.identity);
 
+            // Ensure newly spawned NPC starts on the "NPC" layer
+            int npcLayer = LayerMask.NameToLayer("NPC");
+            if (npcLayer != -1)
+            {
+                newNPC.layer = npcLayer;
+            }
+
             // Get the NPCController from the spawned clone and assign nodes
             NPCController controller = newNPC.GetComponent<NPCController>();
             if (controller != null)

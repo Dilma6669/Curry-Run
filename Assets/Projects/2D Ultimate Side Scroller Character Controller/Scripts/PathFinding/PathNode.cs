@@ -50,6 +50,8 @@ namespace UltimateCC
     public class NodeConnection
     {
         public PathNode connectedNode;
-        public List<Collider2D> collidersToIgnore = new List<Collider2D>(); 
+        
+        [Header("Layer Override")]
+        public LayerMask targetLayer; // Set this in the Inspector to change the NPC's layer along this path segment
     }
 }

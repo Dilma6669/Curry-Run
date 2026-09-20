@@ -30,14 +30,23 @@ namespace UltimateCC
         // Platform tracking variables
         private Rigidbody2D currentPlatformRb = null;
         
-        [Header("Layer Settings")]
-        private int defaultLayer;
+        //[Header("Layer Settings")]
+        // private int defaultLayer;
+        // private int npcIgnoreLayer;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             capsuleCollider = GetComponent<CapsuleCollider2D>();
-            defaultLayer = gameObject.layer;
+            
+            // Explicitly look up and enforce the NPC layer as the base fallback
+            // defaultLayer = LayerMask.NameToLayer("NPC");
+            // npcIgnoreLayer = LayerMask.NameToLayer("NPCIgnore");
+            //
+            // if (defaultLayer != -1)
+            // {
+            //     gameObject.layer = defaultLayer;
+            // }
 
             if (startNode != null)
             {
@@ -52,20 +61,20 @@ namespace UltimateCC
 
         void OnDestroy()
         {
-            ResetIgnoredColliders();
-            ResetLayerForced();
+           // ResetIgnoredColliders();
+           // ResetLayerForced();
         }
 
         void FixedUpdate()
         {
             FollowPath();
-            UpdateLayerBasedOnGround();
+            //UpdateLayerBasedOnGround();
         }
 
         public void SetDestination(PathNode start, PathNode destination)
         {
-            ResetIgnoredColliders();
-            ResetLayerForced();
+           // ResetIgnoredColliders();
+           // ResetLayerForced();
             currentPath = Pathfinding.FindPath(start, destination);
             currentNodeIndex = 0;
             lastProcessedNode = null;
@@ -92,8 +101,8 @@ namespace UltimateCC
             if (currentPath == null || currentPath.Count == 0 || currentNodeIndex >= currentPath.Count)
             {
                 rb.linearVelocity = new Vector2(0f, platformVelY);
-                ResetIgnoredColliders();
-                ResetLayerForced();
+               // ResetIgnoredColliders();
+               // ResetLayerForced();
                 return;
             }
 
@@ -103,21 +112,17 @@ namespace UltimateCC
             // Apply collision ignores whenever we step to a new node in the path
             if (targetPathNode != lastProcessedNode)
             {
-                ResetIgnoredColliders();
-
                 PathNode fromNode = (currentNodeIndex > 0) ? currentPath[currentNodeIndex - 1] : startNode;
                 if (fromNode != null)
                 {
                     NodeConnection connection = fromNode.GetConnectionTo(targetPathNode);
-                    if (connection != null && connection.collidersToIgnore != null)
+                    if (connection != null)
                     {
-                        foreach (var col in connection.collidersToIgnore)
+                        // Convert LayerMask to a single layer index and set the NPC layer
+                        int layerIndex = (int)Mathf.Log(connection.targetLayer.value, 2);
+                        if (layerIndex >= 0)
                         {
-                            if (col != null)
-                            {
-                                Physics2D.IgnoreCollision(capsuleCollider, col, true);
-                                currentlyIgnoredColliders.Add(col);
-                            }
+                            gameObject.layer = layerIndex;
                         }
                     }
                 }
@@ -184,65 +189,90 @@ namespace UltimateCC
             waitCoroutine = null;
         }
 
-        void UpdateLayerBasedOnGround()
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.2f);
-            
-            if (hit.collider != null)
-            {
-                if (!hit.collider.CompareTag("Player"))
-                {
-                    int surfaceLayer = hit.collider.gameObject.layer;
-                    if (gameObject.layer != surfaceLayer)
-                    {
-                        gameObject.layer = surfaceLayer;
-                    }
-                }
-            }
-        }
+        // void UpdateLayerBasedOnGround()
+        // {
+        //     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.2f);
+        //     
+        //     if (hit.collider != null)
+        //     {
+        //         if (!hit.collider.CompareTag("Player"))
+        //         {
+        //             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("PlayerIgnore"))
+        //             {
+        //                 if (gameObject.layer != npcIgnoreLayer)
+        //                 {
+        //                     gameObject.layer = npcIgnoreLayer;
+        //                 }
+        //                 return;
+        //             }
+        //         }
+        //     }
+        //     
+        //     ResetLayerForced();
+        // }
 
-        void ResetIgnoredColliders()
-        {
-            foreach (var col in currentlyIgnoredColliders)
-            {
-                if (col != null && capsuleCollider != null)
-                {
-                    Physics2D.IgnoreCollision(capsuleCollider, col, false);
-                }
-            }
-            currentlyIgnoredColliders.Clear();
-        }
+        // void ResetIgnoredColliders()
+        // {
+        //     foreach (var col in currentlyIgnoredColliders)
+        //     {
+        //         if (col != null && capsuleCollider != null)
+        //         {
+        //             Physics2D.IgnoreCollision(capsuleCollider, col, false);
+        //         }
+        //     }
+        //     currentlyIgnoredColliders.Clear();
+        // }
 
-        void ResetLayerForced()
-        {
-            gameObject.layer = defaultLayer;
-        }
+        // void ResetLayerForced()
+        // {
+        //     gameObject.layer = defaultLayer;
+        // }
         
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Player")) return;
+        // private void OnCollisionStay2D(Collision2D collision)
+        // {
+        //     if (collision.gameObject.CompareTag("Player")) return;
+        //
+        //     // If we touch another NPC, explicitly ignore collision between them so they never push each other
+        //     if (collision.gameObject.layer == defaultLayer || collision.gameObject.GetComponent<NPCController>() != null)
+        //     {
+        //         Physics2D.IgnoreCollision(capsuleCollider, collision.collider, true);
+        //         return;
+        //     }
+        //
+        //     // Check if we are standing on a platform script
+        //     Platform plat = collision.gameObject.GetComponent<Platform>();
+        //     if (plat != null)
+        //     {
+        //         currentPlatformRb = collision.rigidbody;
+        //     }
+        //
+        //     // If colliding with a "PlayerIgnore" layer surface, set NPC to "NPCIgnore" layer
+        //     if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerIgnore"))
+        //     {
+        //         if (gameObject.layer != npcIgnoreLayer)
+        //         {
+        //             gameObject.layer = npcIgnoreLayer;
+        //         }
+        //     }
+        //     else
+        //     {
+        //         ResetLayerForced();
+        //     }
+        // }
 
-            // Check if we are standing on a platform script
-            Platform plat = collision.gameObject.GetComponent<Platform>();
-            if (plat != null)
-            {
-                currentPlatformRb = collision.rigidbody;
-            }
-
-            int surfaceLayer = collision.gameObject.layer;
-            if (gameObject.layer != surfaceLayer)
-            {
-                gameObject.layer = surfaceLayer;
-            }
-        }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            Platform plat = collision.gameObject.GetComponent<Platform>();
-            if (plat != null)
-            {
-                currentPlatformRb = null;
-            }
-        }
+        // private void OnCollisionExit2D(Collision2D collision)
+        // {
+        //     Platform plat = collision.gameObject.GetComponent<Platform>();
+        //     if (plat != null)
+        //     {
+        //         currentPlatformRb = null;
+        //     }
+        //
+        //     // If we stop colliding with a PlayerIgnore surface, immediately revert back to the NPC layer
+        //     if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerIgnore"))
+        //     {
+        //         ResetLayerForced();
+        //     }
+        // }
     }
 }

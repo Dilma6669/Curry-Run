@@ -1,51 +1,35 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UltimateCC
 {
     public class LayerSwitcher : MonoBehaviour
     {
-        [Header("Layer Settings")]
-        [SerializeField] private string playerIgnoreLayerName = "PlayerIgnore";
-        [SerializeField] private string npcIgnoreLayerName = "NPCIgnore";
+        // A list of all NPCs currently touching/standing on this platform/ramp
+        public List<Collider2D> currentNPCColliders = new List<Collider2D>();
 
-        private int defaultLayer;
-        private int playerIgnoreLayer;
-        private int npcIgnoreLayer;
-
-        void Awake()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            defaultLayer = gameObject.layer;
-            playerIgnoreLayer = LayerMask.NameToLayer(playerIgnoreLayerName);
-            npcIgnoreLayer = LayerMask.NameToLayer(npcIgnoreLayerName);
-        }
+            Collider2D other = collision.collider;
 
-        public void SetPlayerIgnoreLayer()
-        {
-            if (playerIgnoreLayer != -1)
+            // Check if it's an NPC (assuming your NPCs have an "NPC" tag or script)
+            if (other.CompareTag("NPC") || other.GetComponent<NPCController>() != null)
             {
-                gameObject.layer = playerIgnoreLayer;
-            }
-            else
-            {
-                Debug.LogWarning($"Layer '{playerIgnoreLayerName}' does not exist in the project settings!", this);
+                if (!currentNPCColliders.Contains(other))
+                {
+                    currentNPCColliders.Add(other);
+                }
             }
         }
 
-        public void SetNpcIgnoreLayer()
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            if (npcIgnoreLayer != -1)
-            {
-                gameObject.layer = npcIgnoreLayer;
-            }
-            else
-            {
-                Debug.LogWarning($"Layer '{npcIgnoreLayerName}' does not exist in the project settings!", this);
-            }
-        }
+            Collider2D other = collision.collider;
 
-        public void RevertToDefaultLayer()
-        {
-            gameObject.layer = defaultLayer;
+            if (other.CompareTag("NPC") || other.GetComponent<NPCController>() != null)
+            {
+                currentNPCColliders.Remove(other);
+            }
         }
     }
 }

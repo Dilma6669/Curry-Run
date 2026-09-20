@@ -835,12 +835,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 683545453}
-  secondRamp: {fileID: 1637051676}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &14228541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1399,8 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &26306934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,14 +1709,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
-  - connectedNode: {fileID: 0}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
   - connectedNode: {fileID: 1169603476}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   - connectedNode: {fileID: 579593204}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
+  - connectedNode: {fileID: 1394181354}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 1
 --- !u!4 &27462880
@@ -2205,12 +2210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1787104783}
-  secondRamp: {fileID: 1649985635}
-  floor: {fileID: 1229704357}
+  TriggerPlatform: {fileID: 1229704357}
+  BottomRamp: {fileID: 1465406453}
+  BottomPlatform: {fileID: 2002057382}
+  TopRamp: {fileID: 1787104783}
+  TopPlatform: {fileID: 1819570699}
+  SecondTopRamp: {fileID: 1649985635}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &55607714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3394,12 +3401,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 0}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 0}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &85295162
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3867,12 +3876,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 436353862}
-  secondRamp: {fileID: 495220909}
-  floor: {fileID: 620496028}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &95780993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4809,7 +4820,7 @@ GameObject:
   - component: {fileID: 121103997}
   - component: {fileID: 121103999}
   - component: {fileID: 121103998}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: VerticalBeam (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5912,12 +5923,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 114557346}
-  secondRamp: {fileID: 1086438021}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &141871158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7503,12 +7516,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1453942163}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &189163562
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8266,12 +8281,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 302845802}
-  secondRamp: {fileID: 2068537833}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &198256436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8803,7 +8820,7 @@ GameObject:
   - component: {fileID: 205317295}
   - component: {fileID: 205317297}
   - component: {fileID: 205317294}
-  m_Layer: 14
+  m_Layer: 21
   m_Name: BottomRamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8942,8 +8959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &205894247
 GameObject:
   m_ObjectHideFlags: 0
@@ -9094,7 +9110,7 @@ GameObject:
   - component: {fileID: 207355331}
   - component: {fileID: 207355332}
   - component: {fileID: 207355330}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: BottomRamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9233,8 +9249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &207402286
 GameObject:
   m_ObjectHideFlags: 0
@@ -9281,12 +9296,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 675225558}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &207402289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12777,14 +12794,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 2502891939795763716, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: startNode
       value: 
-      objectReference: {fileID: 1428269133}
+      objectReference: {fileID: 1246914067}
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: targetNode
       value: 
-      objectReference: {fileID: 1836986447}
+      objectReference: {fileID: 2093279174}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.49
@@ -13014,12 +13035,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1448256707}
-  secondRamp: {fileID: 1453942163}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &296001510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13203,12 +13226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 495220909}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 1
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &296101135
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13746,12 +13771,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1019791106}
-    collidersToIgnore:
-    - {fileID: 1649985632}
-  - connectedNode: {fileID: 0}
-    collidersToIgnore:
-    - {fileID: 1865214587}
-    - {fileID: 205317294}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 2097152
+  - connectedNode: {fileID: 1394181354}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 4194304
   customCost: 2
   pauseMovement: 0
 --- !u!212 &301932799
@@ -13822,7 +13848,7 @@ Transform:
   m_GameObject: {fileID: 301932797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.21, y: 11.5, z: 0}
+  m_LocalPosition: {x: 3.32, y: 11.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14255,12 +14281,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1794648872}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 1
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &327407620
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14688,12 +14716,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 2120255190}
-  secondRamp: {fileID: 1518011388}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &341745063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14845,12 +14875,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1729865040}
-  secondRamp: {fileID: 1683864949}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &342149008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15483,12 +15515,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1086438021}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &355186552
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16889,7 +16923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.5
+      value: 51.9
       objectReference: {fileID: 0}
     - target: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17492,6 +17526,117 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.75686276, g: 0.75686276, b: 0.75686276, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!1 &412556811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412556812}
+  - component: {fileID: 412556814}
+  - component: {fileID: 412556813}
+  m_Layer: 0
+  m_Name: P18
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &412556812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412556811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11, y: 16.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878741616}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412556813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412556811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  connections:
+  - connectedNode: {fileID: 1394181354}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
+  customCost: 1
+  pauseMovement: 0
+--- !u!212 &412556814
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412556811}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 0.9987322, g: 1, b: 0, a: 0.5372549}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -18361,12 +18506,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1076627475}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 1298301558}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &425206955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19345,8 +19492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &436659392
 GameObject:
   m_ObjectHideFlags: 0
@@ -19358,7 +19504,7 @@ GameObject:
   - component: {fileID: 436659393}
   - component: {fileID: 436659395}
   - component: {fileID: 436659394}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: MidPlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21043,7 +21189,7 @@ GameObject:
   - component: {fileID: 483337544}
   - component: {fileID: 483337546}
   - component: {fileID: 483337545}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: HorizontalBeam (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21774,8 +21920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &495960950
 GameObject:
   m_ObjectHideFlags: 0
@@ -22241,12 +22386,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1686644409}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &500631672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22936,10 +23083,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1149716022}
-    collidersToIgnore:
-    - {fileID: 207355330}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   - connectedNode: {fileID: 1246914067}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &518008296
@@ -23476,12 +23626,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 495220909}
-  secondRamp: {fileID: 555746486}
-  floor: {fileID: 620496028}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &526344466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23633,12 +23785,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 625079403}
-  secondRamp: {fileID: 246765236}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &527256498
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23995,12 +24149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1992054238}
-  secondRamp: {fileID: 474550673}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &532605173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24874,8 +25030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &555988422
 GameObject:
   m_ObjectHideFlags: 0
@@ -24922,12 +25077,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 205894248}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &555988425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25252,12 +25409,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1232007145}
-  secondRamp: {fileID: 484647961}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &561961973
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25649,12 +25808,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 2100908399}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &578902396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25807,15 +25968,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1578992228}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   - connectedNode: {fileID: 1019791106}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   - connectedNode: {fileID: 27462879}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   - connectedNode: {fileID: 1353799293}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   customCost: 1
   pauseMovement: 1
 --- !u!212 &579593205
@@ -26784,12 +26951,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 807578919}
-  secondRamp: {fileID: 853787690}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &600344540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27484,8 +27653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &622392020
 GameObject:
   m_ObjectHideFlags: 0
@@ -29294,12 +29462,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 0}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 1298301558}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &649175146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32835,12 +33005,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1838813015}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &727139443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35488,12 +35660,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1792927478}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &793456441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36252,7 +36426,7 @@ GameObject:
   - component: {fileID: 812491378}
   - component: {fileID: 812491380}
   - component: {fileID: 812491379}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: VerticalBeam (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36714,7 +36888,7 @@ GameObject:
   - component: {fileID: 835983934}
   - component: {fileID: 835983936}
   - component: {fileID: 835983935}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: HorizontalBeam (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37772,12 +37946,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1637051676}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &866345933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37994,12 +38170,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1787104783}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 1
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &869368594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38182,6 +38360,8 @@ Transform:
   - {fileID: 27462880}
   - {fileID: 1169603477}
   - {fileID: 1836986449}
+  - {fileID: 2093279173}
+  - {fileID: 412556812}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879956315
@@ -39329,12 +39509,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 0}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &891540121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39624,12 +39806,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 474550673}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &895195544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40433,7 +40617,7 @@ GameObject:
   - component: {fileID: 907866683}
   - component: {fileID: 907866685}
   - component: {fileID: 907866684}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: HorizontalBeam (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40606,12 +40790,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 555746486}
-  secondRamp: {fileID: 1794648872}
-  floor: {fileID: 26140622}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &909372045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41520,12 +41706,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1620355640}
-  secondRamp: {fileID: 675225558}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &929611265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44102,14 +44290,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1034888653}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 4194304
   - connectedNode: {fileID: 301932798}
-    collidersToIgnore:
-    - {fileID: 1649985632}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 2097152
   - connectedNode: {fileID: 579593204}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
+  - connectedNode: {fileID: 2093279174}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1019791107
@@ -44180,7 +44375,7 @@ Transform:
   m_GameObject: {fileID: 1019791105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.82, y: 6.5, z: 0}
+  m_LocalPosition: {x: -3.67, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44351,7 +44546,7 @@ Transform:
   m_GameObject: {fileID: 1034888650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.24, y: 1.5, z: 0}
+  m_LocalPosition: {x: 3.32, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44430,12 +44625,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1149716022}
-    collidersToIgnore:
-    - {fileID: 1465406451}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 2097152
   - connectedNode: {fileID: 1019791106}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 4194304
   customCost: 2
   pauseMovement: 0
 --- !u!1 &1043180865
@@ -45167,12 +45363,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1649985635}
-  secondRamp: {fileID: 205317297}
-  floor: {fileID: 1865214589}
+  TriggerPlatform: {fileID: 1819570699}
+  BottomRamp: {fileID: 1787104783}
+  BottomPlatform: {fileID: 1229704357}
+  TopRamp: {fileID: 1649985635}
+  TopPlatform: {fileID: 1865214589}
+  SecondTopRamp: {fileID: 205317297}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1072594977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45460,8 +45658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1079770982
 GameObject:
   m_ObjectHideFlags: 0
@@ -45505,7 +45702,7 @@ GameObject:
   - component: {fileID: 1080777154}
   - component: {fileID: 1080777156}
   - component: {fileID: 1080777155}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: MidPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46122,12 +46319,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 221520770}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1090982789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47033,12 +47232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 246765236}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1118750195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47466,12 +47667,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 2080892989}
-  secondRamp: {fileID: 2036223820}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1129682826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47662,12 +47865,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1683864949}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1148530519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47805,13 +48010,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1034888653}
-    collidersToIgnore:
-    - {fileID: 1465406451}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 2097152
   - connectedNode: {fileID: 518008295}
-    collidersToIgnore:
-    - {fileID: 207355330}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   - connectedNode: {fileID: 1353799293}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1149716023
@@ -48968,12 +49177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1347401162}
-  secondRamp: {fileID: 592571501}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1164189908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49090,7 +49301,7 @@ GameObject:
   - component: {fileID: 1169054464}
   - component: {fileID: 1169054466}
   - component: {fileID: 1169054465}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: MidPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49245,8 +49456,8 @@ Transform:
   m_GameObject: {fileID: 1169386725}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -4.2769, y: -4.59, z: 10}
-  m_LocalScale: {x: 2.523747, y: 0.78, z: 1}
+  m_LocalPosition: {x: -4.006, y: -4.59, z: 10}
+  m_LocalScale: {x: 3.0655775, y: 0.78, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1511308226}
@@ -49368,12 +49579,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 207355332}
-  secondRamp: {fileID: 1465406453}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 207355332}
+  TopPlatform: {fileID: 2002057382}
+  SecondTopRamp: {fileID: 1465406453}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!1 &1169514810
 GameObject:
   m_ObjectHideFlags: 0
@@ -49438,11 +49651,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 27462879}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   - connectedNode: {fileID: 1836986447}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   customCost: 1
   pauseMovement: 0
 --- !u!4 &1169603477
@@ -49841,12 +50056,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 744642792}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 1
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1173243692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51329,12 +51546,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 2063815189}
-  secondRamp: {fileID: 205894248}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1203708349
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52106,12 +52325,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 668076749}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1221677263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52560,8 +52781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1231975614
 GameObject:
   m_ObjectHideFlags: 0
@@ -53179,9 +53399,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 518008295}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   - connectedNode: {fileID: 1428269133}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1246914068
@@ -53304,12 +53528,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1754899990}
-  secondRamp: {fileID: 775177391}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1247214716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53426,7 +53652,7 @@ GameObject:
   - component: {fileID: 1248388055}
   - component: {fileID: 1248388057}
   - component: {fileID: 1248388056}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: MidPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54138,12 +54364,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 0}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 0}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1262690639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55600,8 +55828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1301126316
 GameObject:
   m_ObjectHideFlags: 0
@@ -58302,9 +58529,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1149716022}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   - connectedNode: {fileID: 579593204}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   customCost: 10
   pauseMovement: 1
 --- !u!212 &1353799294
@@ -58412,12 +58643,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1518011388}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1354359529
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59224,14 +59457,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
-  - connectedNode: {fileID: 0}
-    collidersToIgnore:
-    - {fileID: 1865214587}
-    - {fileID: 205317294}
-  - connectedNode: {fileID: 0}
-    collidersToIgnore:
-    - {fileID: 1865214587}
-    - {fileID: 205317294}
+  - connectedNode: {fileID: 27462879}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
+  - connectedNode: {fileID: 301932798}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 4194304
+  - connectedNode: {fileID: 412556813}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 5242880
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1394181355
@@ -59336,8 +59573,8 @@ Transform:
   m_GameObject: {fileID: 1396571249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 3.3199997, y: 0.43000007, z: 10}
-  m_LocalScale: {x: 1.8043448, y: 0.66, z: 1}
+  m_LocalPosition: {x: 3.32, y: 0.43000007, z: 10}
+  m_LocalScale: {x: 1.8043481, y: 0.66, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1511308226}
@@ -59459,12 +59696,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1465406453}
-  secondRamp: {fileID: 1787104783}
-  floor: {fileID: 1229704357}
+  TriggerPlatform: {fileID: 2002057382}
+  BottomRamp: {fileID: 207355332}
+  BottomPlatform: {fileID: 1973669512}
+  TopRamp: {fileID: 1465406453}
+  TopPlatform: {fileID: 1229704357}
+  SecondTopRamp: {fileID: 1787104783}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!1 &1397682052
 GameObject:
   m_ObjectHideFlags: 0
@@ -60281,7 +60520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1246914067}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1428269134
@@ -60507,7 +60748,7 @@ GameObject:
   - component: {fileID: 1431239122}
   - component: {fileID: 1431239124}
   - component: {fileID: 1431239123}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: HorizontalBeam (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60995,12 +61236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 405432038}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 793422635}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1440112724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61184,12 +61427,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 207355332}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 207355332}
+  TopPlatform: {fileID: 1229704357}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 1
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1441217695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61926,7 +62171,7 @@ GameObject:
   - component: {fileID: 1455151439}
   - component: {fileID: 1455151441}
   - component: {fileID: 1455151440}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: HorizontalBeam (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62652,7 +62897,7 @@ GameObject:
   - component: {fileID: 1465406452}
   - component: {fileID: 1465406453}
   - component: {fileID: 1465406451}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: TopRamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62668,8 +62913,8 @@ Transform:
   m_GameObject: {fileID: 1465406449}
   serializedVersion: 2
   m_LocalRotation: {x: -0.38268343, y: -0.92387956, z: -0, w: 0}
-  m_LocalPosition: {x: -0.7119999, y: 2.502, z: 2}
-  m_LocalScale: {x: 7.483007, y: 1, z: 1}
+  m_LocalPosition: {x: -0.7463, y: 2.5363, z: 2}
+  m_LocalScale: {x: 7.385784, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 437576033}
@@ -62791,8 +63036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1466990735
 GameObject:
   m_ObjectHideFlags: 0
@@ -64444,12 +64688,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 708468710}
-  secondRamp: {fileID: 668076749}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1512296380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65564,7 +65810,7 @@ GameObject:
   - component: {fileID: 1523702068}
   - component: {fileID: 1523702070}
   - component: {fileID: 1523702069}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: HorizontalBeam (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66932,12 +67178,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 471949793}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1554771030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67942,11 +68190,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 579593204}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   - connectedNode: {fileID: 1727810264}
-    collidersToIgnore: []
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1578992229
@@ -68054,12 +68304,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 484647961}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1582599314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69248,12 +69500,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1822324900}
-  secondRamp: {fileID: 209339332}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1613030123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70476,12 +70730,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 323790297}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1648426001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70599,7 +70855,7 @@ GameObject:
   - component: {fileID: 1649985633}
   - component: {fileID: 1649985635}
   - component: {fileID: 1649985632}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: TopRamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70738,8 +70994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1651317371
 GameObject:
   m_ObjectHideFlags: 0
@@ -72616,7 +72871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.5
+      value: 51.9
       objectReference: {fileID: 0}
     - target: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
       propertyPath: m_LocalPosition.y
@@ -73304,12 +73559,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 2036223820}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1697731024
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74117,9 +74374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1578992228}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1727810265
@@ -74852,12 +75109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 2068537833}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1739313430
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75869,8 +76128,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1760304634}
   - component: {fileID: 1760304636}
+  - component: {fileID: 1760304637}
   - component: {fileID: 1760304635}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: MidPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75997,6 +76257,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1760304637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760304633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  currentNPCColliders: []
 --- !u!1 &1765523963
 GameObject:
   m_ObjectHideFlags: 0
@@ -77653,7 +77926,7 @@ GameObject:
   - component: {fileID: 1787104782}
   - component: {fileID: 1787104783}
   - component: {fileID: 1787104781}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: BottomRamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77792,8 +78065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1789361614
 GameObject:
   m_ObjectHideFlags: 0
@@ -78806,8 +79078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1796175133
 GameObject:
   m_ObjectHideFlags: 0
@@ -78854,12 +79125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 179588168}
-  secondRamp: {fileID: 323790297}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1796175136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -79016,12 +79289,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1794648872}
-  secondRamp: {fileID: 1076627475}
-  floor: {fileID: 26140622}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1797700136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -79449,12 +79724,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 187791660}
-  secondRamp: {fileID: 2100908399}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1805029048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -79777,12 +80054,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 297940919}
-  secondRamp: {fileID: 1686644409}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1806452235
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -80553,6 +80832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1819570696}
   - component: {fileID: 1819570698}
+  - component: {fileID: 1819570699}
   - component: {fileID: 1819570697}
   m_Layer: 10
   m_Name: MidPlatform
@@ -80681,6 +80961,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1819570699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819570695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  currentNPCColliders: []
 --- !u!1 &1822324899
 GameObject:
   m_ObjectHideFlags: 0
@@ -81340,9 +81633,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
   connections:
   - connectedNode: {fileID: 1169603476}
-    collidersToIgnore:
-    - {fileID: 1229704354}
-    - {fileID: 1787104781}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1836986448
@@ -82085,12 +82378,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 592571501}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1852978003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -82613,8 +82908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &1866753892
 GameObject:
   m_ObjectHideFlags: 0
@@ -84319,12 +84613,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 205317297}
-  secondRamp: {fileID: 436353862}
-  floor: {fileID: 1865214589}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1911598374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -85308,12 +85604,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 265000623}
-  secondRamp: {fileID: 471949793}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1918254293
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -86068,12 +86366,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 209339332}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1936272190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -86501,12 +86801,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1835732491}
-  secondRamp: {fileID: 221520770}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1942101068
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87742,6 +88044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1973669509}
   - component: {fileID: 1973669511}
+  - component: {fileID: 1973669512}
   - component: {fileID: 1973669510}
   m_Layer: 10
   m_Name: HorizontalBeam (2)
@@ -87870,6 +88173,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1973669512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973669508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
+  currentNPCColliders: []
 --- !u!1 &1977383142
 GameObject:
   m_ObjectHideFlags: 0
@@ -88054,12 +88370,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 0}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 0}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1978679366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88763,12 +89081,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 205317297}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 1
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &1989745457
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89198,8 +89518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  playerIgnoreLayerName: PlayerIgnore
-  npcIgnoreLayerName: NPCIgnore
+  currentNPCColliders: []
 --- !u!1 &2004751689
 GameObject:
   m_ObjectHideFlags: 0
@@ -91125,12 +91444,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 775177391}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &2058807713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92313,12 +92634,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 853787690}
-  secondRamp: {fileID: 0}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &2087657004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92485,6 +92808,117 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11351362c6a7c5040bcd99d6d1ae31cf, type: 3}
+--- !u!1 &2093279172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093279173}
+  - component: {fileID: 2093279175}
+  - component: {fileID: 2093279174}
+  m_Layer: 0
+  m_Name: P17
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093279173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093279172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11, y: 6.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 878741616}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2093279174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093279172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15276b2d03a1d4afdbcbdc342f3efb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.PathNode
+  connections:
+  - connectedNode: {fileID: 1019791106}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
+  customCost: 1
+  pauseMovement: 0
+--- !u!212 &2093279175
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093279172}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 0.9987322, g: 1, b: 0, a: 0.5372549}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &2097683018
 GameObject:
   m_ObjectHideFlags: 0
@@ -92807,12 +93241,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 1765523964}
-  secondRamp: {fileID: 1838813015}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &2114954348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94349,12 +94785,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4c61a96c954c86a30a3dfdacf5a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.RampGate
-  firstRamp: {fileID: 914657136}
-  secondRamp: {fileID: 1792927478}
-  floor: {fileID: 0}
+  TriggerPlatform: {fileID: 0}
+  BottomRamp: {fileID: 0}
+  BottomPlatform: {fileID: 0}
+  TopRamp: {fileID: 0}
+  TopPlatform: {fileID: 0}
+  SecondTopRamp: {fileID: 0}
   player: {fileID: 956717716}
-  ignoreUp: 0
-  ignoreDown: 0
+  currentState: 0
 --- !u!61 &2147033353
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94537,6 +94975,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 506353824, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 519420028, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 519420032, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.y
       value: 17.73861
@@ -94544,6 +94990,14 @@ PrefabInstance:
     - target: {fileID: 519420032, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.z
       value: -18.501455
+      objectReference: {fileID: 0}
+    - target: {fileID: 926845124, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482001337, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1482001339, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.y
@@ -94556,6 +95010,10 @@ PrefabInstance:
     - target: {fileID: 3213259104454701869, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213259104454701869, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701869, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_IsActive
@@ -94575,7 +95033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701870, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: PlayerData.Physics.groundLayerMask.m_Bits
-      value: 29696
+      value: 15758336
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701870, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: PlayerData.Jump.Jumps.Array.data[0].maxHeight
@@ -94623,11 +95081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.04
+      value: -4.55
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 7.78
       objectReference: {fileID: 0}
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -94664,6 +95122,10 @@ PrefabInstance:
     - target: {fileID: 3213259104454701875, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410020105280573791, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6798693929569867814, guid: 8df91cb297f60c04c9706753ea914b78, type: 3}
       propertyPath: m_SortingOrder

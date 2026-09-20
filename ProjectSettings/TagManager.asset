@@ -26,11 +26,11 @@ TagManager:
   - NPCIgnore
   - NPC
   - ElevatorWP
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Layer01
+  - Layer02
+  - Layer03
+  - Layer04
+  - Layer05_NeverIgnore
   - 
   - 
   - 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,55 +5,146 @@ namespace UltimateCC
 {
     public class RampGate : MonoBehaviour
     {
-        public LayerSwitcher firstRamp;
-        public LayerSwitcher secondRamp;
-        public LayerSwitcher floor;
+        public LayerSwitcher TriggerPlatform;
+        public LayerSwitcher BottomRamp;
+        public LayerSwitcher BottomPlatform;
+        public LayerSwitcher TopRamp;
+        public LayerSwitcher TopPlatform;
+        public LayerSwitcher SecondTopRamp;
 
         public PlayerMain player;
         
         private bool playerEnteredTrigger;
+        
+        private List<Collider2D> ignoredColliders = new List<Collider2D>();
+        
+        public enum GateState { Straight, Up, Down }
+        public GateState currentState = GateState.Straight;
 
-        public bool ignoreUp;
-        public bool ignoreDown;
+        public void ResetAllPlayerIgnoredColliders()
+        {
+            if (player != null)
+            {
+                if (player.CapsuleCollider2D != null)
+                {
+                    foreach (var col in ignoredColliders)
+                    {
+                        if (col != null)
+                        {
+                            Physics2D.IgnoreCollision(player.CapsuleCollider2D, col, false);
+                        }
+                    }
+                }
+            }
+            ignoredColliders.Clear();
+            
+            currentState = GateState.Straight;
+        }
+
+        private void TrackAndIgnore(LayerSwitcher targetPlatform, bool ignore)
+        {
+            if (targetPlatform == null || player == null || player.CapsuleCollider2D == null) return;
+
+            Collider2D targetCol = targetPlatform.GetComponent<Collider2D>();
+            if (targetCol != null)
+            {
+                // 1. Ignore the platform/ramp itself
+                Physics2D.IgnoreCollision(player.CapsuleCollider2D, targetCol, ignore);
+
+                if (ignore)
+                {
+                    if (!ignoredColliders.Contains(targetCol)) ignoredColliders.Add(targetCol);
+                }
+                else
+                {
+                    ignoredColliders.Remove(targetCol);
+                }
+            }
+
+            // 2. Ignore any NPCs currently standing on this platform/ramp!
+            if (targetPlatform.currentNPCColliders != null)
+            {
+                foreach (var npcCol in targetPlatform.currentNPCColliders)
+                {
+                    if (npcCol != null)
+                    {
+                        Physics2D.IgnoreCollision(player.CapsuleCollider2D, npcCol, ignore);
+
+                        if (ignore)
+                        {
+                            if (!ignoredColliders.Contains(npcCol)) ignoredColliders.Add(npcCol);
+                        }
+                        else
+                        {
+                            ignoredColliders.Remove(npcCol);
+                        }
+                    }
+                }
+            }
+        }
         
         private void FixedUpdate()
         {
-            if (playerEnteredTrigger && player != null)
+            if (!playerEnteredTrigger || player == null) return;
+
+            float verticalInput = player.InputManager.Input_WallClimb;
+            GateState desiredState = currentState;
+
+            // 1. Determine desired state from input
+            if (verticalInput > 0)
             {
-                float verticalInput = player.InputManager.Input_WallClimb;
-                bool pressingDown = verticalInput < 0;
+                desiredState = GateState.Up;
+            }
+            else if (verticalInput < 0)
+            {
+                desiredState = GateState.Down;
+            }
+            else
+            {
+                desiredState = GateState.Straight;
+            }
 
-                // Neutral input (not pushing up or down)
-                if (verticalInput == 0)
-                {
-                    if (firstRamp != null) firstRamp.SetPlayerIgnoreLayer();
-                    if (secondRamp != null) firstRamp.SetPlayerIgnoreLayer();
-                    if (floor != null) floor.RevertToDefaultLayer();
-                }
-                else if (pressingDown)
-                {
-                    // Pushing down: check if we should drop through the floor
-                    if (floor != null)
-                    {
-                        bool shouldIgnoreDown = !ignoreDown;
-                        if (shouldIgnoreDown)
-                            floor.SetPlayerIgnoreLayer();
-                        else
-                            floor.RevertToDefaultLayer();
-                    }
+            // 2. Switch states if input changed, BUT also continuously enforce rules 
+            // so late-arriving NPCs on ignored platforms are caught!
+            if (desiredState != currentState)
+            {
+                currentState = desiredState;
+            }
 
-                    if (firstRamp != null) firstRamp.SetPlayerIgnoreLayer();
-                    if (secondRamp != null) firstRamp.SetPlayerIgnoreLayer();
-                }
-                else if (verticalInput == 1) // Pushing up
-                {
-                    if (!ignoreUp)
-                    {
-                        if (firstRamp != null) firstRamp.RevertToDefaultLayer();
-                        if (secondRamp != null) secondRamp.SetPlayerIgnoreLayer();
-                        if (floor != null) floor.SetPlayerIgnoreLayer();
-                    }
-                }
+            // Always apply rules every frame so newly added NPCs to these platforms are immediately ignored
+            ApplyCurrentStateRules();
+        }
+
+        private void ApplyCurrentStateRules()
+        {
+            switch (currentState)
+            {
+                case GateState.Straight:
+                    TrackAndIgnore(TriggerPlatform, false);
+                    TrackAndIgnore(BottomRamp, false);
+                    TrackAndIgnore(BottomPlatform, false);
+                    TrackAndIgnore(TopRamp, true);
+                    TrackAndIgnore(TopPlatform, true);
+                    TrackAndIgnore(SecondTopRamp, true);
+                    break;
+
+                case GateState.Down:
+                    TrackAndIgnore(TriggerPlatform, true);
+                    TrackAndIgnore(BottomRamp, false);
+                    TrackAndIgnore(BottomPlatform, false);
+                    TrackAndIgnore(TopRamp, true);
+                    TrackAndIgnore(TopPlatform, true);
+                    TrackAndIgnore(SecondTopRamp, true);
+                    break;
+
+                case GateState.Up:
+                    TrackAndIgnore(TriggerPlatform, false);
+                    TrackAndIgnore(BottomRamp, true);
+                    TrackAndIgnore(BottomPlatform, true);
+                    TrackAndIgnore(TopRamp, false);
+                    TrackAndIgnore(TopPlatform, true);
+                    TrackAndIgnore(SecondTopRamp, true);
+                    break;
             }
         }
         
@@ -66,8 +156,8 @@ namespace UltimateCC
                 player = detectedPlayer;
                 playerEnteredTrigger = true;
                 
-                // Optional: Apply initial entry state immediately so there's no frame delay
-                ApplyCurrentState();
+                ResetAllPlayerIgnoredColliders();
+                ApplyCurrentStateRules(); // <-- Force initial rules to apply immediately on entry!
             }
         }
 
@@ -76,18 +166,8 @@ namespace UltimateCC
             PlayerMain detectedPlayer = other.GetComponent<PlayerMain>();
             if (detectedPlayer != null && detectedPlayer.gameObject.CompareTag("Player") && detectedPlayer == player)
             {
-                // We stop updating this gate's logic, but DO NOT reset the ramps/floors here.
-                // They stay in their last configured state until the player hits the next trigger.
                 playerEnteredTrigger = false;
             }
-        }
-
-        private void ApplyCurrentState()
-        {
-            // Sets initial touch behavior when first entering the trigger
-            if (secondRamp != null) secondRamp.SetPlayerIgnoreLayer(); 
-            if (firstRamp != null) firstRamp.SetPlayerIgnoreLayer();
-            if (floor != null) floor.RevertToDefaultLayer();
         }
     }
 }
