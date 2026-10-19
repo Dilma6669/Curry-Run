@@ -52,6 +52,9 @@ namespace UltimateCC
 
         void CheckGlobalNpcPassThrough()
         {
+            // Drop colliders of NPCs that have been destroyed (e.g. despawned at their target door)
+            ignoredNpcColliders.RemoveWhere(c => c == null);
+
             if (player.CapsuleCollider2D != null)
             {
                 Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(player.transform.position, 1.2f); // Slightly larger radius

@@ -20,6 +20,9 @@ namespace UltimateCC
         public PathNode startNode;
         public PathNode targetNode;
 
+        [Header("Arrival")]
+        public bool despawnOnArrival = true;
+
         private List<PathNode> currentPath = new List<PathNode>();
         private int currentNodeIndex = 0;
         private PathNode lastProcessedNode = null;
@@ -87,6 +90,9 @@ namespace UltimateCC
         void CheckCrowdOverlap()
         {
             int crowdingCount = 0;
+
+            // Drop colliders of NPCs that have been destroyed
+            ignoredNpcColliders.RemoveWhere(c => c == null);
 
             if (capsuleCollider != null)
             {
@@ -186,6 +192,12 @@ namespace UltimateCC
 
                 previousNode = targetPathNode;
                 currentNodeIndex++;
+
+                // Reached the final destination (the target door)
+                if (despawnOnArrival && targetPathNode == targetNode && currentNodeIndex >= currentPath.Count)
+                {
+                    Destroy(gameObject);
+                }
                 return;
             }
 
