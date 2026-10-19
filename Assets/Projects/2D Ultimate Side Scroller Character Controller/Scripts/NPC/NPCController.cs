@@ -37,6 +37,10 @@ namespace UltimateCC
         // Platform tracking variables
         private Rigidbody2D currentPlatformRb = null;
 
+        // The surface (floor, ramp, elevator) we're standing on. The player uses this to skip
+        // crowd slowdown from NPCs on surfaces it's passing through, e.g. a ramp it's walking past.
+        [System.NonSerialized] public Collider2D currentGroundCollider = null;
+
         // Crowd inertia & gridlock variables
         private float speedMultiplier = 1f;
 
@@ -344,6 +348,24 @@ namespace UltimateCC
             if (plat != null)
             {
                 currentPlatformRb = null;
+            }
+
+            if (collision.collider == currentGroundCollider)
+            {
+                currentGroundCollider = null;
+            }
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            // Any contact pushing us upward means we're standing on this collider
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                if (collision.GetContact(i).normal.y > 0.5f)
+                {
+                    currentGroundCollider = collision.collider;
+                    return;
+                }
             }
         }
     }

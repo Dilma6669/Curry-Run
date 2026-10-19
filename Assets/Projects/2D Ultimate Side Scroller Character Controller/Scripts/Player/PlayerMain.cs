@@ -100,7 +100,9 @@ namespace UltimateCC
             {
                 foreach (var col in activeIgnoredColliders)
                 {
-                    if (col != null)
+                    // Never re-enable collision with NPCs: MainState keeps the player passing through them,
+                    // and turning it back on here makes physics shove the player out of overlapping NPCs (snapping)
+                    if (col != null && col.GetComponent<NPCController>() == null)
                     {
                         Physics2D.IgnoreCollision(CapsuleCollider2D, col, false);
                     }

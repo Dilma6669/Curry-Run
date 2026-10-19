@@ -42,23 +42,19 @@ namespace UltimateCC
         }
 
         // FixedUpdate function runs at every fixed time frame (per 0.02 second default)
-        private HashSet<Collider2D> ignoredNpcColliders = new HashSet<Collider2D>();
-
         public virtual void FixedUpdate()
         {
             PhysicsCheck();
             CheckGlobalNpcPassThrough(); // Runs automatically for every state!
         }
 
-        private const float NpcPassThroughRadius = 1.2f;
+        // Must comfortably exceed the player capsule's reach (~1.2 at 1.2 scale) so NPCs are ignored a step before they can touch us
+        private const float NpcPassThroughRadius = 2f;
         private const float CrowdSlowdownRadius = 0.6f;
 
         // Ignores physical collision with nearby NPCs and updates player.CrowdSpeedMultiplier based on how many NPCs we're overlapping
         void CheckGlobalNpcPassThrough()
         {
-            // Drop colliders of NPCs that have been destroyed (e.g. despawned at their target door)
-            ignoredNpcColliders.RemoveWhere(c => c == null);
-
             int crowdingCount = 0;
 
             if (player.CapsuleCollider2D != null)
@@ -72,15 +68,16 @@ namespace UltimateCC
                         NPCController otherNpc = col.GetComponent<NPCController>();
                         if (otherNpc != null)
                         {
-                            // Ensure physics ignore is actively enforced without failing on stale cache states
-                            if (!ignoredNpcColliders.Contains(col))
+                            // Ask the physics engine directly instead of caching, so if anything re-enables
+                            // this collision it gets ignored again on the next step
+                            if (!Physics2D.GetIgnoreCollision(player.CapsuleCollider2D, col))
                             {
                                 Physics2D.IgnoreCollision(player.CapsuleCollider2D, col, true);
-                                ignoredNpcColliders.Add(col);
                             }
 
-                            // Only NPCs within the smaller crowd radius slow us down
-                            if (Vector2.Distance(col.ClosestPoint(playerPosition), playerPosition) <= CrowdSlowdownRadius)
+                            // Only NPCs within the smaller crowd radius, and on a surface we're actually walking on, slow us down
+                            if (Vector2.Distance(col.ClosestPoint(playerPosition), playerPosition) <= CrowdSlowdownRadius
+                                && IsOnPlayerSurface(otherNpc))
                             {
                                 crowdingCount++;
                             }
@@ -95,6 +92,14 @@ namespace UltimateCC
             else if (crowdingCount >= 3) targetMultiplier = 0f;
 
             player.CrowdSpeedMultiplier = Mathf.MoveTowards(player.CrowdSpeedMultiplier, targetMultiplier, Time.fixedDeltaTime * 10f);
+        }
+
+        // An NPC standing on a surface the player currently passes through (per the RampGate rules, e.g. a ramp
+        // we're walking past on the floor) isn't on our path, so it shouldn't slow us down
+        bool IsOnPlayerSurface(NPCController npc)
+        {
+            Collider2D npcGround = npc.currentGroundCollider;
+            return npcGround == null || !Physics2D.GetIgnoreCollision(player.CapsuleCollider2D, npcGround);
         }
         
         // Exit function runs at every state change before new state's enter

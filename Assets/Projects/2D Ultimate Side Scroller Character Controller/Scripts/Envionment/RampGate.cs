@@ -142,17 +142,8 @@ namespace UltimateCC
                             }
                         }
 
-                        SurfaceTracker tracker = platformObj.GetComponent<SurfaceTracker>();
-                        if (tracker != null && tracker.currentNPCColliders != null)
-                        {
-                            foreach (var npcCol in tracker.currentNPCColliders)
-                            {
-                                if (npcCol != null && !colliders.Contains(npcCol))
-                                {
-                                    colliders.Add(npcCol);
-                                }
-                            }
-                        }
+                        // NPCs on the platform aren't added here: MainState already makes the player ignore all nearby NPCs,
+                        // and putting them in this list caused their collision to be re-enabled when the gate rules changed
                     }
                 }
             }
