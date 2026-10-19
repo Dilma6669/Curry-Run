@@ -53811,8 +53811,8 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 1048576
-  customCost: 10
-  pauseMovement: 1
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1179927106
 SpriteRenderer:
   serializedVersion: 2
@@ -57408,10 +57408,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.NPCManager
   npcPrefab: {fileID: 2502891939795763716, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
-  spawnPoint: {fileID: 1428269135}
   spawnInterval: 1
-  startNode: {fileID: 1428269133}
-  targetNode: {fileID: 1836986447}
+  startNodes:
+  - {fileID: 1428269133}
+  - {fileID: 2089069483}
+  targetNodes:
+  - {fileID: 1836986447}
+  - {fileID: 2135873621}
 --- !u!1 &1272166999
 GameObject:
   m_ObjectHideFlags: 0
@@ -61581,8 +61584,8 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 1048576
-  customCost: 10
-  pauseMovement: 1
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1353799294
 SpriteRenderer:
   serializedVersion: 2
@@ -92421,8 +92424,8 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 1048576
-  customCost: 10
-  pauseMovement: 1
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &1934039690
 SpriteRenderer:
   serializedVersion: 2
@@ -99477,8 +99480,8 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 1048576
-  customCost: 10
-  pauseMovement: 1
+  customCost: 1
+  pauseMovement: 0
 --- !u!212 &2089069484
 SpriteRenderer:
   serializedVersion: 2
