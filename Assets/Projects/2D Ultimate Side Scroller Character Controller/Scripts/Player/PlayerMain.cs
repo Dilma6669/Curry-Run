@@ -111,6 +111,7 @@ namespace UltimateCC
         
         public enum PlayerMovementState { Straight, Up, Down }
         public PlayerMovementState currentMovementState = PlayerMovementState.Straight;
+        [NonSerialized] public RampGate activeRampGate; // The RampGate currently controlling currentMovementState
 
 // Call this when entering a new trigger to reset to default unless desired
         public void ResetTriggerState()
