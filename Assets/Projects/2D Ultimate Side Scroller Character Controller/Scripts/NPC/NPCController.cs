@@ -224,7 +224,8 @@ namespace UltimateCC
                 {
                     if (col.gameObject != gameObject)
                     {
-                        bool isPlayer = col.GetComponent<PlayerMain>() != null;
+                        PlayerMain detectedPlayer = col.GetComponent<PlayerMain>();
+                        bool isPlayer = detectedPlayer != null && IsPlayerOnOurSurface(detectedPlayer);
                         NPCController otherNpc = col.GetComponent<NPCController>();
                         bool isValidNpcPeer = otherNpc != null && col.gameObject.layer == gameObject.layer;
 
@@ -284,6 +285,14 @@ namespace UltimateCC
                 scale.x = Mathf.Abs(scale.x) * moveDir;
                 transform.localScale = scale;
             }
+        }
+
+        // The player stays on the Player layer and passes through surfaces via RampGate rules instead. If it's passing
+        // through the surface we're standing on (e.g. walking along the floor while we climb the ramp), it isn't in our way.
+        private bool IsPlayerOnOurSurface(PlayerMain player)
+        {
+            return currentGroundCollider == null || player.CapsuleCollider2D == null
+                || !Physics2D.GetIgnoreCollision(player.CapsuleCollider2D, currentGroundCollider);
         }
 
         private IEnumerator CheckPauseStateRoutine(PathNode nodeToCheck)
