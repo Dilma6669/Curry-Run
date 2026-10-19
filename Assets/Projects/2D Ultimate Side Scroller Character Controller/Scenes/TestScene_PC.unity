@@ -12907,7 +12907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2502891939795763716, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: startNode
@@ -12916,7 +12916,7 @@ PrefabInstance:
     - target: {fileID: 4223662524983686520, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: targetNode
       value: 
-      objectReference: {fileID: 2093279174}
+      objectReference: {fileID: 412556813}
     - target: {fileID: 5638507707759906804, guid: 7d6c3206a240b4b84bcb48fc151676b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.49
@@ -13798,7 +13798,7 @@ Transform:
   m_GameObject: {fileID: 301932797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.32, y: 11.5, z: 0}
+  m_LocalPosition: {x: 2.44, y: 11.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44363,7 +44363,7 @@ Transform:
   m_GameObject: {fileID: 1019791105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.67, y: 6.5, z: 0}
+  m_LocalPosition: {x: -3.49, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44534,7 +44534,7 @@ Transform:
   m_GameObject: {fileID: 1034888650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.32, y: 1.5, z: 0}
+  m_LocalPosition: {x: 2.51, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47341,7 +47341,7 @@ Transform:
   m_GameObject: {fileID: 1149716021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.67, y: -3.5, z: 0}
+  m_LocalPosition: {x: -3.48, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53762,7 +53762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1271417870
 Transform:
   m_ObjectHideFlags: 0
@@ -53794,7 +53794,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1428269135}
   spawnInterval: 1
   startNode: {fileID: 1428269133}
-  targetNode: {fileID: 1836986447}
+  targetNode: {fileID: 2093279174}
 --- !u!1 &1272166999
 GameObject:
   m_ObjectHideFlags: 0
@@ -59139,7 +59139,7 @@ MonoBehaviour:
   - connectedNode: {fileID: 412556813}
     targetLayer:
       serializedVersion: 2
-      m_Bits: 5242880
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1394181355
@@ -59210,7 +59210,7 @@ Transform:
   m_GameObject: {fileID: 1394181353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.82, y: 16.48, z: 0}
+  m_LocalPosition: {x: -3.52, y: 16.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59228,7 +59228,7 @@ GameObject:
   - component: {fileID: 1396571252}
   - component: {fileID: 1396571251}
   - component: {fileID: 1396571253}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: MiddleRampTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59244,8 +59244,8 @@ Transform:
   m_GameObject: {fileID: 1396571249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.18891431, y: 0.43000007, z: 9}
-  m_LocalScale: {x: 0.64757156, y: 0.66, z: 1}
+  m_LocalPosition: {x: -0.11262, y: 0.43000007, z: 9}
+  m_LocalScale: {x: 0.80016536, y: 0.66, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2002057379}
@@ -90402,7 +90402,7 @@ Transform:
   m_GameObject: {fileID: 2002057378}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.75, y: 0, z: 1}
+  m_LocalPosition: {x: 3.7728, y: 0, z: 1}
   m_LocalScale: {x: 3.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

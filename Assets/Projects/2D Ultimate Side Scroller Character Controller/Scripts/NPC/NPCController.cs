@@ -12,6 +12,10 @@ namespace UltimateCC
         public float moveSpeed = 3f;
         public float reachThreshold = 0.2f;
 
+        [Header("Crowd Slowdown Settings")]
+        [Range(0f, 1f)] [SerializeField] private float playerSlowdownMultiplier = 0.6f;
+        [Range(0f, 1f)] [SerializeField] private float npcSlowdownMultiplier = 0.5f;
+
         [Header("Pathfinding")]
         public PathNode startNode;
         public PathNode targetNode;
@@ -19,34 +23,24 @@ namespace UltimateCC
         private List<PathNode> currentPath = new List<PathNode>();
         private int currentNodeIndex = 0;
         private PathNode lastProcessedNode = null;
+        private PathNode previousNode = null; // Last node we actually reached
 
         private Rigidbody2D rb;
         private CapsuleCollider2D capsuleCollider;
-        private List<Collider2D> currentlyIgnoredColliders = new List<Collider2D>();
         
         public bool isWaitingAtNode = false;
         private Coroutine waitCoroutine = null;
 
         // Platform tracking variables
         private Rigidbody2D currentPlatformRb = null;
-        
-        //[Header("Layer Settings")]
-        // private int defaultLayer;
-        // private int npcIgnoreLayer;
+
+        // Crowd inertia & gridlock variables
+        private float speedMultiplier = 1f;
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             capsuleCollider = GetComponent<CapsuleCollider2D>();
-            
-            // Explicitly look up and enforce the NPC layer as the base fallback
-            // defaultLayer = LayerMask.NameToLayer("NPC");
-            // npcIgnoreLayer = LayerMask.NameToLayer("NPCIgnore");
-            //
-            // if (defaultLayer != -1)
-            // {
-            //     gameObject.layer = defaultLayer;
-            // }
 
             if (startNode != null)
             {
@@ -57,33 +51,78 @@ namespace UltimateCC
             {
                 SetDestination(startNode, targetNode);
             }
-        }
 
-        void OnDestroy()
-        {
-           // ResetIgnoredColliders();
-           // ResetLayerForced();
+            // Start periodic repathing to adapt to changing elevator/waypoint costs
+            StartCoroutine(PeriodicRepathRoutine());
         }
 
         void FixedUpdate()
         {
+            CheckCrowdOverlap();
             FollowPath();
-            //UpdateLayerBasedOnGround();
         }
 
         public void SetDestination(PathNode start, PathNode destination)
         {
-           // ResetIgnoredColliders();
-           // ResetLayerForced();
             currentPath = Pathfinding.FindPath(start, destination);
             currentNodeIndex = 0;
             lastProcessedNode = null;
+            previousNode = null;
+            speedMultiplier = 1f;
+            StopWaiting();
+        }
+
+        private void StopWaiting()
+        {
             isWaitingAtNode = false;
             if (waitCoroutine != null)
             {
                 StopCoroutine(waitCoroutine);
                 waitCoroutine = null;
             }
+        }
+
+        private HashSet<Collider2D> ignoredNpcColliders = new HashSet<Collider2D>();
+
+        void CheckCrowdOverlap()
+        {
+            int crowdingCount = 0;
+
+            if (capsuleCollider != null)
+            {
+                // Check for nearby colliders overlapping our space
+                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+                foreach (var col in nearbyColliders)
+                {
+                    if (col.gameObject != gameObject)
+                    {
+                        NPCController otherNpc = col.GetComponent<NPCController>();
+                        if (otherNpc != null)
+                        {
+                            // 1. ALWAYS ignore physical collision with ANY other NPC so they never wedge side-by-side
+                            if (!ignoredNpcColliders.Contains(col))
+                            {
+                                Physics2D.IgnoreCollision(capsuleCollider, col, true);
+                                ignoredNpcColliders.Add(col);
+                            }
+
+                            // 2. Count peer NPCs on the same layer for the general crowd gridlock penalty
+                            if (col.gameObject.layer == gameObject.layer)
+                            {
+                                crowdingCount++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Gridlock & stacking rules for general peer crowding:
+            float targetMultiplier = 1f;
+            if (crowdingCount == 1) targetMultiplier = 0.6f;
+            else if (crowdingCount == 2) targetMultiplier = 0.2f;
+            else if (crowdingCount >= 3) targetMultiplier = 0f;
+
+            speedMultiplier = Mathf.MoveTowards(speedMultiplier, targetMultiplier, Time.fixedDeltaTime * 4f);
         }
 
         void FollowPath()
@@ -101,8 +140,6 @@ namespace UltimateCC
             if (currentPath == null || currentPath.Count == 0 || currentNodeIndex >= currentPath.Count)
             {
                 rb.linearVelocity = new Vector2(0f, platformVelY);
-               // ResetIgnoredColliders();
-               // ResetLayerForced();
                 return;
             }
 
@@ -112,10 +149,9 @@ namespace UltimateCC
             // Apply collision ignores whenever we step to a new node in the path
             if (targetPathNode != lastProcessedNode)
             {
-                PathNode fromNode = (currentNodeIndex > 0) ? currentPath[currentNodeIndex - 1] : startNode;
-                if (fromNode != null)
+                if (previousNode != null)
                 {
-                    NodeConnection connection = fromNode.GetConnectionTo(targetPathNode);
+                    NodeConnection connection = previousNode.GetConnectionTo(targetPathNode);
                     if (connection != null)
                     {
                         // Convert LayerMask to a single layer index and set the NPC layer
@@ -148,21 +184,85 @@ namespace UltimateCC
                     }
                 }
 
+                previousNode = targetPathNode;
                 currentNodeIndex++;
                 return;
             }
 
-            // Move only horizontally toward the target node's X position, matching the platform's vertical velocity
+            // Move only horizontally toward the target node's X position
             float moveDir = Mathf.Sign(targetPathNode.transform.position.x - transform.position.x);
             if (Mathf.Abs(targetPathNode.transform.position.x - transform.position.x) < 0.05f)
             {
                 moveDir = 0f;
             }
 
-            rb.linearVelocity = new Vector2(moveDir * moveSpeed, platformVelY);
+// --- NPC Crowd & Player Slowdown Check ---
+            float npcTargetMultiplier = 1f;
+            int npcBlockCount = 0;
+            bool blockedByPlayer = false;
 
-            // Face the direction of movement
-            if (moveDir != 0)
+            if (capsuleCollider != null && moveDir != 0)
+            {
+                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+                foreach (var col in nearbyColliders)
+                {
+                    if (col.gameObject != gameObject)
+                    {
+                        bool isPlayer = col.GetComponent<PlayerMain>() != null;
+                        NPCController otherNpc = col.GetComponent<NPCController>();
+                        bool isValidNpcPeer = otherNpc != null && col.gameObject.layer == gameObject.layer;
+
+                        if (isPlayer || isValidNpcPeer)
+                        {
+                            // Check if they are positioned ahead of us in our walking direction
+                            float directionToTarget = Mathf.Sign(col.transform.position.x - transform.position.x);
+                            if (directionToTarget == moveDir)
+                            {
+                                if (isPlayer)
+                                {
+                                    blockedByPlayer = true;
+                                }
+                                else if (isValidNpcPeer)
+                                {
+                                    npcBlockCount++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Apply stacking slowdown logic
+                if (blockedByPlayer)
+                {
+                    npcTargetMultiplier = playerSlowdownMultiplier;
+                }
+                else if (npcBlockCount > 0)
+                {
+                    // Stack the penalty progressively based on how many NPCs are packed ahead
+                    if (npcBlockCount == 1) 
+                    {
+                        npcTargetMultiplier = npcSlowdownMultiplier; // e.g., 0.5f
+                    }
+                    else if (npcBlockCount == 2) 
+                    {
+                        npcTargetMultiplier = npcSlowdownMultiplier * 0.6f; // Heavier slowdown
+                    }
+                    else 
+                    {
+                        npcTargetMultiplier = 0.1f; // Near-stop gridlock for 3+ stacked NPCs
+                    }
+                }
+            }
+
+            // Smoothly interpolate the NPC's speed multiplier
+            speedMultiplier = Mathf.MoveTowards(speedMultiplier, npcTargetMultiplier, Time.fixedDeltaTime * 10f);
+
+            float adjustedSpeed = moveSpeed * speedMultiplier;
+
+            rb.linearVelocity = new Vector2(moveDir * adjustedSpeed, platformVelY);
+
+            // Face the direction of movement (only if not completely gridlocked)
+            if (moveDir != 0 && adjustedSpeed > 0.01f)
             {
                 Vector3 scale = transform.localScale;
                 scale.x = Mathf.Abs(scale.x) * moveDir;
@@ -188,91 +288,51 @@ namespace UltimateCC
 
             waitCoroutine = null;
         }
-
-        // void UpdateLayerBasedOnGround()
-        // {
-        //     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.2f);
-        //     
-        //     if (hit.collider != null)
-        //     {
-        //         if (!hit.collider.CompareTag("Player"))
-        //         {
-        //             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("PlayerIgnore"))
-        //             {
-        //                 if (gameObject.layer != npcIgnoreLayer)
-        //                 {
-        //                     gameObject.layer = npcIgnoreLayer;
-        //                 }
-        //                 return;
-        //             }
-        //         }
-        //     }
-        //     
-        //     ResetLayerForced();
-        // }
-
-        // void ResetIgnoredColliders()
-        // {
-        //     foreach (var col in currentlyIgnoredColliders)
-        //     {
-        //         if (col != null && capsuleCollider != null)
-        //         {
-        //             Physics2D.IgnoreCollision(capsuleCollider, col, false);
-        //         }
-        //     }
-        //     currentlyIgnoredColliders.Clear();
-        // }
-
-        // void ResetLayerForced()
-        // {
-        //     gameObject.layer = defaultLayer;
-        // }
         
-        // private void OnCollisionStay2D(Collision2D collision)
-        // {
-        //     if (collision.gameObject.CompareTag("Player")) return;
-        //
-        //     // If we touch another NPC, explicitly ignore collision between them so they never push each other
-        //     if (collision.gameObject.layer == defaultLayer || collision.gameObject.GetComponent<NPCController>() != null)
-        //     {
-        //         Physics2D.IgnoreCollision(capsuleCollider, collision.collider, true);
-        //         return;
-        //     }
-        //
-        //     // Check if we are standing on a platform script
-        //     Platform plat = collision.gameObject.GetComponent<Platform>();
-        //     if (plat != null)
-        //     {
-        //         currentPlatformRb = collision.rigidbody;
-        //     }
-        //
-        //     // If colliding with a "PlayerIgnore" layer surface, set NPC to "NPCIgnore" layer
-        //     if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerIgnore"))
-        //     {
-        //         if (gameObject.layer != npcIgnoreLayer)
-        //         {
-        //             gameObject.layer = npcIgnoreLayer;
-        //         }
-        //     }
-        //     else
-        //     {
-        //         ResetLayerForced();
-        //     }
-        // }
+        private IEnumerator PeriodicRepathRoutine()
+        {
+            WaitForSeconds repathInterval = new WaitForSeconds(2f); // Check every 2 seconds
 
-        // private void OnCollisionExit2D(Collision2D collision)
-        // {
-        //     Platform plat = collision.gameObject.GetComponent<Platform>();
-        //     if (plat != null)
-        //     {
-        //         currentPlatformRb = null;
-        //     }
-        //
-        //     // If we stop colliding with a PlayerIgnore surface, immediately revert back to the NPC layer
-        //     if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerIgnore"))
-        //     {
-        //         ResetLayerForced();
-        //     }
-        // }
+            while (true)
+            {
+                yield return repathInterval;
+
+                // If we have a final destination, periodically check for cheaper/updated paths
+                if (targetNode == null || currentPath == null || currentNodeIndex >= currentPath.Count) continue;
+
+                // While waiting we are standing on the node we last reached, so we can reroute from there.
+                // Otherwise stay committed to the node we're walking toward so we never turn back mid-segment.
+                PathNode repathFrom = isWaitingAtNode ? previousNode : currentPath[currentNodeIndex];
+                if (repathFrom == null || repathFrom == targetNode) continue;
+
+                List<PathNode> newPath = Pathfinding.FindPath(repathFrom, targetNode);
+                if (newPath == null || newPath.Count == 0) continue;
+
+                currentPath = newPath;
+                currentNodeIndex = 0;
+
+                // Index 0 is the node we're standing on, so FollowPath re-reaches it immediately
+                // and re-runs the pause check against the new next node.
+                if (isWaitingAtNode) StopWaiting();
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Platform plat = collision.gameObject.GetComponent<Platform>();
+            if (plat != null)
+            {
+                currentPlatformRb = collision.rigidbody;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            Platform plat = collision.gameObject.GetComponent<Platform>();
+            if (plat != null)
+            {
+                currentPlatformRb = null;
+            }
+        }
     }
 }

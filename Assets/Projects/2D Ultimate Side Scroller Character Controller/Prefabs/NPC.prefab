@@ -200,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.NPCController
   moveSpeed: 3
   reachThreshold: 0.2
+  playerSlowdownMultiplier: 0.6
+  npcSlowdownMultiplier: 0.6
   startNode: {fileID: 0}
   targetNode: {fileID: 0}
   isWaitingAtNode: 0

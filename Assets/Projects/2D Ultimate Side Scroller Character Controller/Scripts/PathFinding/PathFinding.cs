@@ -95,8 +95,7 @@ namespace UltimateCC
                 }
             }
 
-            path.Add(startNode);
-            path.Add(targetNode);
+            // No route exists: return an empty path rather than a fake direct start -> target hop
             return path;
         }
     }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UltimateCC
@@ -41,11 +42,38 @@ namespace UltimateCC
         }
 
         // FixedUpdate function runs at every fixed time frame (per 0.02 second default)
+        private HashSet<Collider2D> ignoredNpcColliders = new HashSet<Collider2D>();
+
         public virtual void FixedUpdate()
         {
             PhysicsCheck();
+            CheckGlobalNpcPassThrough(); // Runs automatically for every state!
         }
 
+        void CheckGlobalNpcPassThrough()
+        {
+            if (player.CapsuleCollider2D != null)
+            {
+                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(player.transform.position, 1.2f); // Slightly larger radius
+                foreach (var col in nearbyColliders)
+                {
+                    if (col != null && col.gameObject != player.gameObject)
+                    {
+                        NPCController otherNpc = col.GetComponent<NPCController>();
+                        if (otherNpc != null)
+                        {
+                            // Ensure physics ignore is actively enforced without failing on stale cache states
+                            if (!ignoredNpcColliders.Contains(col))
+                            {
+                                Physics2D.IgnoreCollision(player.CapsuleCollider2D, col, true);
+                                ignoredNpcColliders.Add(col);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         // Exit function runs at every state change before new state's enter
         public virtual void Exit()
         {
