@@ -10,9 +10,6 @@ namespace UltimateCC
         private float localXVelovity;
         private int turnBackStartDirection;
 
-        // Crowd resistance & inertia tracking
-        private float playerSpeedMultiplier = 1f;
-
         public PlayerWalkState(PlayerMain player, PlayerStateMachine stateMachine, PlayerMain.AnimName animEnum, PlayerData playerData) : base(player, stateMachine, animEnum, playerData)
         {
         }
@@ -26,7 +23,6 @@ namespace UltimateCC
             curveTime *= playerData.Walk.SpeedUpTime;
             localXVelovity = 0f;
             phase = Phase.SpeedUp;
-            playerSpeedMultiplier = 1f;
         }
 
         public override void Update()
@@ -36,41 +32,11 @@ namespace UltimateCC
 
         public override void FixedUpdate()
         {
-            base.FixedUpdate();
-            CheckPlayerCrowdOverlap(); // Only calculates speed slowdown now; pass-through is handled by MainState!
+            base.FixedUpdate(); // MainState handles NPC pass-through and the crowd slowdown multiplier
             Move1D();
             rigidbody2D.linearVelocity += playerData.Physics.Platform.DampedVelocity;
             curveTime += Time.fixedDeltaTime;
             playerData.Walls.CurrentStamina = Mathf.Clamp(playerData.Walls.CurrentStamina + (Time.fixedDeltaTime * playerData.Walls.StaminaRegenPerSec), 0, playerData.Walls.MaxStamina);
-        }
-        
-        // Cleaned up: removed ignoredNpcColliders and IgnoreCollision here because MainState handles it globally.
-        void CheckPlayerCrowdOverlap()
-        {
-            int crowdingCount = 0;
-
-            if (player.CapsuleCollider2D != null)
-            {
-                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(player.transform.position, 0.6f);
-                foreach (var col in nearbyColliders)
-                {
-                    if (col.gameObject != player.gameObject)
-                    {
-                        NPCController otherNpc = col.GetComponent<NPCController>();
-                        if (otherNpc != null)
-                        {
-                            crowdingCount++;
-                        }
-                    }
-                }
-            }
-
-            float targetMultiplier = 1f;
-            if (crowdingCount == 1) targetMultiplier = 0.3f;
-            else if (crowdingCount == 2) targetMultiplier = 0.1f;
-            else if (crowdingCount >= 3) targetMultiplier = 0f;
-
-            playerSpeedMultiplier = Mathf.MoveTowards(playerSpeedMultiplier, targetMultiplier, Time.fixedDeltaTime * 10f);
         }
 
         public override void Exit()
@@ -122,16 +88,15 @@ namespace UltimateCC
             }
             else if (!playerData.Physics.IsOnNotWalkableSlope)
             {
-                newVelocity = VelocityOnX();
+                // Crowd slowdown scales the speed along the ground, so on ramps both x and y slow down
+                newVelocity = VelocityOnX() * player.CrowdSpeedMultiplier;
                 rigidbody2D.linearVelocity = -1 * newVelocity * playerData.Physics.WalkSpeedDirection.normalized;
             }
             else
             {
-                newVelocity = VelocityOnX();
+                newVelocity = VelocityOnX() * player.CrowdSpeedMultiplier;
                 rigidbody2D.linearVelocity = new Vector2(newVelocity, rigidbody2D.linearVelocity.y);
             }
-            
-            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x * playerSpeedMultiplier, rigidbody2D.linearVelocity.y);
 
             localXVelovity = rigidbody2D.linearVelocity.x;
         }

@@ -100,7 +100,7 @@ namespace UltimateCC
 
             if (!playerData.Physics.IsOnNotWalkableSlope || playerData.Physics.FacingDirection != Mathf.Sign(playerData.Physics.ContactPosition.x - rigidbody2D.position.x))
             {
-                _newVelocity.x = VelocityOnx();
+                _newVelocity.x = VelocityOnx() * player.CrowdSpeedMultiplier; // Only horizontal: crowds shouldn't stop us falling
             }
             rigidbody2D.linearVelocity = _newVelocity;
             localXVelovity = rigidbody2D.linearVelocity.x;

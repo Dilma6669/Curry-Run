@@ -18,6 +18,8 @@ namespace UltimateCC
 
         public PlayerData PlayerData; // All player movement and action data is stored in the PlayerData object.
 
+        [NonSerialized] public float CrowdSpeedMultiplier = 1f; // Slowdown from nearby NPCs, updated in MainState and shared across all states so it survives state changes.
+
         private void Awake()
         {
             // Declaration of necessary components:

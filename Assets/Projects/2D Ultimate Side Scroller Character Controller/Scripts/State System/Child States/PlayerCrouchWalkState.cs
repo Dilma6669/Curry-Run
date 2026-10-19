@@ -91,12 +91,13 @@ namespace UltimateCC
             }
             else if (!playerData.Physics.IsOnNotWalkableSlope)
             {
-                newVelocity = VelocityOnX();
+                // Crowd slowdown scales the speed along the ground, so on ramps both x and y slow down
+                newVelocity = VelocityOnX() * player.CrowdSpeedMultiplier;
                 rigidbody2D.linearVelocity = -1 * newVelocity * playerData.Physics.WalkSpeedDirection.normalized;
             }
             else
             {
-                newVelocity = VelocityOnX();
+                newVelocity = VelocityOnX() * player.CrowdSpeedMultiplier;
                 rigidbody2D.linearVelocity = new Vector2(newVelocity, rigidbody2D.linearVelocity.y);
             }
             localXVelovity = rigidbody2D.linearVelocity.x;

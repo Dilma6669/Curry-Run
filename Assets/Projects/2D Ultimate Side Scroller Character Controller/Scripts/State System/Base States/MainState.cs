@@ -50,14 +50,21 @@ namespace UltimateCC
             CheckGlobalNpcPassThrough(); // Runs automatically for every state!
         }
 
+        private const float NpcPassThroughRadius = 1.2f;
+        private const float CrowdSlowdownRadius = 0.6f;
+
+        // Ignores physical collision with nearby NPCs and updates player.CrowdSpeedMultiplier based on how many NPCs we're overlapping
         void CheckGlobalNpcPassThrough()
         {
             // Drop colliders of NPCs that have been destroyed (e.g. despawned at their target door)
             ignoredNpcColliders.RemoveWhere(c => c == null);
 
+            int crowdingCount = 0;
+
             if (player.CapsuleCollider2D != null)
             {
-                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(player.transform.position, 1.2f); // Slightly larger radius
+                Vector2 playerPosition = player.transform.position;
+                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(playerPosition, NpcPassThroughRadius); // Slightly larger radius
                 foreach (var col in nearbyColliders)
                 {
                     if (col != null && col.gameObject != player.gameObject)
@@ -71,10 +78,23 @@ namespace UltimateCC
                                 Physics2D.IgnoreCollision(player.CapsuleCollider2D, col, true);
                                 ignoredNpcColliders.Add(col);
                             }
+
+                            // Only NPCs within the smaller crowd radius slow us down
+                            if (Vector2.Distance(col.ClosestPoint(playerPosition), playerPosition) <= CrowdSlowdownRadius)
+                            {
+                                crowdingCount++;
+                            }
                         }
                     }
                 }
             }
+
+            float targetMultiplier = 1f;
+            if (crowdingCount == 1) targetMultiplier = 0.3f;
+            else if (crowdingCount == 2) targetMultiplier = 0.1f;
+            else if (crowdingCount >= 3) targetMultiplier = 0f;
+
+            player.CrowdSpeedMultiplier = Mathf.MoveTowards(player.CrowdSpeedMultiplier, targetMultiplier, Time.fixedDeltaTime * 10f);
         }
         
         // Exit function runs at every state change before new state's enter
