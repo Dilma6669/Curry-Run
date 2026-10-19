@@ -134,6 +134,7 @@ namespace UltimateCC
             {
                 _newVelocity.x = VelocityOnx() * playerData.Physics.Slope.CurrentSlopeAngle / 100;
             }
+            _newVelocity.x *= player.CrowdSpeedMultiplier; // Only horizontal: crowds shouldn't reduce jump height
             rigidbody2D.linearVelocity = _newVelocity;
             localXVelovity = rigidbody2D.linearVelocity.x;
         }

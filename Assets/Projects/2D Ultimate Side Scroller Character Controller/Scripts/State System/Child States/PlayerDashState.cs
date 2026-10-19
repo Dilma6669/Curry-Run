@@ -74,6 +74,7 @@ namespace UltimateCC
             Vector2 XVelocity = Vector2.zero;
             XVelocity.x = playerData.Dash.DashXVelocityCurve.Evaluate(localTime / playerData.Dash.DashTime);
             XVelocity.x *= playerData.Dash.MaxSpeed * playerData.Physics.FacingDirection;
+            XVelocity.x *= player.CrowdSpeedMultiplier; // Only horizontal: the dash's vertical arc is unaffected
             XVelocity.y = playerData.Dash.DashYVelocityCurve.Evaluate(localTime / playerData.Dash.DashTime);
             XVelocity.y *= playerData.Dash.MaxHeight;
 
