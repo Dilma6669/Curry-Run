@@ -3357,7 +3357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 86367154}
   - component: {fileID: 86367157}
-  - component: {fileID: 86367156}
   - component: {fileID: 86367155}
   m_Layer: 20
   m_Name: MidPlatform (1)
@@ -3427,19 +3426,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &86367156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86367153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &86367157
 SpriteRenderer:
   serializedVersion: 2
@@ -6312,7 +6298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 147192026}
   - component: {fileID: 147192025}
-  - component: {fileID: 147192024}
   - component: {fileID: 147192023}
   m_Layer: 20
   m_Name: HorizontalBeam (2)
@@ -6367,19 +6352,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &147192024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147192022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &147192025
 SpriteRenderer:
   serializedVersion: 2
@@ -9719,7 +9691,6 @@ GameObject:
   m_Component:
   - component: {fileID: 207355329}
   - component: {fileID: 207355331}
-  - component: {fileID: 207355332}
   - component: {fileID: 207355330}
   m_Layer: 21
   m_Name: BottomRamp
@@ -9849,19 +9820,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &207355332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207355328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!1 &207402286
 GameObject:
   m_ObjectHideFlags: 0
@@ -14002,7 +13960,6 @@ GameObject:
   m_Component:
   - component: {fileID: 308105326}
   - component: {fileID: 308105325}
-  - component: {fileID: 308105324}
   - component: {fileID: 308105323}
   m_Layer: 22
   m_Name: TopRamp
@@ -14057,19 +14014,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &308105324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308105322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &308105325
 SpriteRenderer:
   serializedVersion: 2
@@ -15621,7 +15565,6 @@ GameObject:
   m_Component:
   - component: {fileID: 351072971}
   - component: {fileID: 351072974}
-  - component: {fileID: 351072973}
   - component: {fileID: 351072972}
   m_Layer: 21
   m_Name: BottomRamp
@@ -15692,19 +15635,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &351072973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351072970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &351072974
 SpriteRenderer:
   serializedVersion: 2
@@ -20669,7 +20599,6 @@ GameObject:
   m_Component:
   - component: {fileID: 465676638}
   - component: {fileID: 465676641}
-  - component: {fileID: 465676640}
   - component: {fileID: 465676639}
   m_Layer: 21
   m_Name: BottomRamp
@@ -20740,19 +20669,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &465676640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465676637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &465676641
 SpriteRenderer:
   serializedVersion: 2
@@ -23983,7 +23899,6 @@ GameObject:
   m_Component:
   - component: {fileID: 535622878}
   - component: {fileID: 535622881}
-  - component: {fileID: 535622880}
   - component: {fileID: 535622879}
   m_Layer: 20
   m_Name: MidPlatform (1)
@@ -24053,19 +23968,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &535622880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535622877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &535622881
 SpriteRenderer:
   serializedVersion: 2
@@ -24581,7 +24483,6 @@ GameObject:
   m_Component:
   - component: {fileID: 552267234}
   - component: {fileID: 552267233}
-  - component: {fileID: 552267232}
   - component: {fileID: 552267231}
   m_Layer: 22
   m_Name: TopRamp
@@ -24636,19 +24537,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &552267232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552267230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &552267233
 SpriteRenderer:
   serializedVersion: 2
@@ -31361,7 +31249,6 @@ GameObject:
   m_Component:
   - component: {fileID: 690231720}
   - component: {fileID: 690231723}
-  - component: {fileID: 690231722}
   - component: {fileID: 690231721}
   m_Layer: 21
   m_Name: MidPlatform
@@ -31432,19 +31319,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &690231722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690231719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &690231723
 SpriteRenderer:
   serializedVersion: 2
@@ -35144,7 +35018,6 @@ GameObject:
   m_Component:
   - component: {fileID: 763990680}
   - component: {fileID: 763990679}
-  - component: {fileID: 763990678}
   - component: {fileID: 763990677}
   m_Layer: 20
   m_Name: HorizontalBeam (2)
@@ -35199,19 +35072,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &763990678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763990676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &763990679
 SpriteRenderer:
   serializedVersion: 2
@@ -39757,7 +39617,6 @@ GameObject:
   m_Component:
   - component: {fileID: 891486968}
   - component: {fileID: 891486971}
-  - component: {fileID: 891486970}
   - component: {fileID: 891486969}
   m_Layer: 21
   m_Name: BottomRamp
@@ -39828,19 +39687,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &891486970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891486967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &891486971
 SpriteRenderer:
   serializedVersion: 2
@@ -45129,7 +44975,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1062158589}
   - component: {fileID: 1062158588}
-  - component: {fileID: 1062158587}
   - component: {fileID: 1062158586}
   m_Layer: 22
   m_Name: TopRamp
@@ -45184,19 +45029,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1062158587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062158585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1062158588
 SpriteRenderer:
   serializedVersion: 2
@@ -52583,7 +52415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1244434119}
   - component: {fileID: 1244434122}
-  - component: {fileID: 1244434121}
   - component: {fileID: 1244434120}
   m_Layer: 21
   m_Name: MidPlatform
@@ -52654,19 +52485,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1244434121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244434118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1244434122
 SpriteRenderer:
   serializedVersion: 2
@@ -56979,7 +56797,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1335218875}
   - component: {fileID: 1335218878}
-  - component: {fileID: 1335218877}
   - component: {fileID: 1335218876}
   m_Layer: 21
   m_Name: BottomRamp
@@ -57050,19 +56867,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1335218877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335218874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1335218878
 SpriteRenderer:
   serializedVersion: 2
@@ -60560,7 +60364,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1426252382}
   - component: {fileID: 1426252385}
-  - component: {fileID: 1426252384}
   - component: {fileID: 1426252383}
   m_Layer: 20
   m_Name: MidPlatform (1)
@@ -60630,19 +60433,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1426252384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426252381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1426252385
 SpriteRenderer:
   serializedVersion: 2
@@ -62846,7 +62636,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1465406450}
   - component: {fileID: 1465406452}
-  - component: {fileID: 1465406453}
   - component: {fileID: 1465406451}
   m_Layer: 22
   m_Name: TopRamp
@@ -62976,19 +62765,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1465406453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465406449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!1 &1466990735
 GameObject:
   m_ObjectHideFlags: 0
@@ -65423,7 +65199,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1520174473}
   - component: {fileID: 1520174476}
-  - component: {fileID: 1520174475}
   - component: {fileID: 1520174474}
   m_Layer: 21
   m_Name: BottomRamp
@@ -65494,19 +65269,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1520174475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520174472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1520174476
 SpriteRenderer:
   serializedVersion: 2
@@ -69043,7 +68805,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1591613132}
   - component: {fileID: 1591613135}
-  - component: {fileID: 1591613134}
   - component: {fileID: 1591613133}
   m_Layer: 21
   m_Name: MidPlatform
@@ -69114,19 +68875,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1591613134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591613131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1591613135
 SpriteRenderer:
   serializedVersion: 2
@@ -71487,7 +71235,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1647691776}
   - component: {fileID: 1647691775}
-  - component: {fileID: 1647691774}
   - component: {fileID: 1647691773}
   m_Layer: 20
   m_Name: HorizontalBeam (2)
@@ -71542,19 +71289,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1647691774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647691772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1647691775
 SpriteRenderer:
   serializedVersion: 2
@@ -72007,7 +71741,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1659538735}
   - component: {fileID: 1659538738}
-  - component: {fileID: 1659538737}
   - component: {fileID: 1659538736}
   m_Layer: 20
   m_Name: MidPlatform (1)
@@ -72077,19 +71810,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1659538737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659538734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1659538738
 SpriteRenderer:
   serializedVersion: 2
@@ -76335,7 +76055,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1743425211}
   - component: {fileID: 1743425210}
-  - component: {fileID: 1743425209}
   - component: {fileID: 1743425208}
   m_Layer: 22
   m_Name: TopRamp
@@ -76390,19 +76109,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1743425209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743425207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1743425210
 SpriteRenderer:
   serializedVersion: 2
@@ -76935,7 +76641,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1760304634}
   - component: {fileID: 1760304636}
-  - component: {fileID: 1760304637}
   - component: {fileID: 1760304635}
   m_Layer: 20
   m_Name: MidPlatform (1)
@@ -77064,19 +76769,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1760304637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760304633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!1 &1764794671
 GameObject:
   m_ObjectHideFlags: 0
@@ -79169,7 +78861,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1791690479}
   - component: {fileID: 1791690478}
-  - component: {fileID: 1791690477}
   - component: {fileID: 1791690476}
   m_Layer: 20
   m_Name: HorizontalBeam (2)
@@ -79224,19 +78915,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1791690477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791690475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1791690478
 SpriteRenderer:
   serializedVersion: 2
@@ -82070,7 +81748,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1827093164}
   - component: {fileID: 1827093167}
-  - component: {fileID: 1827093166}
   - component: {fileID: 1827093165}
   m_Layer: 21
   m_Name: MidPlatform
@@ -82141,19 +81818,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1827093166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827093163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1827093167
 SpriteRenderer:
   serializedVersion: 2
@@ -88659,7 +88323,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1949323185}
   - component: {fileID: 1949323188}
-  - component: {fileID: 1949323187}
   - component: {fileID: 1949323186}
   m_Layer: 21
   m_Name: MidPlatform
@@ -88730,19 +88393,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1949323187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949323184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1949323188
 SpriteRenderer:
   serializedVersion: 2
@@ -89341,7 +88991,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1973669509}
   - component: {fileID: 1973669511}
-  - component: {fileID: 1973669512}
   - component: {fileID: 1973669510}
   m_Layer: 20
   m_Name: HorizontalBeam (2)
@@ -89471,19 +89120,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1973669512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973669508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!1 &1977383142
 GameObject:
   m_ObjectHideFlags: 0
@@ -89632,7 +89268,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1983604418}
   - component: {fileID: 1983604417}
-  - component: {fileID: 1983604416}
   - component: {fileID: 1983604415}
   m_Layer: 20
   m_Name: HorizontalBeam (2)
@@ -89687,19 +89322,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1983604416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983604414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &1983604417
 SpriteRenderer:
   serializedVersion: 2
@@ -90670,7 +90292,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2002057379}
   - component: {fileID: 2002057381}
-  - component: {fileID: 2002057382}
   - component: {fileID: 2002057380}
   m_Layer: 21
   m_Name: MidPlatform
@@ -90800,19 +90421,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2002057382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002057378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!1 &2004751689
 GameObject:
   m_ObjectHideFlags: 0
@@ -92223,7 +91831,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2046491219}
   - component: {fileID: 2046491218}
-  - component: {fileID: 2046491217}
   - component: {fileID: 2046491216}
   m_Layer: 22
   m_Name: TopRamp
@@ -92278,19 +91885,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2046491217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046491215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &2046491218
 SpriteRenderer:
   serializedVersion: 2
@@ -95472,7 +95066,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2133888493}
   - component: {fileID: 2133888496}
-  - component: {fileID: 2133888495}
   - component: {fileID: 2133888494}
   m_Layer: 20
   m_Name: MidPlatform (1)
@@ -95542,19 +95135,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2133888495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133888492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9856309fefdbf4db18e506d8c7c3a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.LayerSwitcher
-  currentNPCColliders: []
 --- !u!212 &2133888496
 SpriteRenderer:
   serializedVersion: 2
