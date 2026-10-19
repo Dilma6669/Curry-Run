@@ -813,6 +813,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 1791690476}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &6428944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1003,6 +1005,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &14228541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4359,6 +4363,8 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 1647691773}
     - {fileID: 1335218876}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &112211633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5913,6 +5919,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &141871158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7223,6 +7231,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &173759144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8242,6 +8252,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &189163562
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9005,6 +9017,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &198256436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9900,6 +9914,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &207402289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13152,6 +13168,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &296001510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14217,7 +14235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &322172699
 Transform:
   m_ObjectHideFlags: 0
@@ -14253,6 +14271,8 @@ MonoBehaviour:
     - {fileID: 1465406451}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 1
+  ignoreDownInput: 1
 --- !u!61 &322172701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14719,6 +14739,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &331700507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14876,6 +14898,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &341745063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15033,6 +15057,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &342149008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15824,6 +15850,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &355186552
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21374,7 +21402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &481439125
 Transform:
   m_ObjectHideFlags: 0
@@ -21413,6 +21441,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 763990677}
+  ignoreUpInput: 1
+  ignoreDownInput: 1
 --- !u!61 &481439127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22337,6 +22367,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &500631672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23299,6 +23331,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &527256498
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23661,6 +23695,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &532605173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24740,6 +24776,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &555988425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25070,6 +25108,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &561961973
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25466,6 +25506,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &578902396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25955,6 +25997,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 1647691773}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &587132299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26492,7 +26536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &598483613
 Transform:
   m_ObjectHideFlags: 0
@@ -26531,6 +26575,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 147192023}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &598483615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26688,6 +26734,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &600344540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27032,6 +27080,7 @@ Transform:
   - {fileID: 568775592}
   - {fileID: 760180184}
   - {fileID: 1317838354}
+  - {fileID: 1380797738}
   m_Father: {fileID: 1289542386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604524708
@@ -27591,6 +27640,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &623515532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28649,6 +28700,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 1
+  ignoreDownInput: 1
 --- !u!61 &639008286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29224,6 +29277,8 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 1983604415}
     - {fileID: 891486969}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &647920389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30235,6 +30290,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 2046491216}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &674833708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33354,6 +33411,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &727139443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33705,6 +33764,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 1743425208}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &735012062
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35691,6 +35752,8 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 147192023}
     - {fileID: 351072972}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &776338152
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36526,6 +36589,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &793456441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37731,6 +37796,8 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 1791690476}
     - {fileID: 1520174474}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &852454198
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38289,6 +38356,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &866345933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40021,6 +40090,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &895195544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41830,6 +41901,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &929611265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41987,6 +42060,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &931946574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42713,6 +42788,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 0}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &956949356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43915,6 +43992,8 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 763990677}
     - {fileID: 465676639}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1011472873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46029,6 +46108,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1090982789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46494,6 +46575,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1118750195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46927,6 +47010,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1129682826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -47123,6 +47208,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1148530519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48125,6 +48212,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1157574313
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48729,6 +48818,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1164189908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49131,6 +49222,8 @@ MonoBehaviour:
     - {fileID: 1465406451}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 1
 --- !u!1 &1169514810
 GameObject:
   m_ObjectHideFlags: 0
@@ -49213,7 +49306,7 @@ Transform:
   m_GameObject: {fileID: 1169603475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 16.5, z: 0}
+  m_LocalPosition: {x: -16.42, y: 16.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49608,6 +49701,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 1062158586}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1171980816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51130,6 +51225,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1203708349
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51592,6 +51689,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1221677263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52794,6 +52893,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1247214716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53794,7 +53895,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1428269135}
   spawnInterval: 1
   startNode: {fileID: 1428269133}
-  targetNode: {fileID: 2093279174}
+  targetNode: {fileID: 1836986447}
 --- !u!1 &1272166999
 GameObject:
   m_ObjectHideFlags: 0
@@ -54102,7 +54203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1287094391
 Transform:
   m_ObjectHideFlags: 0
@@ -54141,6 +54242,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 1983604415}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1287094393
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54606,6 +54709,8 @@ MonoBehaviour:
     - {fileID: 308105323}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1300616496
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55996,6 +56101,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1319997245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57941,6 +58048,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1354359529
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58386,7 +58495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1373710472
 Transform:
   m_ObjectHideFlags: 0
@@ -58422,6 +58531,8 @@ MonoBehaviour:
     - {fileID: 1062158586}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1373710474
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58665,6 +58776,38 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1380797737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1380797738}
+  m_Layer: 0
+  m_Name: BackGroundImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1380797738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380797737}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1691016791}
+  m_Father: {fileID: 602428998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386704174
 GameObject:
   m_ObjectHideFlags: 0
@@ -59371,10 +59514,14 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 1465406451}
   upState:
-    ignorePlatforms: []
+    ignorePlatforms:
+    - {fileID: 763990677}
+    - {fileID: 465676639}
   downState:
     ignorePlatforms:
     - {fileID: 1465406451}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!1 &1397682052
 GameObject:
   m_ObjectHideFlags: 0
@@ -61205,6 +61352,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 1
+  ignoreDownInput: 1
 --- !u!61 &1441217695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64552,6 +64701,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1511475521
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64847,6 +64998,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1512296380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66019,6 +66172,8 @@ MonoBehaviour:
   downState:
     ignorePlatforms:
     - {fileID: 308105323}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1524017221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67440,6 +67595,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1554771030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -68491,7 +68648,7 @@ Transform:
   m_GameObject: {fileID: 1578992226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 6.5, z: 0}
+  m_LocalPosition: {x: -16.3, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68631,6 +68788,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1582599314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -69807,6 +69966,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1613030123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70723,6 +70884,8 @@ MonoBehaviour:
     - {fileID: 2046491216}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1637049416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71519,6 +71682,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1648426001
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73742,6 +73907,97 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1691016790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691016791}
+  - component: {fileID: 1691016792}
+  m_Layer: 0
+  m_Name: Office_Door_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1691016791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691016790}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 11.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1380797738}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1691016792
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691016790}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 8826786898687872829, guid: 95af3dc8a1ab0432cb6f9e357f0d9d2c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.21, y: 8.69}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &1691198383
 GameObject:
   m_ObjectHideFlags: 0
@@ -74239,6 +74495,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1697731024
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75649,6 +75907,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1739313430
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -76871,6 +77131,8 @@ MonoBehaviour:
     - {fileID: 1743425208}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1764794674
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -79687,6 +79949,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1796175136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -80125,6 +80389,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1805029048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -80453,6 +80719,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1806452235
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -81369,7 +81637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1823620361
 Transform:
   m_ObjectHideFlags: 0
@@ -81405,6 +81673,8 @@ MonoBehaviour:
     - {fileID: 552267231}
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 1
+  ignoreDownInput: 1
 --- !u!61 &1823620363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -82902,6 +83172,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1852978003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83967,10 +84239,14 @@ MonoBehaviour:
     ignorePlatforms:
     - {fileID: 552267231}
   upState:
-    ignorePlatforms: []
+    ignorePlatforms:
+    - {fileID: 147192023}
+    - {fileID: 351072972}
   downState:
     ignorePlatforms:
     - {fileID: 552267231}
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1875120814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -86009,6 +86285,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1914801337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -86442,6 +86720,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1918254293
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87478,6 +87758,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1936272190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87911,6 +88193,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &1942101068
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90269,6 +90553,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &2000081724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -91479,6 +91765,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &2036963238
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92428,6 +92716,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &2058807713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93999,6 +94289,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &2087657004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94604,6 +94896,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &2114954348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96128,6 +96422,8 @@ MonoBehaviour:
     ignorePlatforms: []
   downState:
     ignorePlatforms: []
+  ignoreUpInput: 0
+  ignoreDownInput: 0
 --- !u!61 &2147033353
 BoxCollider2D:
   m_ObjectHideFlags: 0
