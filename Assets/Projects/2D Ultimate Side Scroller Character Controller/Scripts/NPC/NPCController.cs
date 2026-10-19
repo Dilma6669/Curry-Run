@@ -9,7 +9,10 @@ namespace UltimateCC
     public class NPCController : MonoBehaviour
     {
         [Header("Movement Settings")]
-        public float moveSpeed = 3f;
+        [Tooltip("Each NPC picks a random walk speed between min and max when it spawns")]
+        public float minMoveSpeed = 2.5f;
+        public float maxMoveSpeed = 3.5f;
+        [NonEditable] public float moveSpeed = 3f; // The speed this NPC rolled, shown in the inspector for debugging
         public float reachThreshold = 0.2f;
 
         [Header("Crowd Slowdown Settings")]
@@ -43,6 +46,11 @@ namespace UltimateCC
 
         // Crowd inertia & gridlock variables
         private float speedMultiplier = 1f;
+
+        void Awake()
+        {
+            moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
+        }
 
         void Start()
         {
