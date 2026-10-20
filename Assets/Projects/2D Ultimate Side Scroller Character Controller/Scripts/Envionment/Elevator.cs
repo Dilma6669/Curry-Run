@@ -21,6 +21,10 @@ namespace UltimateCC
         [Header("Movement")]
         [SerializeField] private float speed = 5f;
 
+        [Header("Capacity")]
+        [Tooltip("Most characters (NPCs and the player) that can be on board at once. When full it won't stop for people waiting, only to let riders off")]
+        [SerializeField, Min(1)] private int capacity = 10;
+
         [Header("Doors")]
         [Tooltip("Minimum time the doors stay open at a stop")]
         [SerializeField] private float minDoorOpenTime = 2f;
@@ -49,11 +53,13 @@ namespace UltimateCC
         private Collider2D platformCollider;
         private readonly Dictionary<PathNode, int> floorByStopNode = new Dictionary<PathNode, int>();
         private bool[] upCalls, downCalls, carCalls;
-        private int boardingHere, leavingHere, passersByAboard;
-        private readonly List<int> waitingHere = new List<int>(); // destinations of NPCs waiting at the current floor
+        private int boardingHere, leavingHere, passersByAboard, load;
+        private readonly List<(NPCController npc, int toFloor)> waitingHere = new List<(NPCController, int)>(); // NPCs waiting at the current floor
+        private readonly HashSet<NPCController> allowedToBoard = new HashSet<NPCController>();
         private int targetFloor;
         private float doorTimer, costTimer;
         private int skipHallCallsAtFloor = -1;   // set when doors time out on someone who never boarded, until we leave the floor
+        private bool shaftBlocked;               // holding a descent because someone is in the shaft below
 
         // Requests from the player, fed into the same hall/car calls as the NPCs'
         private readonly HashSet<int> playerHallCalls = new HashSet<int>();
@@ -108,8 +114,13 @@ namespace UltimateCC
 
         public Bounds PlatformBounds => platformCollider.bounds;
 
+        // Whether this NPC has been given one of the free places at the current stop
+        public bool MayBoard(NPCController npc) => allowedToBoard.Contains(npc);
+
+        public bool HasRoom => load < capacity;
+
         // An NPC waiting here may only walk in if the doors are open and we're heading its way (or have nowhere to go yet)
-        public bool CanBoard(int fromFloor, int toFloor)
+        private bool CanBoard(int fromFloor, int toFloor)
         {
             if (state != State.DoorsOpen || fromFloor != currentFloor) return false;
             int departDirection = NextDirection();
@@ -182,11 +193,14 @@ namespace UltimateCC
             boardingHere = 0;
             leavingHere = 0;
             passersByAboard = 0;
+            load = IsPlayerRiding() ? 1 : 0;
             waitingHere.Clear();
+            allowedToBoard.Clear();
 
             foreach (var npc in NPCController.All)
             {
                 bool onBoard = npc.IsStandingOn(this);
+                if (onBoard) load++;
                 if (npc.TryGetElevatorTrip(this, out int fromFloor, out int toFloor))
                 {
                     if (onBoard)
@@ -198,7 +212,7 @@ namespace UltimateCC
                     {
                         if (toFloor >= fromFloor) upCalls[fromFloor] = true;
                         if (toFloor <= fromFloor) downCalls[fromFloor] = true;
-                        if (fromFloor == currentFloor) waitingHere.Add(toFloor);
+                        if (fromFloor == currentFloor) waitingHere.Add((npc, toFloor));
                     }
                 }
                 else if (onBoard)
@@ -226,10 +240,18 @@ namespace UltimateCC
                 downCalls[skipHallCallsAtFloor] = false;
             }
 
-            // Second pass, now all calls are known: who waiting at this floor is allowed to get on
-            foreach (int toFloor in waitingHere)
+            // Second pass, now all calls are known: hand out the free places to NPCs waiting here who are going our way,
+            // closest to the doors first (so someone already walking in keeps their place)
+            float shaftX = platformCollider.bounds.center.x;
+            waitingHere.Sort((a, b) => Mathf.Abs(a.npc.transform.position.x - shaftX).CompareTo(Mathf.Abs(b.npc.transform.position.x - shaftX)));
+            int freePlaces = capacity - load;
+            foreach (var (npc, toFloor) in waitingHere)
             {
-                if (CanBoard(currentFloor, toFloor)) boardingHere++;
+                if (freePlaces <= 0) break;
+                if (!CanBoard(currentFloor, toFloor)) continue;
+                allowedToBoard.Add(npc);
+                boardingHere++;
+                freePlaces--;
             }
         }
 
@@ -253,7 +275,8 @@ namespace UltimateCC
         private void UpdateMoving()
         {
             // Someone walking through the shaft below (e.g. across the ground floor): wait for them rather than land on them
-            if (direction < 0 && IsShaftBlockedBelow())
+            shaftBlocked = direction < 0 && IsShaftBlockedBelow();
+            if (shaftBlocked)
             {
                 Body.linearVelocity = Vector2.zero;
                 return;
@@ -326,6 +349,7 @@ namespace UltimateCC
         private bool ShouldStopAt(int floor)
         {
             if (carCalls[floor]) return true;
+            if (!HasRoom) return false; // full: only stop to let riders off
             if (direction > 0 ? upCalls[floor] : downCalls[floor]) return true;
             // Turnaround point: nothing further this way, so pick up people going the other way too
             return !HasRequestBeyond(floor, direction) && (upCalls[floor] || downCalls[floor]);
@@ -335,6 +359,7 @@ namespace UltimateCC
         private bool HasRequestHere(int departDirection)
         {
             if (carCalls[currentFloor]) return true;
+            if (!HasRoom) return false;
             if (departDirection >= 0 && upCalls[currentFloor]) return true;
             if (departDirection <= 0 && downCalls[currentFloor]) return true;
             return false;
@@ -433,8 +458,9 @@ namespace UltimateCC
                 if (!(upCalls[f] || downCalls[f] || carCalls[f])) continue;
                 sb.Append($"F{f}:{(upCalls[f] ? "↑" : "")}{(downCalls[f] ? "↓" : "")}{(carCalls[f] ? "●" : "")} ");
             }
+            sb.Append($"| load {load}/{capacity} ");
             if (state == State.DoorsOpen) sb.Append($"| boarding {boardingHere} leaving {leavingHere}");
-            if (state == State.Moving && Body.linearVelocity == Vector2.zero) sb.Append("| waiting for shaft below to clear");
+            if (state == State.Moving && shaftBlocked) sb.Append("| waiting for shaft below to clear");
             if (state == State.Idle && passersByAboard > 0) sb.Append($"| waiting for {passersByAboard} passer-by to step off");
             return sb.ToString();
         }

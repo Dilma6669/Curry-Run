@@ -322,7 +322,7 @@ namespace UltimateCC
             {
                 if (elevator.GetFloorIndex(target) >= 0)
                 {
-                    return TryGetElevatorTrip(elevator, out int fromFloor, out int toFloor) && elevator.CanBoard(fromFloor, toFloor);
+                    return elevator.MayBoard(this);
                 }
             }
             return true;

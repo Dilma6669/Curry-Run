@@ -58407,6 +58407,7 @@ MonoBehaviour:
   - {fileID: 2007410527}
   startFloorIndex: 3
   speed: 5
+  capacity: 10
   minDoorOpenTime: 2
   maxDoorOpenTime: 10
   baseCost: 1
