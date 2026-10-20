@@ -47,6 +47,8 @@ namespace UltimateCC
         [SerializeField] private float doorOpenDelay = 1f;
         [Tooltip("How long the doors take to close before the elevator sets off")]
         [SerializeField] private float doorCloseDelay = 0.75f;
+        [Tooltip("How long the doors take to slide apart (the last part of the opening delay). They slide shut over the closing delay")]
+        [SerializeField] private float doorSlideTime = 0.5f;
         [Tooltip("Minimum time the doors stay open at a stop")]
         [SerializeField] private float minDoorOpenTime = 2f;
         [Tooltip("Doors close after this long even if NPCs are still boarding or leaving, so one stuck NPC can't hold the elevator forever")]
@@ -87,7 +89,8 @@ namespace UltimateCC
         private float stoppedTimer;   // time since we last stopped; the doors open once it reaches doorOpenDelay
         private float closingTimer;
         private int skipHallCallsAtFloor = -1;   // set when doors time out on someone who never boarded, until we leave the floor
-        private int[] doorShownOpen;             // per floor: -1 not yet shown, 0 closed, 1 open
+        private Vector3[] leftDoorClosed, rightDoorClosed;   // door leaf positions when shut, per floor
+        private float[] doorLeafWidth;
 
         // Requests from the player, fed into the same hall/car calls as the NPCs'
         private readonly HashSet<int> playerHallCalls = new HashSet<int>();
@@ -112,14 +115,20 @@ namespace UltimateCC
             upCalls = new bool[floors.Count];
             downCalls = new bool[floors.Count];
             carCalls = new bool[floors.Count];
-            doorShownOpen = new int[floors.Count];
+            leftDoorClosed = new Vector3[floors.Count];
+            rightDoorClosed = new Vector3[floors.Count];
+            doorLeafWidth = new float[floors.Count];
             for (int i = 0; i < floors.Count; i++)
             {
-                doorShownOpen[i] = -1;
-                if (floors[i] != null && floors[i].stopNode != null)
-                {
-                    floorByStopNode[floors[i].stopNode] = i;
-                }
+                var wp = floors[i];
+                if (wp == null) continue;
+                if (wp.stopNode != null) floorByStopNode[wp.stopNode] = i;
+
+                // Door leaves are placed shut in the scene; remember that and how far each slides to open
+                if (wp.leftDoor != null) leftDoorClosed[i] = wp.leftDoor.position;
+                if (wp.rightDoor != null) rightDoorClosed[i] = wp.rightDoor.position;
+                var leaf = wp.leftDoor != null ? wp.leftDoor.GetComponentInChildren<SpriteRenderer>() : null;
+                doorLeafWidth[i] = leaf != null ? leaf.bounds.size.x : 0f;
             }
         }
 
@@ -382,10 +391,12 @@ namespace UltimateCC
         {
             Body.linearVelocity = Vector2.zero;
 
-            // Someone new wants on here: re-open, like a real elevator
+            // Someone new wants on here: re-open, like a real elevator, sliding back from wherever the doors had got to
             if (HasRequestHere(NextDirection()))
             {
-                stoppedTimer = 0f;
+                float openAmount = DoorOpenAmount(currentFloor);
+                state = State.DoorsOpen;
+                stoppedTimer = doorOpenDelay - Mathf.Min(doorSlideTime, doorOpenDelay) * (1f - openAmount);
                 OpenDoors();
                 return;
             }
@@ -542,18 +553,32 @@ namespace UltimateCC
             if (a != null && b != null && Physics2D.GetIgnoreCollision(a, b) != ignored) Physics2D.IgnoreCollision(a, b, ignored);
         }
 
-        // Each floor's front doors are shown (closed) unless we're stopped there with the doors open
+        // How far open this floor's doors are, 0 (shut) to 1 (fully apart). They slide open over the last part of the
+        // opening delay (so they're fully open exactly when people can step in) and shut over the closing delay.
+        private float DoorOpenAmount(int floor)
+        {
+            if (floor != currentFloor || state == State.Moving) return 0f;
+            if (state == State.DoorsClosing) return 1f - Mathf.Clamp01(closingTimer / doorCloseDelay);
+            float slide = Mathf.Min(doorSlideTime, doorOpenDelay);
+            return slide <= 0f ? (DoorsPhysicallyOpen ? 1f : 0f) : Mathf.Clamp01((stoppedTimer - (doorOpenDelay - slide)) / slide);
+        }
+
+        // Slides each floor's door leaves apart by their own width when open, back together when shut
         private void UpdateFrontDoors()
         {
             for (int floor = 0; floor < floors.Count; floor++)
             {
-                GameObject door = floors[floor] != null ? floors[floor].frontDoor : null;
-                if (door == null) continue;
-                bool open = floor == currentFloor && DoorsPhysicallyOpen;
-                if (doorShownOpen[floor] == (open ? 1 : 0)) continue;
-                doorShownOpen[floor] = open ? 1 : 0;
-                foreach (var sprite in door.GetComponentsInChildren<SpriteRenderer>()) sprite.enabled = !open;
+                var wp = floors[floor];
+                if (wp == null) continue;
+                float open = DoorOpenAmount(floor);
+                if (wp.leftDoor != null) wp.leftDoor.position = leftDoorClosed[floor] + Vector3.left * (doorLeafWidth[floor] * open);
+                if (wp.rightDoor != null) wp.rightDoor.position = rightDoorClosed[floor] + Vector3.right * (doorLeafWidth[floor] * open);
             }
+        }
+
+        private void LateUpdate()
+        {
+            if (floors.Count > 0) UpdateFrontDoors(); // every frame, so the doors slide smoothly
         }
 
         // Stop nodes cost more the further away the elevator is, so NPCs take the stairs when it's far off.
