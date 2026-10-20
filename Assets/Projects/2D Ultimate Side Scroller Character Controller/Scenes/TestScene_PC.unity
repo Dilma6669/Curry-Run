@@ -27028,7 +27028,7 @@ MonoBehaviour:
   node: {fileID: 1294220775}
   minStayTime: 15
   maxStayTime: 25
-  spread: 3
+  spread: 3.5
   restingSortingOrder: -1
   restingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &340686439
@@ -53787,7 +53787,7 @@ MonoBehaviour:
   node: {fileID: 1727810264}
   minStayTime: 15
   maxStayTime: 25
-  spread: 3
+  spread: 3.5
   restingSortingOrder: -1
   restingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &664163348
@@ -77874,7 +77874,7 @@ MonoBehaviour:
   node: {fileID: 1179927105}
   minStayTime: 15
   maxStayTime: 25
-  spread: 3
+  spread: 3.5
   restingSortingOrder: -1
   restingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &931946571
@@ -85070,7 +85070,7 @@ MonoBehaviour:
   node: {fileID: 1654245189}
   minStayTime: 15
   maxStayTime: 25
-  spread: 3
+  spread: 3.5
   restingSortingOrder: -1
   restingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1027133989
@@ -104453,6 +104453,7 @@ MonoBehaviour:
   - {fileID: 895452492}
   - {fileID: 535675022}
   doorReach: 1.5
+  riderSpread: 3.5
   riderSortingOrder: -19
   doorOpenDelay: 1
   doorCloseDelay: 0.75
@@ -167467,7 +167468,7 @@ MonoBehaviour:
   node: {fileID: 1934039689}
   minStayTime: 15
   maxStayTime: 25
-  spread: 3
+  spread: 3.5
   restingSortingOrder: -1
   restingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &2034106500
@@ -175583,7 +175584,7 @@ MonoBehaviour:
   node: {fileID: 702361785}
   minStayTime: 15
   maxStayTime: 25
-  spread: 3
+  spread: 3.5
   restingSortingOrder: -1
   restingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &2130897698

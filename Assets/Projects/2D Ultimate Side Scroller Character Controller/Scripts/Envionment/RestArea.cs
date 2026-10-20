@@ -17,7 +17,7 @@ namespace UltimateCC
         public float maxStayTime = 25f;
 
         [Tooltip("Resting NPCs spread out up to this far either side of this object (the room art's centre), so groups don't stand in one spot")]
-        public float spread = 3f;
+        public float spread = 3.5f;
 
         [Tooltip("Sorting order for resting NPCs: behind passers-by (0) but in front of this room's art")]
         public int restingSortingOrder = -1;
@@ -32,8 +32,35 @@ namespace UltimateCC
 
         public float RollStayTime() => Random.Range(minStayTime, maxStayTime);
 
-        // A spot in the room for one NPC to settle at. Centred on the art rather than the node, which may sit near a doorway.
-        public float RollSpotX() => transform.position.x + Random.Range(-spread, spread);
+        // A spot in the room for one NPC to settle at, centred on the art rather than the node (which may sit near a
+        // doorway). The first NPC in picks anywhere; later ones take the spot furthest from everyone already resting
+        // here (checked across the room, with a little jitter), so a group spreads out instead of bunching up.
+        public float RollSpotX()
+        {
+            float centre = transform.position.x;
+            bool anyoneHere = NPCController.All.Exists(npc => npc.CurrentRestArea == this);
+            if (!anyoneHere) return centre + Random.Range(-spread, spread);
+
+            const int Steps = 24;
+            float step = 2f * spread / Steps;
+            float best = centre;
+            float bestGap = -1f;
+            for (int i = 0; i <= Steps; i++)
+            {
+                float candidate = Mathf.Clamp(centre - spread + i * step + Random.Range(-0.25f, 0.25f) * step, centre - spread, centre + spread);
+                float gap = float.MaxValue;
+                foreach (var npc in NPCController.All)
+                {
+                    if (npc.CurrentRestArea == this) gap = Mathf.Min(gap, Mathf.Abs(npc.RestSpotX - candidate));
+                }
+                if (gap > bestGap)
+                {
+                    best = candidate;
+                    bestGap = gap;
+                }
+            }
+            return best;
+        }
 
         public static RestArea ForNode(PathNode node)
         {

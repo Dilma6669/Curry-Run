@@ -34,6 +34,10 @@ namespace UltimateCC
         public bool IsResting { get; private set; }
         private float restSpotX;
 
+        // The rest area we're resting in and our spot there, so newcomers can pick a spot away from us
+        public RestArea CurrentRestArea { get; private set; }
+        public float RestSpotX => restSpotX;
+
         // Where we stand inside the elevator car while riding, so riders spread out instead of all standing in the middle
         private float rideSpotX = float.NaN;
 
@@ -458,6 +462,7 @@ namespace UltimateCC
         {
             IsResting = true;
             restSpotX = area.RollSpotX();
+            CurrentRestArea = area;
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.linearVelocity = Vector2.zero;
             currentPlatformRb = null;
@@ -492,6 +497,7 @@ namespace UltimateCC
             if (body != null) body.color = originalColor;
             rb.bodyType = RigidbodyType2D.Dynamic;
             IsResting = false;
+            CurrentRestArea = null;
 
             // Walk back to the room's node and on from there
             startNode = area.node;
