@@ -18,6 +18,7 @@ namespace UltimateCC
         [SerializeField, NonEditable] private bool input_Crouch;
         [SerializeField, NonEditable] private bool input_WallGrab;
         [SerializeField, NonEditable] private float input_WallClimb;
+        [SerializeField, NonEditable] private bool input_ElevatorCall;
 
         // Properties to access the input variables
         public float Input_Walk => input_Walk;
@@ -26,6 +27,7 @@ namespace UltimateCC
         public bool Input_Crouch => input_Crouch;
         public bool Input_WallGrab => input_WallGrab;
         public float Input_WallClimb => input_WallClimb;
+        public bool Input_ElevatorCall => input_ElevatorCall;
 
         // Constructor to set player and playerData references
         public PlayerInputManager(PlayerMain player, PlayerData playerData)
@@ -58,6 +60,8 @@ namespace UltimateCC
             playerControls.Player.WallGrab.canceled += OnWallGrab;
             playerControls.Player.WallClimb.performed += OnWallClimb;
             playerControls.Player.WallClimb.canceled += OnWallClimb;
+            playerControls.Player.ElevatorCall.performed += OnElevatorCall;
+            playerControls.Player.ElevatorCall.canceled += OnElevatorCall;
         }
 
         private void FixedUpdate()
@@ -136,6 +140,10 @@ namespace UltimateCC
         private void OnWallClimb(InputAction.CallbackContext context)
         {
             input_WallClimb = context.ReadValue<float>();
+        }
+        private void OnElevatorCall(InputAction.CallbackContext context)
+        {
+            input_ElevatorCall = context.ReadValueAsButton();
         }
         #endregion
     }

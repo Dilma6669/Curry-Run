@@ -145,6 +145,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ElevatorCall"",
+                    ""type"": ""Button"",
+                    ""id"": ""68ed5dd6-785f-4682-85cd-83fd415da4d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -356,6 +365,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""WallClimb"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""764a56cc-b579-4732-9cc6-58837c781753"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorCall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -382,6 +402,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_WallGrab = m_Player.FindAction("WallGrab", throwIfNotFound: true);
         m_Player_WallClimb = m_Player.FindAction("WallClimb", throwIfNotFound: true);
+        m_Player_ElevatorCall = m_Player.FindAction("ElevatorCall", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -468,6 +489,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_WallGrab;
     private readonly InputAction m_Player_WallClimb;
+    private readonly InputAction m_Player_ElevatorCall;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -503,6 +525,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/WallClimb".
         /// </summary>
         public InputAction @WallClimb => m_Wrapper.m_Player_WallClimb;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ElevatorCall".
+        /// </summary>
+        public InputAction @ElevatorCall => m_Wrapper.m_Player_ElevatorCall;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -547,6 +573,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @WallClimb.started += instance.OnWallClimb;
             @WallClimb.performed += instance.OnWallClimb;
             @WallClimb.canceled += instance.OnWallClimb;
+            @ElevatorCall.started += instance.OnElevatorCall;
+            @ElevatorCall.performed += instance.OnElevatorCall;
+            @ElevatorCall.canceled += instance.OnElevatorCall;
         }
 
         /// <summary>
@@ -576,6 +605,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @WallClimb.started -= instance.OnWallClimb;
             @WallClimb.performed -= instance.OnWallClimb;
             @WallClimb.canceled -= instance.OnWallClimb;
+            @ElevatorCall.started -= instance.OnElevatorCall;
+            @ElevatorCall.performed -= instance.OnElevatorCall;
+            @ElevatorCall.canceled -= instance.OnElevatorCall;
         }
 
         /// <summary>
@@ -671,5 +703,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWallClimb(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ElevatorCall" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnElevatorCall(InputAction.CallbackContext context);
     }
 }

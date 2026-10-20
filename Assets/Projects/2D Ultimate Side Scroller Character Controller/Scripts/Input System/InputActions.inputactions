@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ElevatorCall",
+                    "type": "Button",
+                    "id": "68ed5dd6-785f-4682-85cd-83fd415da4d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -269,6 +278,17 @@
                     "action": "WallClimb",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "764a56cc-b579-4732-9cc6-58837c781753",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ElevatorCall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
