@@ -34,6 +34,9 @@ namespace UltimateCC
         public bool IsResting { get; private set; }
         private float restSpotX;
 
+        // Where we stand inside the elevator car while riding, so riders spread out instead of all standing in the middle
+        private float rideSpotX = float.NaN;
+
         private List<PathNode> currentPath = new List<PathNode>();
         private int currentNodeIndex = 0;
         private PathNode lastProcessedNode = null;
@@ -175,7 +178,7 @@ namespace UltimateCC
             if (!CanHeadFor(ref targetPathNode))
             {
                 isWaitingAtNode = true;
-                rb.linearVelocity = new Vector2(0f, platformVelY);
+                rb.linearVelocity = new Vector2(MoveToRideSpot(), platformVelY);
                 return;
             }
             isWaitingAtNode = false;
@@ -344,6 +347,28 @@ namespace UltimateCC
             }
 
             return !target.pauseMovement;
+        }
+
+        // Horizontal velocity while holding still for the elevator: riders shuffle to their own spot in the car (rolled
+        // when they step in), everyone else stands still. When the doors open at our floor we walk back to them as usual.
+        private float MoveToRideSpot()
+        {
+            Elevator riding = GetElevatorUnderfoot();
+            if (riding == null)
+            {
+                rideSpotX = float.NaN;
+                return 0f;
+            }
+
+            if (float.IsNaN(rideSpotX)) rideSpotX = riding.RollRiderSpotX();
+            float offset = rideSpotX - transform.position.x;
+            if (Mathf.Abs(offset) < 0.05f) return 0f;
+
+            float moveDir = Mathf.Sign(offset);
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * moveDir;
+            transform.localScale = scale;
+            return moveDir * Mathf.Min(moveSpeed * 0.5f, Mathf.Abs(offset) / Time.fixedDeltaTime);
         }
 
         // Standing at an elevator's front doors (we've reached a stop node) with the next node another of its stops

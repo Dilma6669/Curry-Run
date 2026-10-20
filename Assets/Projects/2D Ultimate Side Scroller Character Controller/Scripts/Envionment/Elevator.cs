@@ -37,6 +37,8 @@ namespace UltimateCC
         [SerializeField] private List<Collider2D> shaftFloors = new List<Collider2D>();
         [Tooltip("How close to the middle of the front doors a character must stand to step in")]
         [SerializeField] private float doorReach = 1.5f;
+        [Tooltip("Riders spread out up to this far either side of the doors inside the car, instead of all standing in the middle")]
+        [SerializeField] private float riderSpread = 3.5f;
 
         [Header("Visuals")]
         [Tooltip("Sorting order riders' sprites are drawn at while inside the car (their own offsets are kept on top of this). Keep it between the car's sprites and the shaft's front wall overlay, so riders appear behind the wall")]
@@ -214,6 +216,9 @@ namespace UltimateCC
             Bounds c = character.bounds;
             return Mathf.Abs(c.center.x - DoorX) <= doorReach && Mathf.Abs(c.min.y - FloorSurfaceY(floor)) < 0.5f;
         }
+
+        // A spot inside the car for one rider to stand at
+        public float RollRiderSpotX() => DoorX + Random.Range(-riderSpread, riderSpread);
 
         // Step in through the front doors: only while they're open at this floor and there's room
         public bool TryEnter(Collider2D character)
