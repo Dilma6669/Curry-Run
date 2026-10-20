@@ -19,6 +19,7 @@ namespace UltimateCC
         [SerializeField, NonEditable] private bool input_WallGrab;
         [SerializeField, NonEditable] private float input_WallClimb;
         [SerializeField, NonEditable] private bool input_ElevatorCall;
+        [SerializeField, NonEditable] private int input_ElevatorFloor = -1; // last keypad digit pressed, -1 when none is waiting
 
         // Properties to access the input variables
         public float Input_Walk => input_Walk;
@@ -28,6 +29,14 @@ namespace UltimateCC
         public bool Input_WallGrab => input_WallGrab;
         public float Input_WallClimb => input_WallClimb;
         public bool Input_ElevatorCall => input_ElevatorCall;
+
+        // Returns the keypad digit pressed since the last call (or -1), so each press is used once
+        public int TakeElevatorFloorPress()
+        {
+            int floor = input_ElevatorFloor;
+            input_ElevatorFloor = -1;
+            return floor;
+        }
 
         // Constructor to set player and playerData references
         public PlayerInputManager(PlayerMain player, PlayerData playerData)
@@ -62,6 +71,7 @@ namespace UltimateCC
             playerControls.Player.WallClimb.canceled += OnWallClimb;
             playerControls.Player.ElevatorCall.performed += OnElevatorCall;
             playerControls.Player.ElevatorCall.canceled += OnElevatorCall;
+            playerControls.Player.ElevatorFloor.performed += OnElevatorFloor;
         }
 
         private void FixedUpdate()
@@ -144,6 +154,12 @@ namespace UltimateCC
         private void OnElevatorCall(InputAction.CallbackContext context)
         {
             input_ElevatorCall = context.ReadValueAsButton();
+        }
+        private void OnElevatorFloor(InputAction.CallbackContext context)
+        {
+            // Keys are named "0".."9" or "numpad0".."numpad9": the last character is the floor number
+            string keyName = context.control.name;
+            input_ElevatorFloor = keyName[keyName.Length - 1] - '0';
         }
         #endregion
     }

@@ -154,6 +154,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ElevatorFloor"",
+                    ""type"": ""Button"",
+                    ""id"": ""48f28d67-cd36-4963-bb3b-446f098192e8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -376,6 +385,226 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ElevatorCall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""093586b5-6286-4d4d-a569-5d0d6a3ffd54"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93b9522d-1e1e-4fdd-8602-6ad03239f9e2"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cf9b1ba-690c-4ce8-b67b-70ca4de78ccb"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8671037-d527-47ad-afb2-453a8daffc3a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25c79dde-64e0-45bb-ab89-1293fb2b95cc"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d7d4e6e-dc08-4773-bcc8-cd5c870f8677"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae73478b-21d3-4aab-93af-080ac96ed8bd"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3d6177f-3849-4011-b8ad-552181aa904e"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0558e73-722a-4fd5-b43e-56f61e87a0bd"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0af58d70-79fe-4381-9d9c-d1432181da67"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa8b6516-563a-4bbe-aced-ec1af572535f"",
+                    ""path"": ""<Keyboard>/numpad0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a49f137-aa70-4e31-9125-5e74487feafa"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d689c8aa-1c82-41ff-8e6e-6460d6fc3b63"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faf6a71f-6da6-45f4-ab86-025e1cded161"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6b33f51-fa48-4dd3-8c15-424132dbe3f4"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8bf7609-5e33-4962-821c-f8018fcdf93b"",
+                    ""path"": ""<Keyboard>/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""725cacbb-6148-47ce-906a-03d008621f2d"",
+                    ""path"": ""<Keyboard>/numpad6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d86dafd0-2bb3-487b-976e-834d72d7ae88"",
+                    ""path"": ""<Keyboard>/numpad7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e12cefc-2c62-431c-a812-6c4316a4e8b2"",
+                    ""path"": ""<Keyboard>/numpad8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a7be28f-4b3e-4457-94a4-0d608fc5163e"",
+                    ""path"": ""<Keyboard>/numpad9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ElevatorFloor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -403,6 +632,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_WallGrab = m_Player.FindAction("WallGrab", throwIfNotFound: true);
         m_Player_WallClimb = m_Player.FindAction("WallClimb", throwIfNotFound: true);
         m_Player_ElevatorCall = m_Player.FindAction("ElevatorCall", throwIfNotFound: true);
+        m_Player_ElevatorFloor = m_Player.FindAction("ElevatorFloor", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -490,6 +720,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_WallGrab;
     private readonly InputAction m_Player_WallClimb;
     private readonly InputAction m_Player_ElevatorCall;
+    private readonly InputAction m_Player_ElevatorFloor;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -529,6 +760,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ElevatorCall".
         /// </summary>
         public InputAction @ElevatorCall => m_Wrapper.m_Player_ElevatorCall;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ElevatorFloor".
+        /// </summary>
+        public InputAction @ElevatorFloor => m_Wrapper.m_Player_ElevatorFloor;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -576,6 +811,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ElevatorCall.started += instance.OnElevatorCall;
             @ElevatorCall.performed += instance.OnElevatorCall;
             @ElevatorCall.canceled += instance.OnElevatorCall;
+            @ElevatorFloor.started += instance.OnElevatorFloor;
+            @ElevatorFloor.performed += instance.OnElevatorFloor;
+            @ElevatorFloor.canceled += instance.OnElevatorFloor;
         }
 
         /// <summary>
@@ -608,6 +846,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ElevatorCall.started -= instance.OnElevatorCall;
             @ElevatorCall.performed -= instance.OnElevatorCall;
             @ElevatorCall.canceled -= instance.OnElevatorCall;
+            @ElevatorFloor.started -= instance.OnElevatorFloor;
+            @ElevatorFloor.performed -= instance.OnElevatorFloor;
+            @ElevatorFloor.canceled -= instance.OnElevatorFloor;
         }
 
         /// <summary>
@@ -710,5 +951,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnElevatorCall(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ElevatorFloor" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnElevatorFloor(InputAction.CallbackContext context);
     }
 }
