@@ -49,7 +49,7 @@ namespace UltimateCC
         private Collider2D platformCollider;
         private readonly Dictionary<PathNode, int> floorByStopNode = new Dictionary<PathNode, int>();
         private bool[] upCalls, downCalls, carCalls;
-        private int boardingHere, leavingHere;
+        private int boardingHere, leavingHere, passersByAboard;
         private readonly List<int> waitingHere = new List<int>(); // destinations of NPCs waiting at the current floor
         private int targetFloor;
         private float doorTimer, costTimer;
@@ -135,6 +135,20 @@ namespace UltimateCC
             return player != null && player.PlayerData.Physics.CollidedMovingRigidbody == Body;
         }
 
+        public bool AreDoorsOpenAt(int floor) => state == State.DoorsOpen && currentFloor == floor;
+
+        // Whether a character is standing on the platform: feet at its top surface and overlapping it horizontally.
+        // A position check rather than physics contacts, which flicker for a frame whenever the platform starts or stops.
+        public bool IsCarrying(Collider2D character)
+        {
+            if (character == null || platformCollider == null) return false;
+            Bounds c = character.bounds;
+            Bounds plat = platformCollider.bounds;
+            bool feetOnTop = c.min.y > plat.max.y - 0.2f && c.min.y < plat.max.y + 0.3f;
+            bool overlapping = c.max.x > plat.min.x + 0.05f && c.min.x < plat.max.x - 0.05f;
+            return feetOnTop && overlapping;
+        }
+
         // ---------- Main loop ----------
 
         private void FixedUpdate()
@@ -167,6 +181,7 @@ namespace UltimateCC
             System.Array.Clear(carCalls, 0, carCalls.Length);
             boardingHere = 0;
             leavingHere = 0;
+            passersByAboard = 0;
             waitingHere.Clear();
 
             foreach (var npc in NPCController.All)
@@ -188,7 +203,9 @@ namespace UltimateCC
                 }
                 else if (onBoard)
                 {
-                    leavingHere++; // walking off the platform
+                    // Not a passenger, just walking across the platform (e.g. on the ground floor): never carry them off
+                    leavingHere++;
+                    passersByAboard++;
                 }
             }
 
@@ -226,7 +243,7 @@ namespace UltimateCC
                 OpenDoors();
                 return;
             }
-            if (direction != 0)
+            if (direction != 0 && passersByAboard == 0)
             {
                 targetFloor = currentFloor + direction;
                 state = State.Moving;
@@ -235,6 +252,13 @@ namespace UltimateCC
 
         private void UpdateMoving()
         {
+            // Someone walking through the shaft below (e.g. across the ground floor): wait for them rather than land on them
+            if (direction < 0 && IsShaftBlockedBelow())
+            {
+                Body.linearVelocity = Vector2.zero;
+                return;
+            }
+
             float y = Body.position.y;
             float targetY = FloorY(targetFloor);
 
@@ -372,6 +396,23 @@ namespace UltimateCC
             return atPlatformLevel && straddling;
         }
 
+        // Checks a character-height zone directly beneath the platform for NPCs or the player. The zone is slightly narrower
+        // than the platform, so someone merely brushing its side as it lands doesn't hold it in mid-air.
+        private bool IsShaftBlockedBelow()
+        {
+            const float ClearanceHeight = 2.5f;
+            const float EdgeInset = 0.3f;
+            Bounds plat = platformCollider.bounds;
+            Vector2 center = new Vector2(plat.center.x, plat.min.y - ClearanceHeight / 2f);
+            Vector2 size = new Vector2(plat.size.x - EdgeInset * 2f, ClearanceHeight);
+            foreach (var col in Physics2D.OverlapBoxAll(center, size, 0f))
+            {
+                if (col.isTrigger) continue;
+                if (col.GetComponent<NPCController>() != null || col.GetComponent<PlayerMain>() != null) return true;
+            }
+            return false;
+        }
+
         // Stop nodes cost more the further away the elevator is, so NPCs take the stairs when it's far off
         private void UpdateStopCosts()
         {
@@ -393,6 +434,8 @@ namespace UltimateCC
                 sb.Append($"F{f}:{(upCalls[f] ? "↑" : "")}{(downCalls[f] ? "↓" : "")}{(carCalls[f] ? "●" : "")} ");
             }
             if (state == State.DoorsOpen) sb.Append($"| boarding {boardingHere} leaving {leavingHere}");
+            if (state == State.Moving && Body.linearVelocity == Vector2.zero) sb.Append("| waiting for shaft below to clear");
+            if (state == State.Idle && passersByAboard > 0) sb.Append($"| waiting for {passersByAboard} passer-by to step off");
             return sb.ToString();
         }
     }

@@ -308,6 +308,13 @@ namespace UltimateCC
                 }
                 return false;
             }
+            if (riding != null)
+            {
+                // Getting off: only walk while the elevator is stopped with its doors open at our floor. If it moved off
+                // before we made it, freeze and wait for it to bring us back (our exit floor stays one of its car calls).
+                int exitFloor = GetExitFloor(riding);
+                if (exitFloor >= 0) return riding.AreDoorsOpenAt(exitFloor);
+            }
 
             if (target.pauseMovement) return false;
 
@@ -329,7 +336,14 @@ namespace UltimateCC
             if (currentPath == null || currentNodeIndex >= currentPath.Count) return false;
 
             fromFloor = elevator.GetFloorIndex(currentPath[currentNodeIndex]);
-            if (fromFloor < 0) return false;
+            if (fromFloor < 0)
+            {
+                // Still on board on our way off: we need the elevator at our exit floor
+                int exitFloor = IsStandingOn(elevator) ? GetExitFloor(elevator) : -1;
+                if (exitFloor < 0) return false;
+                fromFloor = toFloor = exitFloor;
+                return true;
+            }
 
             toFloor = fromFloor;
             for (int i = currentNodeIndex + 1; i < currentPath.Count; i++)
@@ -341,15 +355,25 @@ namespace UltimateCC
             return true;
         }
 
+        // The floor we're getting off at: the elevator stop we last reached, if we've stepped past it toward a floor node
+        private int GetExitFloor(Elevator elevator)
+        {
+            if (currentPath == null || currentNodeIndex == 0 || currentNodeIndex > currentPath.Count) return -1;
+            return elevator.GetFloorIndex(currentPath[currentNodeIndex - 1]);
+        }
+
         public bool IsStandingOn(Elevator elevator)
         {
-            return currentGroundCollider != null && currentGroundCollider.attachedRigidbody == elevator.Body;
+            return elevator.IsCarrying(capsuleCollider);
         }
 
         private Elevator GetElevatorUnderfoot()
         {
-            Rigidbody2D body = currentGroundCollider != null ? currentGroundCollider.attachedRigidbody : null;
-            return body != null ? body.GetComponent<Elevator>() : null;
+            foreach (var elevator in Elevator.All)
+            {
+                if (elevator.IsCarrying(capsuleCollider)) return elevator;
+            }
+            return null;
         }
 
         private IEnumerator PeriodicRepathRoutine()

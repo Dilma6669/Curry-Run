@@ -51527,6 +51527,10 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 1048576
+  - connectedNode: {fileID: 1934039689}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1149716023
@@ -93513,6 +93517,10 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 1048576
+  - connectedNode: {fileID: 1149716022}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 1048576
   customCost: 1
   pauseMovement: 0
 --- !u!212 &1934039690
@@ -93583,7 +93591,7 @@ Transform:
   m_GameObject: {fileID: 1934039688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.9, y: -3.5, z: 0}
+  m_LocalPosition: {x: -16.71, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
