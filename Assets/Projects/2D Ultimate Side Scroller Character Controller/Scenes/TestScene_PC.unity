@@ -58246,9 +58246,15 @@ MonoBehaviour:
   startNodes:
   - {fileID: 1428269133}
   - {fileID: 2089069483}
+  - {fileID: 1275952065}
+  - {fileID: 35955201}
+  - {fileID: 778006515}
   targetNodes:
   - {fileID: 1836986447}
   - {fileID: 2135873621}
+  - {fileID: 1275952065}
+  - {fileID: 35955201}
+  - {fileID: 778006515}
 --- !u!1 &1272166999
 GameObject:
   m_ObjectHideFlags: 0
