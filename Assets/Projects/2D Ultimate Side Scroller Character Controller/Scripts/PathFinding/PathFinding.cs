@@ -76,9 +76,25 @@ namespace UltimateCC
                     PathNode neighbor = connection != null ? connection.connectedNode : null;
                     if (neighbor == null || closedSet.Contains(neighbor)) continue;
 
-                    // Calculate distance cost + the neighbor node's custom cost
+                    // Calculate distance cost + the neighbor node's custom cost. Elevator stops are special: walking past
+                    // the doors costs plain distance, riding costs plain distance per floor, and boarding (the first ride
+                    // leg) adds the boarding stop's cost once - which grows the further away the elevator currently is.
                     float distanceCost = Vector2.Distance(current.transform.position, neighbor.transform.position);
-                    float tentativeGScore = gScore[current] + distanceCost * neighbor.customCost;
+                    float stepCost;
+                    if (Elevator.IsRideLeg(current, neighbor))
+                    {
+                        bool alreadyRiding = cameFrom.TryGetValue(current, out PathNode before) && Elevator.IsRideLeg(before, current);
+                        stepCost = distanceCost + (alreadyRiding ? 0f : current.customCost);
+                    }
+                    else if (Elevator.ForStop(neighbor) != null)
+                    {
+                        stepCost = distanceCost;
+                    }
+                    else
+                    {
+                        stepCost = distanceCost * neighbor.customCost;
+                    }
+                    float tentativeGScore = gScore[current] + stepCost;
 
                     if (!openSet.Contains(neighbor))
                     {

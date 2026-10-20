@@ -289,70 +289,102 @@ namespace UltimateCC
                 || !Physics2D.GetIgnoreCollision(player.CapsuleCollider2D, currentGroundCollider);
         }
 
-        // Whether we can walk toward our target node right now. Riders hold still until the elevator opens its doors at
-        // any stop on their route, then head for that one (it may skip floors). Everyone else never walks toward a paused
-        // node, and only steps into an open elevator if it's heading their way.
+        // Whether we can walk toward our target node right now. Elevators are used through their front doors: we walk
+        // along the walkway to the stop node in front of the doors, wait there, step in when given a place, ride (holding
+        // still) until the doors open at a stop on our route, and step out there. Walking past a single stop node is just
+        // walking. Everyone else never walks toward a paused node.
         private bool CanHeadFor(ref PathNode target)
         {
             Elevator riding = GetElevatorUnderfoot();
-            if (riding != null && riding.GetFloorIndex(target) >= 0)
-            {
-                for (int i = currentNodeIndex; i < currentPath.Count && riding.GetFloorIndex(currentPath[i]) >= 0; i++)
-                {
-                    if (!currentPath[i].pauseMovement)
-                    {
-                        currentNodeIndex = i;
-                        target = currentPath[i];
-                        return true;
-                    }
-                }
-                return false;
-            }
             if (riding != null)
             {
-                // Getting off: only walk while the elevator is stopped with its doors open at our floor. If it moved off
-                // before we made it, freeze and wait for it to bring us back (our exit floor stays one of its car calls).
-                int exitFloor = GetExitFloor(riding);
-                if (exitFloor >= 0) return riding.AreDoorsOpenAt(exitFloor);
-            }
-
-            if (target.pauseMovement) return false;
-
-            foreach (var elevator in Elevator.All)
-            {
-                if (elevator.GetFloorIndex(target) >= 0)
+                if (riding.GetFloorIndex(target) >= 0)
                 {
-                    return elevator.MayBoard(this);
+                    // Riding: when the doors open at any stop still on our route, that's where we are now
+                    for (int i = currentNodeIndex; i < currentPath.Count && riding.GetFloorIndex(currentPath[i]) >= 0; i++)
+                    {
+                        if (riding.AreDoorsOpenAt(riding.GetFloorIndex(currentPath[i])))
+                        {
+                            currentNodeIndex = i;
+                            target = currentPath[i];
+                            return true;
+                        }
+                    }
+                    return false;
                 }
+
+                // Past our last stop: step out once the doors are open at our floor. If the car left before we could,
+                // our exit floor stays one of its car calls and it brings us back.
+                int exitFloor = GetExitFloor(riding);
+                return exitFloor >= 0 && riding.AreDoorsOpenAt(exitFloor) && riding.TryExit(capsuleCollider);
             }
-            return true;
+
+            // At the front doors waiting to ride: step in once we've been given a place
+            Elevator waitingFor = ElevatorWeAreWaitingAt();
+            if (waitingFor != null)
+            {
+                if (waitingFor.MayBoard(this)) waitingFor.TryEnter(capsuleCollider);
+                return false; // either still waiting, or just stepped in (riding logic takes over next step)
+            }
+
+            return !target.pauseMovement;
         }
 
-        // If our route is about to use this elevator, which floor we board at and which floor we get off at.
-        // The trip is the run of consecutive stop nodes starting at our current target.
-        public bool TryGetElevatorTrip(Elevator elevator, out int fromFloor, out int toFloor)
+        // Standing at an elevator's front doors (we've reached a stop node) with the next node another of its stops
+        private Elevator ElevatorWeAreWaitingAt()
+        {
+            if (currentPath == null || currentNodeIndex == 0 || currentNodeIndex >= currentPath.Count) return null;
+            return Elevator.IsRideLeg(currentPath[currentNodeIndex - 1], currentPath[currentNodeIndex])
+                ? Elevator.ForStop(currentPath[currentNodeIndex - 1]) : null;
+        }
+
+        // If our route uses this elevator now, which floor we board at and which floor we get off at, and whether we're
+        // already at its doors. A ride is a run of two or more consecutive stop nodes; passing a single one is walking.
+        public bool TryGetElevatorTrip(Elevator elevator, out int fromFloor, out int toFloor, out bool atDoor)
         {
             fromFloor = toFloor = -1;
+            atDoor = false;
             if (currentPath == null || currentNodeIndex >= currentPath.Count) return false;
 
-            fromFloor = elevator.GetFloorIndex(currentPath[currentNodeIndex]);
-            if (fromFloor < 0)
+            int targetFloor = elevator.GetFloorIndex(currentPath[currentNodeIndex]);
+            if (IsStandingOn(elevator))
             {
-                // Still on board on our way off: we need the elevator at our exit floor
-                int exitFloor = IsStandingOn(elevator) ? GetExitFloor(elevator) : -1;
-                if (exitFloor < 0) return false;
-                fromFloor = toFloor = exitFloor;
+                // Riding: heading for the last stop of our run, or stepping out at the stop we just reached
+                fromFloor = targetFloor >= 0 ? targetFloor : GetExitFloor(elevator);
+                toFloor = targetFloor >= 0 ? LastStopFloor(elevator, currentNodeIndex) : fromFloor;
+                return fromFloor >= 0;
+            }
+
+            if (currentNodeIndex > 0 && targetFloor >= 0 && elevator.GetFloorIndex(currentPath[currentNodeIndex - 1]) >= 0)
+            {
+                // Waiting at the doors: we've reached the stop we board at and the next node is another stop
+                atDoor = true;
+                fromFloor = elevator.GetFloorIndex(currentPath[currentNodeIndex - 1]);
+                toFloor = LastStopFloor(elevator, currentNodeIndex);
                 return true;
             }
 
-            toFloor = fromFloor;
-            for (int i = currentNodeIndex + 1; i < currentPath.Count; i++)
+            if (targetFloor >= 0 && currentNodeIndex + 1 < currentPath.Count && elevator.GetFloorIndex(currentPath[currentNodeIndex + 1]) >= 0)
             {
-                int floor = elevator.GetFloorIndex(currentPath[i]);
-                if (floor < 0) break;
-                toFloor = floor;
+                // Walking up to the doors to ride: call it now, like pressing the button as you arrive
+                fromFloor = targetFloor;
+                toFloor = LastStopFloor(elevator, currentNodeIndex + 1);
+                return true;
             }
-            return true;
+            return false;
+        }
+
+        // Floor of the last stop in the run of consecutive stop nodes starting at the given path index
+        private int LastStopFloor(Elevator elevator, int startIndex)
+        {
+            int floor = -1;
+            for (int i = startIndex; i < currentPath.Count; i++)
+            {
+                int f = elevator.GetFloorIndex(currentPath[i]);
+                if (f < 0) break;
+                floor = f;
+            }
+            return floor;
         }
 
         // The floor we're getting off at: the elevator stop we last reached, if we've stepped past it toward a floor node
@@ -366,14 +398,14 @@ namespace UltimateCC
 
         public bool IsStandingOn(Elevator elevator)
         {
-            return elevator.IsCarrying(capsuleCollider);
+            return elevator.IsRiding(BodyCollider);
         }
 
         private Elevator GetElevatorUnderfoot()
         {
             foreach (var elevator in Elevator.All)
             {
-                if (elevator.IsCarrying(capsuleCollider)) return elevator;
+                if (elevator.IsRiding(BodyCollider)) return elevator;
             }
             return null;
         }
