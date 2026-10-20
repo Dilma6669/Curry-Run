@@ -75,8 +75,9 @@ namespace UltimateCC
                                 Physics2D.IgnoreCollision(player.CapsuleCollider2D, col, true);
                             }
 
-                            // Only NPCs within the smaller crowd radius, and on a surface we're actually walking on, slow us down
-                            if (Vector2.Distance(col.ClosestPoint(playerPosition), playerPosition) <= CrowdSlowdownRadius
+                            // Only NPCs within the smaller crowd radius, and on a surface we're actually walking on, slow us down.
+                            // NPCs resting at a rest area (eating, smoking) are out of the way and never do.
+                            if (!otherNpc.IsResting && Vector2.Distance(col.ClosestPoint(playerPosition), playerPosition) <= CrowdSlowdownRadius
                                 && IsOnPlayerSurface(otherNpc))
                             {
                                 crowdingCount++;

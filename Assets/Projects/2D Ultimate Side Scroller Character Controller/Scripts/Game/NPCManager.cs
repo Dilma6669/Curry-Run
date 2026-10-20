@@ -14,6 +14,8 @@ namespace UltimateCC
         [SerializeField] private List<PathNode> startNodes = new List<PathNode>();
         [Tooltip("Each NPC walks to a random node from this list (never the one it spawned at, and only ones it can reach)")]
         [SerializeField] private List<PathNode> targetNodes = new List<PathNode>();
+        [Tooltip("Chance an NPC heads for a rest area (cafeteria, smokers' area) instead of a target node. NPCs leaving a rest area roll again")]
+        [SerializeField, Range(0f, 1f)] private float restAreaChance = 0.35f;
 
         private float spawnTimer;
 
@@ -39,7 +41,7 @@ namespace UltimateCC
                 return;
             }
 
-            PathNode targetNode = PickReachableTarget(startNode);
+            PathNode targetNode = PickDestination(startNode);
             if (targetNode == null)
             {
                 Debug.LogWarning($"NPCManager: no reachable target node from {startNode.name}, skipping this spawn", this);
@@ -59,6 +61,7 @@ namespace UltimateCC
             NPCController controller = newNPC.GetComponent<NPCController>();
             if (controller != null)
             {
+                controller.manager = this;
                 controller.startNode = startNode;
                 controller.targetNode = targetNode;
 
@@ -68,11 +71,26 @@ namespace UltimateCC
             }
         }
 
-        // Tries the target nodes in a random order and returns the first one (other than the start) with a path to it
-        private PathNode PickReachableTarget(PathNode startNode)
+        // Picks where an NPC at the given node goes next: sometimes a rest area, otherwise a target node. Falls back to
+        // the other kind if none of the chosen kind is reachable. Returns null if nowhere is reachable.
+        public PathNode PickDestination(PathNode from)
+        {
+            List<PathNode> restNodes = new List<PathNode>();
+            foreach (var area in RestArea.All)
+            {
+                if (area.node != null) restNodes.Add(area.node);
+            }
+
+            bool restFirst = Random.value < restAreaChance;
+            PathNode picked = PickReachable(from, restFirst ? restNodes : targetNodes);
+            return picked != null ? picked : PickReachable(from, restFirst ? targetNodes : restNodes);
+        }
+
+        // Tries the nodes in a random order and returns the first one (other than the start) with a path to it
+        private static PathNode PickReachable(PathNode startNode, List<PathNode> nodes)
         {
             List<PathNode> candidates = new List<PathNode>();
-            foreach (var node in targetNodes)
+            foreach (var node in nodes)
             {
                 if (node != null && node != startNode && !candidates.Contains(node))
                 {

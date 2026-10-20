@@ -26,6 +26,14 @@ namespace UltimateCC
         [Header("Arrival")]
         public bool despawnOnArrival = true;
 
+        // The spawner that sent us, asked for somewhere new to go after resting at a rest area
+        [System.NonSerialized] public NPCManager manager;
+
+        // Resting at a rest area (eating, smoking): we hold still in the room and are untouchable, so the player and
+        // other NPCs pass by without colliding or being slowed down by us
+        public bool IsResting { get; private set; }
+        private float restSpotX;
+
         private List<PathNode> currentPath = new List<PathNode>();
         private int currentNodeIndex = 0;
         private PathNode lastProcessedNode = null;
@@ -78,6 +86,12 @@ namespace UltimateCC
 
         void FixedUpdate()
         {
+            if (IsResting)
+            {
+                SettleIntoRestSpot();
+                return;
+            }
+
             CheckCrowdOverlap();
             FollowPath();
         }
@@ -124,7 +138,7 @@ namespace UltimateCC
                             }
 
                             // 2. Count peer NPCs on the same layer, overlapping our space, for the general crowd gridlock penalty
-                            if (col.gameObject.layer == gameObject.layer
+                            if (!otherNpc.IsResting && col.gameObject.layer == gameObject.layer
                                 && Vector2.Distance(col.ClosestPoint(position), position) <= CrowdCountRadius)
                             {
                                 crowdingCount++;
@@ -191,10 +205,12 @@ namespace UltimateCC
                 previousNode = targetPathNode;
                 currentNodeIndex++;
 
-                // Reached the final destination (the target door)
-                if (despawnOnArrival && targetPathNode == targetNode && currentNodeIndex >= currentPath.Count)
+                // Reached the final destination: rest there if it's a rest area, otherwise leave through the target door
+                if (targetPathNode == targetNode && currentNodeIndex >= currentPath.Count)
                 {
-                    Destroy(gameObject);
+                    RestArea restArea = RestArea.ForNode(targetNode);
+                    if (restArea != null) StartCoroutine(RestRoutine(restArea));
+                    else if (despawnOnArrival) Destroy(gameObject);
                 }
                 return;
             }
@@ -221,7 +237,7 @@ namespace UltimateCC
                         PlayerMain detectedPlayer = col.GetComponent<PlayerMain>();
                         bool isPlayer = detectedPlayer != null && IsPlayerOnOurSurface(detectedPlayer);
                         NPCController otherNpc = col.GetComponent<NPCController>();
-                        bool isValidNpcPeer = otherNpc != null && col.gameObject.layer == gameObject.layer;
+                        bool isValidNpcPeer = otherNpc != null && !otherNpc.IsResting && col.gameObject.layer == gameObject.layer;
 
                         if (isPlayer || isValidNpcPeer)
                         {
@@ -408,6 +424,72 @@ namespace UltimateCC
                 if (elevator.IsRiding(BodyCollider)) return elevator;
             }
             return null;
+        }
+
+        // Settle at a spot in the room, rest for a random stay, then become a normal walker again and head somewhere new.
+        // While resting the body is kinematic so nothing can shove us, and other NPCs and the player skip us in their
+        // crowd checks (their collisions with us are already ignored at close range).
+        private IEnumerator RestRoutine(RestArea area)
+        {
+            IsResting = true;
+            restSpotX = area.RollSpotX();
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.linearVelocity = Vector2.zero;
+            currentPlatformRb = null;
+            currentGroundCollider = null;
+
+            // Draw behind passers-by, so they visibly walk past in front of us
+            SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+            int[] originalOrders = new int[sprites.Length];
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                originalOrders[i] = sprites[i].sortingOrder;
+                sprites[i].sortingOrder = area.restingSortingOrder;
+            }
+
+            // Tint the body (not accessories like the glasses) to show we're resting
+            SpriteRenderer body = GetComponent<SpriteRenderer>();
+            Color originalColor = body != null ? body.color : Color.white;
+            if (body != null) body.color = area.restingColor;
+
+            // Stay at least one visit, and keep resting if there's nowhere reachable to go next
+            PathNode next = null;
+            while (next == null)
+            {
+                yield return new WaitForSeconds(area.RollStayTime());
+                if (manager != null) next = manager.PickDestination(area.node);
+            }
+
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                if (sprites[i] != null) sprites[i].sortingOrder = originalOrders[i];
+            }
+            if (body != null) body.color = originalColor;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            IsResting = false;
+
+            // Walk back to the room's node and on from there
+            startNode = area.node;
+            targetNode = next;
+            SetDestination(area.node, next);
+        }
+
+        // Stroll to our spot in the rest area, then stand still
+        private void SettleIntoRestSpot()
+        {
+            float offset = restSpotX - transform.position.x;
+            if (Mathf.Abs(offset) < 0.05f)
+            {
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
+            float moveDir = Mathf.Sign(offset);
+            rb.linearVelocity = new Vector2(moveDir * Mathf.Min(moveSpeed * 0.5f, Mathf.Abs(offset) / Time.fixedDeltaTime), 0f);
+
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * moveDir;
+            transform.localScale = scale;
         }
 
         private IEnumerator PeriodicRepathRoutine()
