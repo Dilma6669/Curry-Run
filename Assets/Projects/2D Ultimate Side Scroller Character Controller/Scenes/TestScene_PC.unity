@@ -782,12 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b0dd49b3654d2e9f018761b337528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.ElevatorWaypoint
-  hasArrived: 0
-  pathNodeToResumeMovement: {fileID: 592720453}
-  elevatorCollider: {fileID: 1274646930}
-  baseCost: 1
-  maxCost: 50
-  distanceScaleFactor: 2
+  stopNode: {fileID: 592720453}
 --- !u!1 &6428941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1279,8 @@ PrefabInstance:
       propertyPath: 'floorHeights.Array.data[5]'
       value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2274047471240710479, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
@@ -1296,7 +1292,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2274047471240710476, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1691198384}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2274047471240710477, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1274646933}
   m_SourcePrefab: {fileID: 100100000, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
 --- !u!4 &14871857 stripped
 Transform:
@@ -9622,12 +9621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b0dd49b3654d2e9f018761b337528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.ElevatorWaypoint
-  hasArrived: 0
-  pathNodeToResumeMovement: {fileID: 579593204}
-  elevatorCollider: {fileID: 1274646930}
-  baseCost: 1
-  maxCost: 50
-  distanceScaleFactor: 2
+  stopNode: {fileID: 579593204}
 --- !u!1 &195191571
 GameObject:
   m_ObjectHideFlags: 0
@@ -23157,6 +23151,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &465618740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2274047471240710477, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
+  m_PrefabInstance: {fileID: 14871856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465676637
 GameObject:
   m_ObjectHideFlags: 0
@@ -36474,12 +36473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b0dd49b3654d2e9f018761b337528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.ElevatorWaypoint
-  hasArrived: 0
-  pathNodeToResumeMovement: {fileID: 1353799293}
-  elevatorCollider: {fileID: 1274646930}
-  baseCost: 1
-  maxCost: 50
-  distanceScaleFactor: 2
+  stopNode: {fileID: 1353799293}
 --- !u!1 &730230663
 GameObject:
   m_ObjectHideFlags: 0
@@ -56313,12 +56307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b0dd49b3654d2e9f018761b337528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.ElevatorWaypoint
-  hasArrived: 0
-  pathNodeToResumeMovement: {fileID: 27462879}
-  elevatorCollider: {fileID: 1274646930}
-  baseCost: 1
-  maxCost: 50
-  distanceScaleFactor: 2
+  stopNode: {fileID: 27462879}
 --- !u!1 &1231975614
 GameObject:
   m_ObjectHideFlags: 0
@@ -58393,11 +58382,36 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &1274646930 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2274047471240710478, guid: 8aba10223e62afd4abf755c049b6e672, type: 3}
-  m_PrefabInstance: {fileID: 14871856}
+--- !u!114 &1274646933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465618740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb132d4d09224ed5988ab0a39d2120e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.Elevator
+  floors:
+  - {fileID: 730096654}
+  - {fileID: 194522133}
+  - {fileID: 1229379105}
+  - {fileID: 1924041778}
+  - {fileID: 5508369}
+  - {fileID: 2007410527}
+  startFloorIndex: 3
+  speed: 5
+  minDoorOpenTime: 2
+  maxDoorOpenTime: 10
+  baseCost: 1
+  distanceScaleFactor: 2
+  maxCost: 50
+  state: 0
+  currentFloor: 0
+  direction: 0
+  requests: 
 --- !u!1 &1275952064
 GameObject:
   m_ObjectHideFlags: 0
@@ -92875,12 +92889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b0dd49b3654d2e9f018761b337528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.ElevatorWaypoint
-  hasArrived: 0
-  pathNodeToResumeMovement: {fileID: 427341795}
-  elevatorCollider: {fileID: 1274646930}
-  baseCost: 1
-  maxCost: 50
-  distanceScaleFactor: 2
+  stopNode: {fileID: 427341795}
 --- !u!1 &1927399056
 GameObject:
   m_ObjectHideFlags: 0
@@ -97230,12 +97239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b0dd49b3654d2e9f018761b337528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.ElevatorWaypoint
-  hasArrived: 0
-  pathNodeToResumeMovement: {fileID: 72898657}
-  elevatorCollider: {fileID: 1274646930}
-  baseCost: 1
-  maxCost: 50
-  distanceScaleFactor: 2
+  stopNode: {fileID: 72898657}
 --- !u!1 &2008820007
 GameObject:
   m_ObjectHideFlags: 0

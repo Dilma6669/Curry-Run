@@ -35,7 +35,9 @@ namespace UltimateCC
         private CapsuleCollider2D capsuleCollider;
         
         public bool isWaitingAtNode = false;
-        private Coroutine waitCoroutine = null;
+
+        // Every active NPC, so elevators can see who is waiting for them or riding
+        public static readonly List<NPCController> All = new List<NPCController>();
 
         // Platform tracking variables
         private Rigidbody2D currentPlatformRb = null;
@@ -51,6 +53,9 @@ namespace UltimateCC
         {
             moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         }
+
+        void OnEnable() { All.Add(this); }
+        void OnDisable() { All.Remove(this); }
 
         void Start()
         {
@@ -90,11 +95,6 @@ namespace UltimateCC
         private void StopWaiting()
         {
             isWaitingAtNode = false;
-            if (waitCoroutine != null)
-            {
-                StopCoroutine(waitCoroutine);
-                waitCoroutine = null;
-            }
         }
 
         // Must comfortably exceed an NPC capsule's reach (1.0) so NPCs meeting diagonally on ramps are ignored before they touch
@@ -148,13 +148,6 @@ namespace UltimateCC
             // Determine base vertical velocity adjustment from a platform if riding one
             float platformVelY = (currentPlatformRb != null) ? currentPlatformRb.linearVelocity.y : rb.linearVelocity.y;
 
-            // If we are waiting, halt horizontal movement completely while keeping the vertical platform motion
-            if (isWaitingAtNode)
-            {
-                rb.linearVelocity = new Vector2(0f, platformVelY);
-                return;
-            }
-
             if (currentPath == null || currentPath.Count == 0 || currentNodeIndex >= currentPath.Count)
             {
                 rb.linearVelocity = new Vector2(0f, platformVelY);
@@ -163,6 +156,15 @@ namespace UltimateCC
 
             PathNode targetPathNode = currentPath[currentNodeIndex];
             if (targetPathNode == null) return;
+
+            // Waiting for an elevator (or any paused node): halt horizontal movement while keeping the vertical platform motion
+            if (!CanHeadFor(ref targetPathNode))
+            {
+                isWaitingAtNode = true;
+                rb.linearVelocity = new Vector2(0f, platformVelY);
+                return;
+            }
+            isWaitingAtNode = false;
 
             // Apply collision ignores whenever we step to a new node in the path
             if (targetPathNode != lastProcessedNode)
@@ -186,22 +188,6 @@ namespace UltimateCC
             float distanceToNode = Vector2.Distance(transform.position, targetPathNode.transform.position);
             if (distanceToNode <= reachThreshold)
             {
-                // Look ahead to the NEXT node in the path
-                int nextIndex = currentNodeIndex + 1;
-                if (nextIndex < currentPath.Count)
-                {
-                    PathNode nextTargetNode = currentPath[nextIndex];
-                    if (nextTargetNode != null && nextTargetNode.pauseMovement)
-                    {
-                        isWaitingAtNode = true;
-
-                        if (waitCoroutine == null)
-                        {
-                            waitCoroutine = StartCoroutine(CheckPauseStateRoutine(nextTargetNode));
-                        }
-                    }
-                }
-
                 previousNode = targetPathNode;
                 currentNodeIndex++;
 
@@ -303,25 +289,69 @@ namespace UltimateCC
                 || !Physics2D.GetIgnoreCollision(player.CapsuleCollider2D, currentGroundCollider);
         }
 
-        private IEnumerator CheckPauseStateRoutine(PathNode nodeToCheck)
+        // Whether we can walk toward our target node right now. Riders hold still until the elevator opens its doors at
+        // any stop on their route, then head for that one (it may skip floors). Everyone else never walks toward a paused
+        // node, and only steps into an open elevator if it's heading their way.
+        private bool CanHeadFor(ref PathNode target)
         {
-            WaitForSeconds waitInterval = new WaitForSeconds(1f);
-
-            while (isWaitingAtNode)
+            Elevator riding = GetElevatorUnderfoot();
+            if (riding != null && riding.GetFloorIndex(target) >= 0)
             {
-                if (nodeToCheck != null && !nodeToCheck.pauseMovement)
+                for (int i = currentNodeIndex; i < currentPath.Count && riding.GetFloorIndex(currentPath[i]) >= 0; i++)
                 {
-                    isWaitingAtNode = false;
-                    waitCoroutine = null;
-                    yield break;
+                    if (!currentPath[i].pauseMovement)
+                    {
+                        currentNodeIndex = i;
+                        target = currentPath[i];
+                        return true;
+                    }
                 }
-
-                yield return waitInterval;
+                return false;
             }
 
-            waitCoroutine = null;
+            if (target.pauseMovement) return false;
+
+            foreach (var elevator in Elevator.All)
+            {
+                if (elevator.GetFloorIndex(target) >= 0)
+                {
+                    return TryGetElevatorTrip(elevator, out int fromFloor, out int toFloor) && elevator.CanBoard(fromFloor, toFloor);
+                }
+            }
+            return true;
         }
-        
+
+        // If our route is about to use this elevator, which floor we board at and which floor we get off at.
+        // The trip is the run of consecutive stop nodes starting at our current target.
+        public bool TryGetElevatorTrip(Elevator elevator, out int fromFloor, out int toFloor)
+        {
+            fromFloor = toFloor = -1;
+            if (currentPath == null || currentNodeIndex >= currentPath.Count) return false;
+
+            fromFloor = elevator.GetFloorIndex(currentPath[currentNodeIndex]);
+            if (fromFloor < 0) return false;
+
+            toFloor = fromFloor;
+            for (int i = currentNodeIndex + 1; i < currentPath.Count; i++)
+            {
+                int floor = elevator.GetFloorIndex(currentPath[i]);
+                if (floor < 0) break;
+                toFloor = floor;
+            }
+            return true;
+        }
+
+        public bool IsStandingOn(Elevator elevator)
+        {
+            return currentGroundCollider != null && currentGroundCollider.attachedRigidbody == elevator.Body;
+        }
+
+        private Elevator GetElevatorUnderfoot()
+        {
+            Rigidbody2D body = currentGroundCollider != null ? currentGroundCollider.attachedRigidbody : null;
+            return body != null ? body.GetComponent<Elevator>() : null;
+        }
+
         private IEnumerator PeriodicRepathRoutine()
         {
             WaitForSeconds repathInterval = new WaitForSeconds(2f); // Check every 2 seconds
@@ -332,6 +362,9 @@ namespace UltimateCC
 
                 // If we have a final destination, periodically check for cheaper/updated paths
                 if (targetNode == null || currentPath == null || currentNodeIndex >= currentPath.Count) continue;
+
+                // Never re-route mid-ride: we're committed until the elevator lets us off
+                if (GetElevatorUnderfoot() != null) continue;
 
                 // While waiting we are standing on the node we last reached, so we can reroute from there.
                 // Otherwise stay committed to the node we're walking toward so we never turn back mid-segment.
@@ -350,10 +383,14 @@ namespace UltimateCC
             }
         }
 
+        private static bool IsMovingPlatform(GameObject obj)
+        {
+            return obj.GetComponent<Platform>() != null || obj.GetComponent<Elevator>() != null;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Platform plat = collision.gameObject.GetComponent<Platform>();
-            if (plat != null)
+            if (IsMovingPlatform(collision.gameObject))
             {
                 currentPlatformRb = collision.rigidbody;
             }
@@ -361,8 +398,7 @@ namespace UltimateCC
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            Platform plat = collision.gameObject.GetComponent<Platform>();
-            if (plat != null)
+            if (IsMovingPlatform(collision.gameObject))
             {
                 currentPlatformRb = null;
             }

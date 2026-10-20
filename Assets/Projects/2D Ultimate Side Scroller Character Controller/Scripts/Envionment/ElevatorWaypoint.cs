@@ -1,88 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UltimateCC
 {
+    // Marks one floor an Elevator serves: this object's Y is the elevator platform's height at the floor,
+    // and stopNode is the PathNode in the shaft that NPCs walk to when boarding or leaving here.
+    // The Elevator opens a floor by unpausing its stop node, and closes it by pausing it again.
     public class ElevatorWaypoint : MonoBehaviour
     {
-        [Header("Status")]
-        public bool hasArrived = false;
-        
-        public PathNode pathNodeToResumeMovement;
+        [Tooltip("The PathNode in the elevator shaft at this floor")]
+        [FormerlySerializedAs("pathNodeToResumeMovement")]
+        public PathNode stopNode;
 
-        [Header("Settings")]
-        [SerializeField] private Collider2D elevatorCollider;
-        [SerializeField] private float baseCost = 1f;          // Cost when elevator is right here
-        [SerializeField] private float maxCost = 50f;          // Cost when elevator is far away
-        [SerializeField] private float distanceScaleFactor = 1f; // How fast cost increases with distance
-
-        private Coroutine costUpdateCoroutine;
-
-        private void Start()
-        {
-            if (elevatorCollider != null && pathNodeToResumeMovement != null)
-            {
-                costUpdateCoroutine = StartCoroutine(UpdateElevatorCostRoutine());
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (costUpdateCoroutine != null)
-            {
-                StopCoroutine(costUpdateCoroutine);
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (elevatorCollider != null && other == elevatorCollider)
-            {
-                hasArrived = true;
-
-                if (pathNodeToResumeMovement != null)
-                {
-                    pathNodeToResumeMovement.pauseMovement = false;
-                    pathNodeToResumeMovement.customCost = baseCost; // Reset cost when arrived
-                }
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (elevatorCollider != null && other == elevatorCollider)
-            {
-                hasArrived = false;
-
-                if (pathNodeToResumeMovement != null)
-                {
-                    pathNodeToResumeMovement.pauseMovement = true;
-                }
-            }
-        }
-
-        private IEnumerator UpdateElevatorCostRoutine()
-        {
-            WaitForSeconds waitInterval = new WaitForSeconds(1f);
-
-            while (true)
-            {
-                if (elevatorCollider != null && pathNodeToResumeMovement != null)
-                {
-                    // Only adjust dynamic cost if the elevator isn't currently sitting at this waypoint
-                    if (!hasArrived)
-                    {
-                        float distance = Vector2.Distance(transform.position, elevatorCollider.transform.position);
-                        
-                        // Calculate a dynamic cost that increases the further away the elevator is
-                        float calculatedCost = baseCost + (distance * distanceScaleFactor);
-                        pathNodeToResumeMovement.customCost = Mathf.Min(calculatedCost, maxCost);
-                    }
-                }
-
-                yield return waitInterval;
-            }
-        }
+        public float Height => transform.position.y;
     }
 }
