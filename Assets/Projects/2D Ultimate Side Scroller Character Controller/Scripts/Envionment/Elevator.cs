@@ -175,6 +175,22 @@ namespace UltimateCC
 
         public float FloorY(int floor) => floors[floor].Height;
 
+        // The floor the car is at or currently passing, for the floor displays above the doors. Unlike currentFloor
+        // (which changes on arrival) this counts floors as the car goes by them.
+        public int NearestFloor
+        {
+            get
+            {
+                if (Body == null || floors.Count == 0) return currentFloor;
+                int nearest = 0;
+                for (int i = 1; i < floors.Count; i++)
+                {
+                    if (Mathf.Abs(FloorY(i) - Body.position.y) < Mathf.Abs(FloorY(nearest) - Body.position.y)) nearest = i;
+                }
+                return nearest;
+            }
+        }
+
         // Height of the platform's walkable top surface at a floor
         public float FloorSurfaceY(int floor) => FloorY(floor) + (platformCollider != null ? platformCollider.bounds.extents.y : 0f);
 
