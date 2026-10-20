@@ -97,19 +97,18 @@ namespace UltimateCC
             }
         }
 
-        private HashSet<Collider2D> ignoredNpcColliders = new HashSet<Collider2D>();
+        // Must comfortably exceed an NPC capsule's reach (1.0) so NPCs meeting diagonally on ramps are ignored before they touch
+        private const float NpcPassThroughRadius = 2f;
+        private const float CrowdCountRadius = 0.5f;
 
         void CheckCrowdOverlap()
         {
             int crowdingCount = 0;
 
-            // Drop colliders of NPCs that have been destroyed
-            ignoredNpcColliders.RemoveWhere(c => c == null);
-
             if (capsuleCollider != null)
             {
-                // Check for nearby colliders overlapping our space
-                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+                Vector2 position = transform.position;
+                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(position, NpcPassThroughRadius);
                 foreach (var col in nearbyColliders)
                 {
                     if (col.gameObject != gameObject)
@@ -117,15 +116,16 @@ namespace UltimateCC
                         NPCController otherNpc = col.GetComponent<NPCController>();
                         if (otherNpc != null)
                         {
-                            // 1. ALWAYS ignore physical collision with ANY other NPC so they never wedge side-by-side
-                            if (!ignoredNpcColliders.Contains(col))
+                            // 1. ALWAYS ignore physical collision with ANY other NPC so they never wedge or stack on each other.
+                            // Ask the physics engine directly instead of caching, so a re-enabled collision self-heals.
+                            if (!Physics2D.GetIgnoreCollision(capsuleCollider, col))
                             {
                                 Physics2D.IgnoreCollision(capsuleCollider, col, true);
-                                ignoredNpcColliders.Add(col);
                             }
 
-                            // 2. Count peer NPCs on the same layer for the general crowd gridlock penalty
-                            if (col.gameObject.layer == gameObject.layer)
+                            // 2. Count peer NPCs on the same layer, overlapping our space, for the general crowd gridlock penalty
+                            if (col.gameObject.layer == gameObject.layer
+                                && Vector2.Distance(col.ClosestPoint(position), position) <= CrowdCountRadius)
                             {
                                 crowdingCount++;
                             }
