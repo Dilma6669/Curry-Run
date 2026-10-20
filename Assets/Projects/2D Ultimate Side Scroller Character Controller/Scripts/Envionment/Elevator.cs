@@ -38,6 +38,10 @@ namespace UltimateCC
         [Tooltip("How close to the middle of the front doors a character must stand to step in")]
         [SerializeField] private float doorReach = 1.5f;
 
+        [Header("Visuals")]
+        [Tooltip("Sorting order riders' sprites are drawn at while inside the car (their own offsets are kept on top of this). Keep it between the car's sprites and the shaft's front wall overlay, so riders appear behind the wall")]
+        [SerializeField] private int riderSortingOrder = -19;
+
         [Header("Doors")]
         [Tooltip("How long after stopping at a floor before the doors open")]
         [SerializeField] private float doorOpenDelay = 1f;
@@ -73,6 +77,7 @@ namespace UltimateCC
         private readonly List<Collider2D> carParts = new List<Collider2D>();   // every solid collider that moves with the car
         private readonly Dictionary<PathNode, int> floorByStopNode = new Dictionary<PathNode, int>();
         private readonly HashSet<Collider2D> riders = new HashSet<Collider2D>();
+        private readonly Dictionary<Collider2D, List<(SpriteRenderer sprite, int order)>> riderSortingBackup = new Dictionary<Collider2D, List<(SpriteRenderer, int)>>();
         private bool[] upCalls, downCalls, carCalls;
         private int boardingHere, leavingHere;
         private readonly List<(NPCController npc, int toFloor)> waitingHere = new List<(NPCController, int)>(); // NPCs at the doors of the current floor
@@ -192,6 +197,7 @@ namespace UltimateCC
             if (!AreDoorsOpenAt(currentFloor) || !HasRoom || !IsAtFrontDoor(character, currentFloor)) return false;
             riders.Add(character);
             SetRiderCollisions(character, true);
+            DrawBehindShaftWall(character, true);
             return true;
         }
 
@@ -201,7 +207,31 @@ namespace UltimateCC
             if (character == null || !riders.Contains(character) || !AreDoorsOpenAt(currentFloor)) return false;
             riders.Remove(character);
             SetRiderCollisions(character, false);
+            DrawBehindShaftWall(character, false);
             return true;
+        }
+
+        // Riders are drawn back at the car's depth (behind the shaft's front wall), walkers at their normal sorting order
+        private void DrawBehindShaftWall(Collider2D character, bool behind)
+        {
+            if (behind)
+            {
+                var backup = new List<(SpriteRenderer, int)>();
+                foreach (var sprite in character.GetComponentsInChildren<SpriteRenderer>(true))
+                {
+                    backup.Add((sprite, sprite.sortingOrder));
+                    sprite.sortingOrder = riderSortingOrder + sprite.sortingOrder;
+                }
+                riderSortingBackup[character] = backup;
+            }
+            else if (riderSortingBackup.TryGetValue(character, out var backup))
+            {
+                foreach (var (sprite, order) in backup)
+                {
+                    if (sprite != null) sprite.sortingOrder = order;
+                }
+                riderSortingBackup.Remove(character);
+            }
         }
 
         // Player pressed the call button at a floor
@@ -229,7 +259,12 @@ namespace UltimateCC
 
             if (state != State.Moving && state != State.DoorsClosing) stoppedTimer += Time.fixedDeltaTime;
 
-            riders.RemoveWhere(c => c == null); // riders that despawned
+            if (riders.RemoveWhere(c => c == null) > 0) // riders that despawned
+            {
+                var gone = new List<Collider2D>();
+                foreach (var key in riderSortingBackup.Keys) if (key == null) gone.Add(key);
+                foreach (var key in gone) riderSortingBackup.Remove(key);
+            }
             GatherRequests();
             switch (state)
             {
