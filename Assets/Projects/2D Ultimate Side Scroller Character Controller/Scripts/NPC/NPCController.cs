@@ -362,6 +362,8 @@ namespace UltimateCC
             return elevator.GetFloorIndex(currentPath[currentNodeIndex - 1]);
         }
 
+        public Collider2D BodyCollider => capsuleCollider != null ? capsuleCollider : GetComponent<CapsuleCollider2D>();
+
         public bool IsStandingOn(Elevator elevator)
         {
             return elevator.IsCarrying(capsuleCollider);

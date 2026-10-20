@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,6 +12,9 @@ namespace UltimateCC
         [Tooltip("The PathNode in the elevator shaft at this floor")]
         [FormerlySerializedAs("pathNodeToResumeMovement")]
         public PathNode stopNode;
+
+        [Tooltip("Doors in this floor's openings onto the shaft. Closed unless the elevator is stopped here (or the player forces them open)")]
+        public List<Collider2D> landingDoors = new List<Collider2D>();
 
         public float Height => transform.position.y;
     }

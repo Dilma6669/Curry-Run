@@ -11,7 +11,7 @@ namespace UltimateCC
     [RequireComponent(typeof(Rigidbody2D))]
     public class Elevator : MonoBehaviour
     {
-        public enum State { Idle, Moving, DoorsOpen }
+        public enum State { Idle, Moving, DoorsOpen, DoorsClosing }
 
         [Header("Floors")]
         [Tooltip("One waypoint per floor, bottom to top. Each waypoint's Y is the platform height at that floor and its Stop Node is the PathNode in the shaft")]
@@ -26,6 +26,10 @@ namespace UltimateCC
         [SerializeField, Min(1)] private int capacity = 10;
 
         [Header("Doors")]
+        [Tooltip("How long after stopping at a floor before the doors open (each floor's landing doors are set on its ElevatorWaypoint)")]
+        [SerializeField] private float doorOpenDelay = 1f;
+        [Tooltip("How long the doors take to close before the elevator sets off")]
+        [SerializeField] private float doorCloseDelay = 0.75f;
         [Tooltip("Minimum time the doors stay open at a stop")]
         [SerializeField] private float minDoorOpenTime = 2f;
         [Tooltip("Doors close after this long even if NPCs are still boarding or leaving, so one stuck NPC can't hold the elevator forever")]
@@ -58,13 +62,21 @@ namespace UltimateCC
         private readonly HashSet<NPCController> allowedToBoard = new HashSet<NPCController>();
         private int targetFloor;
         private float doorTimer, costTimer;
+        private float stoppedTimer;   // time since we last stopped; the doors open once it reaches doorOpenDelay
+        private float closingTimer;
         private int skipHallCallsAtFloor = -1;   // set when doors time out on someone who never boarded, until we leave the floor
         private bool shaftBlocked;               // holding a descent because someone is in the shaft below
 
         // Requests from the player, fed into the same hall/car calls as the NPCs'
         private readonly HashSet<int> playerHallCalls = new HashSet<int>();
-        private int playerCarCall = -1;
+        private readonly HashSet<int> playerCarCalls = new HashSet<int>();   // floor buttons the player has lit inside the car
         private PlayerMain player;
+
+        // Landing doors: closed (solid for everyone) unless we're stopped at that floor or the player forced them.
+        // When open but we're full they stay solid for the player only.
+        private float[] forcedOpenUntil;
+        private int[] doorShownOpen;   // per floor: -1 not yet shown, 0 closed, 1 open
+        private bool playerBlocked;
 
         private void OnEnable() { All.Add(this); }
         private void OnDisable() { All.Remove(this); }
@@ -76,6 +88,9 @@ namespace UltimateCC
             upCalls = new bool[floors.Count];
             downCalls = new bool[floors.Count];
             carCalls = new bool[floors.Count];
+            forcedOpenUntil = new float[floors.Count];
+            doorShownOpen = new int[floors.Count];
+            for (int i = 0; i < floors.Count; i++) doorShownOpen[i] = -1;
             for (int i = 0; i < floors.Count; i++)
             {
                 if (floors[i] != null && floors[i].stopNode != null)
@@ -94,9 +109,11 @@ namespace UltimateCC
             Body.position = new Vector2(Body.position.x, FloorY(currentFloor));
             transform.position = Body.position;
 
-            // Doors start closed everywhere
+            // Stop nodes start closed everywhere; the car itself starts parked with its doors open
             for (int i = 0; i < floors.Count; i++) SetDoorsOpen(i, false);
+            stoppedTimer = doorOpenDelay;
             UpdateStopCosts();
+            UpdateDoors();
         }
 
         // ---------- Queries used by NPCs and the player ----------
@@ -135,18 +152,30 @@ namespace UltimateCC
             if (skipHallCallsAtFloor == floor) skipHallCallsAtFloor = -1;
         }
 
-        // Player picked a destination while riding
-        public void SetPlayerDestination(int floor)
+        // Player pressed a floor on the keypad while riding. It becomes a car call like any rider's, so it's served in the
+        // order the elevator's route reaches it rather than jumping the queue.
+        public bool AddPlayerDestination(int floor)
         {
-            playerCarCall = (floor >= 0 && floor < floors.Count) ? floor : -1;
+            if (floor < 0 || floor >= floors.Count) return false;
+            playerCarCalls.Add(floor);
+            return true;
         }
 
         public bool IsPlayerRiding()
         {
-            return player != null && player.PlayerData.Physics.CollidedMovingRigidbody == Body;
+            if (player == null || player.CapsuleCollider2D == null) return false;
+            if (player.PlayerData.Physics.CollidedMovingRigidbody == Body) return true;
+            // The physics contact can drop for a moment while moving (e.g. pushing against a door), so also count
+            // being inside the car: between its edges and on or just above its floor
+            Bounds p = player.CapsuleCollider2D.bounds;
+            Bounds plat = platformCollider.bounds;
+            return p.min.x > plat.min.x && p.max.x < plat.max.x && p.min.y > plat.max.y - 0.2f && p.min.y < plat.max.y + 1.5f;
         }
 
-        public bool AreDoorsOpenAt(int floor) => state == State.DoorsOpen && currentFloor == floor;
+        // Stopped at this floor with the doors fully open (after the opening delay), so people can get on and off
+        public bool AreDoorsOpenAt(int floor) => state == State.DoorsOpen && currentFloor == floor && DoorsPhysicallyOpen;
+
+        private bool DoorsPhysicallyOpen => state != State.Moving && state != State.DoorsClosing && stoppedTimer >= doorOpenDelay;
 
         // Whether a character is standing on the platform: feet at its top surface and overlapping it horizontally.
         // A position check rather than physics contacts, which flicker for a frame whenever the platform starts or stops.
@@ -166,13 +195,17 @@ namespace UltimateCC
         {
             if (floors.Count == 0) return;
 
+            if (state != State.Moving && state != State.DoorsClosing) stoppedTimer += Time.fixedDeltaTime;
+
             GatherRequests();
             switch (state)
             {
                 case State.Idle: UpdateIdle(); break;
                 case State.Moving: UpdateMoving(); break;
                 case State.DoorsOpen: UpdateDoorsOpen(); break;
+                case State.DoorsClosing: UpdateDoorsClosing(); break;
             }
+            UpdateDoors();
 
             costTimer += Time.fixedDeltaTime;
             if (costTimer >= 1f)
@@ -193,7 +226,8 @@ namespace UltimateCC
             boardingHere = 0;
             leavingHere = 0;
             passersByAboard = 0;
-            load = IsPlayerRiding() ? 1 : 0;
+            // The player takes a place while riding or while stepping through the doorway
+            load = IsPlayerRiding() || IsPlayerInDoorway() ? 1 : 0;
             waitingHere.Clear();
             allowedToBoard.Clear();
 
@@ -228,10 +262,16 @@ namespace UltimateCC
                 upCalls[floor] = true;
                 downCalls[floor] = true;
             }
-            if (playerCarCall >= 0)
+            if (playerCarCalls.Count > 0)
             {
-                if (IsPlayerRiding()) carCalls[playerCarCall] = true;
-                else playerCarCall = -1; // got off before getting there
+                if (IsPlayerRiding())
+                {
+                    foreach (int floor in playerCarCalls) carCalls[floor] = true;
+                }
+                else
+                {
+                    playerCarCalls.Clear(); // got off before getting there
+                }
             }
 
             if (skipHallCallsAtFloor >= 0)
@@ -265,11 +305,29 @@ namespace UltimateCC
                 OpenDoors();
                 return;
             }
-            if (direction != 0 && passersByAboard == 0)
+            if (direction != 0 && passersByAboard == 0 && !IsAnyoneInDoorway())
             {
+                // Close the doors first, then set off
                 targetFloor = currentFloor + direction;
-                state = State.Moving;
+                closingTimer = 0f;
+                state = State.DoorsClosing;
             }
+        }
+
+        private void UpdateDoorsClosing()
+        {
+            Body.linearVelocity = Vector2.zero;
+
+            // Someone new wants on here: re-open, like a real elevator
+            if (HasRequestHere(NextDirection()))
+            {
+                stoppedTimer = 0f;
+                OpenDoors();
+                return;
+            }
+
+            closingTimer += Time.fixedDeltaTime;
+            if (closingTimer >= doorCloseDelay) state = State.Moving;
         }
 
         private void UpdateMoving()
@@ -314,11 +372,15 @@ namespace UltimateCC
         private void UpdateDoorsOpen()
         {
             Body.linearVelocity = Vector2.zero;
+
+            // Doors are still opening: nobody gets on or off yet
+            if (!DoorsPhysicallyOpen) return;
+            SetDoorsOpen(currentFloor, true);
             doorTimer += Time.fixedDeltaTime;
 
             // Anyone getting off or on here is served now
             playerHallCalls.Remove(currentFloor);
-            if (playerCarCall == currentFloor) playerCarCall = -1;
+            playerCarCalls.Remove(currentFloor);
 
             bool busy = boardingHere > 0 || leavingHere > 0 || IsPlayerInDoorway();
             if (doorTimer < minDoorOpenTime || (busy && doorTimer < maxDoorOpenTime)) return;
@@ -391,11 +453,11 @@ namespace UltimateCC
 
         // ---------- Doors & helpers ----------
 
+        // Start serving this floor. The stop node opens (and the door timer starts) once the doors have physically opened.
         private void OpenDoors()
         {
             state = State.DoorsOpen;
             doorTimer = 0f;
-            SetDoorsOpen(currentFloor, true);
         }
 
         private void SetDoorsOpen(int floor, bool open)
@@ -408,6 +470,123 @@ namespace UltimateCC
         {
             Body.linearVelocity = Vector2.zero;
             Body.position = new Vector2(Body.position.x, y);
+            stoppedTimer = 0f;
+        }
+
+        // Each floor's landing doors are closed unless the elevator is stopped there with its doors open, or the player has
+        // forced them open. Open doors let everyone through, except the player at the elevator's floor when it's full.
+        // Passing through is done with IgnoreCollision per character, so the colliders never get toggled, and a door never
+        // turns solid on top of someone (we don't set off, or end a forced opening, while anyone is in the doorway).
+        private void UpdateDoors()
+        {
+            // Full-elevator rule for the player, at the floor we're stopped at
+            bool servingFloorOpen = DoorsPhysicallyOpen;
+            var servingDoors = LandingDoors(currentFloor);
+            bool blockPlayer = servingFloorOpen && !HasRoom && !IsPlayerRiding() && !IsPlayerInDoorway() && !IsPlayerTouching(servingDoors);
+            // Once blocking, keep blocking until there's room again (the touching check only stops it turning on mid-overlap)
+            if (playerBlocked && servingFloorOpen && !HasRoom && !IsPlayerRiding()) blockPlayer = true;
+            playerBlocked = blockPlayer;
+
+            for (int floor = 0; floor < floors.Count; floor++)
+            {
+                var doors = LandingDoors(floor);
+                if (doors == null || doors.Count == 0) continue;
+
+                bool forced = IsForcedOpen(floor, doors);
+                bool open = forced || (floor == currentFloor && servingFloorOpen);
+                SetDoorVisuals(floor, doors, open);
+
+                foreach (var npc in NPCController.All) SetPassable(doors, npc.BodyCollider, open);
+                if (player != null && player.CapsuleCollider2D != null)
+                {
+                    bool blocked = blockPlayer && floor == currentFloor && !forced;
+                    SetPassable(doors, player.CapsuleCollider2D, open && !blocked);
+                }
+            }
+        }
+
+        // The player prising the doors open: stays open for the duration, and after that until nobody is in the doorway
+        private bool IsForcedOpen(int floor, List<Collider2D> doors)
+        {
+            if (forcedOpenUntil[floor] <= 0f) return false;
+            if (Time.time < forcedOpenUntil[floor]) return true;
+            if (IsAnyoneIn(doors)) return true;
+            forcedOpenUntil[floor] = 0f;
+            return false;
+        }
+
+        // Player spamming the call button: force this floor's landing doors open even with no elevator there
+        public bool ForceOpenLandingDoors(int floor, float duration)
+        {
+            if (floor < 0 || floor >= floors.Count || LandingDoors(floor) == null || LandingDoors(floor).Count == 0) return false;
+            forcedOpenUntil[floor] = Mathf.Max(forcedOpenUntil[floor], Time.time + duration);
+            return true;
+        }
+
+        private List<Collider2D> LandingDoors(int floor)
+        {
+            return floor >= 0 && floor < floors.Count && floors[floor] != null ? floors[floor].landingDoors : null;
+        }
+
+        private void SetDoorVisuals(int floor, List<Collider2D> doors, bool open)
+        {
+            if (doorShownOpen[floor] == (open ? 1 : 0)) return;
+            doorShownOpen[floor] = open ? 1 : 0;
+            foreach (var door in doors)
+            {
+                if (door == null) continue;
+                foreach (var sprite in door.GetComponentsInChildren<SpriteRenderer>()) sprite.enabled = !open;
+            }
+        }
+
+        // Like a door's safety sensor: a closed door stays passable for anyone already standing in it, so it never turns
+        // solid on top of them (which would shove them out); it becomes solid for them once they're clear.
+        private static void SetPassable(List<Collider2D> doors, Collider2D character, bool passable)
+        {
+            if (character == null) return;
+            Bounds body = character.bounds;
+            body.Expand(-0.1f); // real overlap only: someone merely pressed against the door doesn't count
+            foreach (var door in doors)
+            {
+                if (door == null) continue;
+                bool wanted = passable || Overlaps2D(door.bounds, body);
+                if (Physics2D.GetIgnoreCollision(door, character) != wanted) Physics2D.IgnoreCollision(door, character, wanted);
+            }
+        }
+
+        private bool IsPlayerTouching(List<Collider2D> doors)
+        {
+            if (doors == null) return false;
+            Bounds p = player.CapsuleCollider2D.bounds;
+            foreach (var door in doors)
+            {
+                if (door != null && Overlaps2D(door.bounds, p)) return true;
+            }
+            return false;
+        }
+
+        // Bounds.Intersects also compares z, and the doors don't sit at the same depth as the characters
+        private static bool Overlaps2D(Bounds a, Bounds b)
+        {
+            return a.min.x < b.max.x && a.max.x > b.min.x && a.min.y < b.max.y && a.max.y > b.min.y;
+        }
+
+        // Anyone standing in this floor's doorway: don't set off and close the doors on them
+        private bool IsAnyoneInDoorway() => IsAnyoneIn(LandingDoors(currentFloor));
+
+        private static bool IsAnyoneIn(List<Collider2D> doors)
+        {
+            if (doors == null) return false;
+            foreach (var door in doors)
+            {
+                if (door == null) continue;
+                foreach (var col in Physics2D.OverlapBoxAll(door.bounds.center, door.bounds.size, 0f))
+                {
+                    if (col.isTrigger) continue;
+                    if (col.GetComponent<NPCController>() != null || col.GetComponent<PlayerMain>() != null) return true;
+                }
+            }
+            return false;
         }
 
         // The player straddling the platform edge at this floor: don't close the doors and carry them off half on
@@ -459,9 +638,15 @@ namespace UltimateCC
                 sb.Append($"F{f}:{(upCalls[f] ? "↑" : "")}{(downCalls[f] ? "↓" : "")}{(carCalls[f] ? "●" : "")} ");
             }
             sb.Append($"| load {load}/{capacity} ");
+            if (playerBlocked) sb.Append("| full: player blocked ");
             if (state == State.DoorsOpen) sb.Append($"| boarding {boardingHere} leaving {leavingHere}");
             if (state == State.Moving && shaftBlocked) sb.Append("| waiting for shaft below to clear");
             if (state == State.Idle && passersByAboard > 0) sb.Append($"| waiting for {passersByAboard} passer-by to step off");
+            sb.Append(state == State.DoorsClosing ? "| doors closing" : DoorsPhysicallyOpen ? "| doors open" : state == State.Moving ? "| doors closed" : "| doors opening");
+            for (int f = 0; f < floors.Count; f++)
+            {
+                if (forcedOpenUntil[f] > 0f) sb.Append($" | F{f} doors FORCED open");
+            }
             return sb.ToString();
         }
     }
