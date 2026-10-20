@@ -30,6 +30,12 @@ namespace UltimateCC
         // Track the state from the previous frame to detect changes
         private PlayerMain.PlayerMovementState lastPlayerState = (PlayerMain.PlayerMovementState)(-1);
 
+        // Awake only runs in Play mode, so the gate's trigger-zone sprite stays visible in the Editor
+        private void Awake()
+        {
+            foreach (var marker in GetComponents<SpriteRenderer>()) marker.enabled = false;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             PlayerMain detectedPlayer = GetPlayer(other);

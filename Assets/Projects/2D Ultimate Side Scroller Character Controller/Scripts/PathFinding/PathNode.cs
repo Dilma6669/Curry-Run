@@ -17,6 +17,12 @@ namespace UltimateCC
         [Header("Wait Settings")]
         public bool pauseMovement;
 
+        // Awake only runs in Play mode, so the node's marker sprite stays visible in the Editor for laying out routes
+        private void Awake()
+        {
+            foreach (var marker in GetComponents<SpriteRenderer>()) marker.enabled = false;
+        }
+
         public NodeConnection GetConnectionTo(PathNode targetNode)
         {
             return connections.Find(c => c.connectedNode == targetNode);

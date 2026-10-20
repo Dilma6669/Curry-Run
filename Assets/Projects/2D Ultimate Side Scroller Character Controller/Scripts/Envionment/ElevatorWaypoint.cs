@@ -20,5 +20,11 @@ namespace UltimateCC
         public Transform rightDoor;
 
         public float Height => transform.position.y;
+
+        // Awake only runs in Play mode, so the waypoint's marker sprite stays visible in the Editor (door art lives on children)
+        private void Awake()
+        {
+            foreach (var marker in GetComponents<SpriteRenderer>()) marker.enabled = false;
+        }
     }
 }

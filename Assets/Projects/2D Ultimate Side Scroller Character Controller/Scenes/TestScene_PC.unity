@@ -2944,6 +2944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 40785423}
   - component: {fileID: 40785424}
+  - component: {fileID: 40785425}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -3025,6 +3026,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &40785425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40785422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &44027185
 GameObject:
   m_ObjectHideFlags: 0
@@ -14994,6 +15007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193285037}
   - component: {fileID: 193285038}
+  - component: {fileID: 193285039}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -15075,6 +15089,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &193285039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193285036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &194522129
 GameObject:
   m_ObjectHideFlags: 0
@@ -23007,6 +23033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298151554}
   - component: {fileID: 298151555}
+  - component: {fileID: 298151556}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -23088,6 +23115,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &298151556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298151553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &298795933
 GameObject:
   m_ObjectHideFlags: 0
@@ -27373,6 +27412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351960704}
   - component: {fileID: 351960705}
+  - component: {fileID: 351960706}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -27454,6 +27494,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &351960706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351960703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &354216446
 GameObject:
   m_ObjectHideFlags: 0
@@ -28243,6 +28295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368380929}
   - component: {fileID: 368380930}
+  - component: {fileID: 368380931}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -28324,6 +28377,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &368380931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368380928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &369633208
 GameObject:
   m_ObjectHideFlags: 0
@@ -31534,6 +31599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418135456}
   - component: {fileID: 418135457}
+  - component: {fileID: 418135458}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -31615,6 +31681,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &418135458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418135455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &418835601
 GameObject:
   m_ObjectHideFlags: 0
@@ -33990,6 +34068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437390250}
   - component: {fileID: 437390251}
+  - component: {fileID: 437390252}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -34071,6 +34150,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &437390252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437390249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &437576032
 GameObject:
   m_ObjectHideFlags: 0
@@ -35515,6 +35606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 459275067}
   - component: {fileID: 459275068}
+  - component: {fileID: 459275069}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -35596,6 +35688,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &459275069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459275066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &460040380
 GameObject:
   m_ObjectHideFlags: 0
@@ -35846,6 +35950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464126823}
   - component: {fileID: 464126824}
+  - component: {fileID: 464126825}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -35927,6 +36032,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &464126825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464126822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &465454949
 GameObject:
   m_ObjectHideFlags: 0
@@ -36431,6 +36548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472994054}
   - component: {fileID: 472994055}
+  - component: {fileID: 472994056}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -36512,6 +36630,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &472994056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472994053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &474152328
 GameObject:
   m_ObjectHideFlags: 0
@@ -46309,6 +46439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612611853}
   - component: {fileID: 612611854}
+  - component: {fileID: 612611855}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -46390,6 +46521,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &612611855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612611852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &615366195
 GameObject:
   m_ObjectHideFlags: 0
@@ -46676,6 +46819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 617324747}
   - component: {fileID: 617324748}
+  - component: {fileID: 617324749}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -46757,6 +46901,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &617324749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617324746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &619788166
 GameObject:
   m_ObjectHideFlags: 0
@@ -52378,6 +52534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672462823}
   - component: {fileID: 672462824}
+  - component: {fileID: 672462825}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -52459,6 +52616,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &672462825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672462822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &673965432
 GameObject:
   m_ObjectHideFlags: 0
@@ -53909,6 +54078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686090292}
   - component: {fileID: 686090293}
+  - component: {fileID: 686090294}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -53990,6 +54160,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &686090294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686090291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &687178262
 GameObject:
   m_ObjectHideFlags: 0
@@ -54138,6 +54320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687273924}
   - component: {fileID: 687273925}
+  - component: {fileID: 687273926}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -54219,6 +54402,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &687273926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687273923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &690231719
 GameObject:
   m_ObjectHideFlags: 0
@@ -55135,6 +55330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 696908621}
   - component: {fileID: 696908622}
+  - component: {fileID: 696908623}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -55216,6 +55412,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &696908623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696908620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &699486576
 GameObject:
   m_ObjectHideFlags: 0
@@ -55261,6 +55469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 700118617}
   - component: {fileID: 700118618}
+  - component: {fileID: 700118619}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -55342,6 +55551,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &700118619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700118616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &702291219
 GameObject:
   m_ObjectHideFlags: 0
@@ -55683,6 +55904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704515546}
   - component: {fileID: 704515547}
+  - component: {fileID: 704515548}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -55764,6 +55986,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &704515548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704515545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &705148734
 GameObject:
   m_ObjectHideFlags: 0
@@ -59564,6 +59798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 751627437}
   - component: {fileID: 751627438}
+  - component: {fileID: 751627439}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -59645,6 +59880,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &751627439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751627436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &751932359
 GameObject:
   m_ObjectHideFlags: 0
@@ -60069,6 +60316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755482669}
   - component: {fileID: 755482670}
+  - component: {fileID: 755482671}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -60150,6 +60398,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &755482671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755482668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &757198905
 GameObject:
   m_ObjectHideFlags: 0
@@ -61718,6 +61978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772993647}
   - component: {fileID: 772993648}
+  - component: {fileID: 772993649}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -61799,6 +62060,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &772993649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772993646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &774691878
 GameObject:
   m_ObjectHideFlags: 0
@@ -62248,6 +62521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777645654}
   - component: {fileID: 777645655}
+  - component: {fileID: 777645656}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -62329,6 +62603,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &777645656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777645653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &778006514
 GameObject:
   m_ObjectHideFlags: 0
@@ -63325,6 +63611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789055088}
   - component: {fileID: 789055089}
+  - component: {fileID: 789055090}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -63406,6 +63693,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &789055090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789055087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &790511815
 GameObject:
   m_ObjectHideFlags: 0
@@ -63953,6 +64252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 804296490}
   - component: {fileID: 804296491}
+  - component: {fileID: 804296492}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -64034,6 +64334,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &804296492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804296489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &806063563
 GameObject:
   m_ObjectHideFlags: 0
@@ -65278,6 +65590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 830972408}
   - component: {fileID: 830972409}
+  - component: {fileID: 830972410}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -65359,6 +65672,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &830972410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830972407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &831895523
 GameObject:
   m_ObjectHideFlags: 0
@@ -65645,6 +65970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 832490143}
   - component: {fileID: 832490144}
+  - component: {fileID: 832490145}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -65726,6 +66052,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &832490145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832490142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &832844090
 GameObject:
   m_ObjectHideFlags: 0
@@ -77291,6 +77629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975138139}
   - component: {fileID: 975138140}
+  - component: {fileID: 975138141}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -77372,6 +77711,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &975138141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975138138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &977042898
 GameObject:
   m_ObjectHideFlags: 0
@@ -78834,6 +79185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000236630}
   - component: {fileID: 1000236631}
+  - component: {fileID: 1000236632}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -78915,6 +79267,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1000236632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000236629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1000318192
 GameObject:
   m_ObjectHideFlags: 0
@@ -79266,6 +79630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009102240}
   - component: {fileID: 1009102241}
+  - component: {fileID: 1009102242}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -79347,6 +79712,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1009102242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009102239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1011472870
 GameObject:
   m_ObjectHideFlags: 0
@@ -84086,6 +84463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072239190}
   - component: {fileID: 1072239191}
+  - component: {fileID: 1072239192}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -84167,6 +84545,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1072239192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072239189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1072393866
 GameObject:
   m_ObjectHideFlags: 0
@@ -84346,6 +84736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075563802}
   - component: {fileID: 1075563803}
+  - component: {fileID: 1075563804}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -84427,6 +84818,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1075563804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075563801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1078138602
 GameObject:
   m_ObjectHideFlags: 0
@@ -88034,6 +88437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1145134741}
   - component: {fileID: 1145134742}
+  - component: {fileID: 1145134743}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -88115,6 +88519,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1145134743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145134740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1146587433
 GameObject:
   m_ObjectHideFlags: 0
@@ -90324,6 +90740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163290579}
   - component: {fileID: 1163290580}
+  - component: {fileID: 1163290581}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -90405,6 +90822,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1163290581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163290578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1164189905
 GameObject:
   m_ObjectHideFlags: 0
@@ -93160,6 +93589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1186615277}
   - component: {fileID: 1186615278}
+  - component: {fileID: 1186615279}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -93241,6 +93671,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1186615279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186615276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1186625297
 GameObject:
   m_ObjectHideFlags: 0
@@ -94404,6 +94846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1204962873}
   - component: {fileID: 1204962874}
+  - component: {fileID: 1204962875}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -94485,6 +94928,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1204962875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204962872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1204990074
 GameObject:
   m_ObjectHideFlags: 0
@@ -98192,6 +98647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252782916}
   - component: {fileID: 1252782917}
+  - component: {fileID: 1252782918}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -98273,6 +98729,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1252782918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252782915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1256089945
 GameObject:
   m_ObjectHideFlags: 0
@@ -101777,6 +102245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1306400777}
   - component: {fileID: 1306400778}
+  - component: {fileID: 1306400779}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -101858,6 +102327,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1306400779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306400776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1306861700
 GameObject:
   m_ObjectHideFlags: 0
@@ -105181,6 +105662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349831206}
   - component: {fileID: 1349831207}
+  - component: {fileID: 1349831208}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -105262,6 +105744,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1349831208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349831205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1349891619
 GameObject:
   m_ObjectHideFlags: 0
@@ -106340,6 +106834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364707457}
   - component: {fileID: 1364707458}
+  - component: {fileID: 1364707459}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -106421,6 +106916,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1364707459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364707456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1365349696
 GameObject:
   m_ObjectHideFlags: 0
@@ -107833,6 +108340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1387610566}
   - component: {fileID: 1387610567}
+  - component: {fileID: 1387610568}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -107914,6 +108422,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1387610568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387610565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1388524424
 GameObject:
   m_ObjectHideFlags: 0
@@ -108837,6 +109357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397682053}
   - component: {fileID: 1397682054}
+  - component: {fileID: 1397682055}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -108918,6 +109439,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1397682055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397682052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1398089984
 GameObject:
   m_ObjectHideFlags: 0
@@ -116652,6 +117185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1491522936}
   - component: {fileID: 1491522937}
+  - component: {fileID: 1491522938}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -116733,6 +117267,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1491522938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491522935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1494868365
 GameObject:
   m_ObjectHideFlags: 0
@@ -117192,6 +117738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499938859}
   - component: {fileID: 1499938860}
+  - component: {fileID: 1499938861}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -117273,6 +117820,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1499938861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499938858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1501864987
 GameObject:
   m_ObjectHideFlags: 0
@@ -117316,6 +117875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1506492384}
   - component: {fileID: 1506492385}
+  - component: {fileID: 1506492386}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -117397,6 +117957,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1506492386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506492383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1506753884
 GameObject:
   m_ObjectHideFlags: 0
@@ -139733,6 +140305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782863673}
   - component: {fileID: 1782863674}
+  - component: {fileID: 1782863675}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -139814,6 +140387,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1782863675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782863672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1783633452
 GameObject:
   m_ObjectHideFlags: 0
@@ -139824,6 +140409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783633453}
   - component: {fileID: 1783633454}
+  - component: {fileID: 1783633455}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -139905,6 +140491,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1783633455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783633452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1785444308
 GameObject:
   m_ObjectHideFlags: 0
@@ -147602,6 +148200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1868717507}
   - component: {fileID: 1868717508}
+  - component: {fileID: 1868717509}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -147683,6 +148282,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1868717509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868717506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1869018984
 GameObject:
   m_ObjectHideFlags: 0
@@ -149891,6 +150502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906553383}
   - component: {fileID: 1906553384}
+  - component: {fileID: 1906553385}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -149972,6 +150584,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1906553385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906553382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1907347864
 GameObject:
   m_ObjectHideFlags: 0
@@ -151441,6 +152065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1918112057}
   - component: {fileID: 1918112058}
+  - component: {fileID: 1918112059}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -151522,6 +152147,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1918112059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918112056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1918254290
 GameObject:
   m_ObjectHideFlags: 0
@@ -154168,6 +154805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949038747}
   - component: {fileID: 1949038748}
+  - component: {fileID: 1949038749}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -154249,6 +154887,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1949038749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949038746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &1949323184
 GameObject:
   m_ObjectHideFlags: 0
@@ -159915,6 +160565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2019745634}
   - component: {fileID: 2019745635}
+  - component: {fileID: 2019745636}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -159996,6 +160647,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2019745636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019745633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &2021350207
 GameObject:
   m_ObjectHideFlags: 0
@@ -161949,6 +162612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2046721563}
   - component: {fileID: 2046721564}
+  - component: {fileID: 2046721565}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -162030,6 +162694,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2046721565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046721562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &2049675017
 GameObject:
   m_ObjectHideFlags: 0
@@ -165425,6 +166101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2083309899}
   - component: {fileID: 2083309900}
+  - component: {fileID: 2083309901}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -165506,6 +166183,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2083309901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083309898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &2085315108
 GameObject:
   m_ObjectHideFlags: 0
@@ -166764,6 +167453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2105789158}
   - component: {fileID: 2105789159}
+  - component: {fileID: 2105789160}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -166845,6 +167535,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &2105789160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105789157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36119a36c05874b4283b785dbef68974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateCC.HideInPlayMode
 --- !u!1 &2107400678
 GameObject:
   m_ObjectHideFlags: 0
