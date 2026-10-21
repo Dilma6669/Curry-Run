@@ -343,6 +343,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Down-Up (Arrows)"",
+                    ""id"": ""5b0f6c3e-8a2d-4e71-9c4b-2f1d7e6a9b30"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WallClimb"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c3e9a1d4-6f2b-4b8e-a7d5-0e4c8b2f1a67"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WallClimb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e8d2b7f1-3a6c-4d9e-b1f4-7c5a2e9d0b83"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WallClimb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""Down-Up [Gamepad]"",
                     ""id"": ""f5fd0143-aa16-4537-8693-69634b093bb8"",
                     ""path"": ""1DAxis"",
